@@ -1,0 +1,13 @@
+.Item {
+    height: 32px;
+    padding: 0 24px;
+}
+
+.Title {
+    font-size: 14px;
+    color: #b3b3b3;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: normal;
+    text-transform: none;
+}
