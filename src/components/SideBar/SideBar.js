@@ -4,7 +4,7 @@ import styles from './SideBar.module.css'
 import Logo from '../../Assets/Logo'
 import ListItem from './ListItem/ListItem'
 
-const SideBar = () => {
+const SideBar = (props) => {
     return <div className={styles.SideBar}>
         <div className={styles.Logo}><Logo/></div>
 
@@ -16,50 +16,9 @@ const SideBar = () => {
         <div className={styles.ListContainer}>
             
         <ul className={styles.List}>
-            <ListItem/>
-            <ListItem/>
-            <ListItem/>
-            <ListItem/>
-            <ListItem/>
-            <ListItem/>
-            <ListItem/>
-            <ListItem/>
-            <ListItem/>
-            <ListItem/>
-            <ListItem/>
-            <ListItem/>
-            <ListItem/>
-            <ListItem/>
-            <ListItem/>
-            <ListItem/>
-            <ListItem/>
-            <ListItem/>
-            <ListItem/>
-            <ListItem/>
-            <ListItem/>
-            <ListItem/>
-            <ListItem/>
-            <ListItem/>
-            <ListItem/>
-            <ListItem/>
-            <ListItem/>
-            <ListItem/>
-            <ListItem/>
-            <ListItem/>
-            <ListItem/>
-            <ListItem/>
-            <ListItem/>
-            <ListItem/>
-            <ListItem/>
-            <ListItem/>
-            <ListItem/>
-            <ListItem/>
-            <ListItem/>
-            <ListItem/>
-            <ListItem/>
-            <ListItem/>
-            <ListItem/>
-            <ListItem/>
+            {props.playlists?.map(item => {
+                return <ListItem playlist={item} />
+            })}
         </ul>
         </div> 
     </div>

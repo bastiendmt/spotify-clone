@@ -1,6 +1,7 @@
 .Item {
-    height: 32px;
+    min-height: 32px;
     padding: 0 24px;
+   
 }
 
 .Title {
@@ -10,4 +11,9 @@
     line-height: 20px;
     letter-spacing: normal;
     text-transform: none;
+
+    text-overflow: ellipsis;
+    overflow: hidden;
+    display: inline-block;
+    white-space: nowrap;
 }
