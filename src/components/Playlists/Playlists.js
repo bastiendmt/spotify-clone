@@ -2,40 +2,15 @@ import React from 'react'
 import Playlist from './Playlist/Playlist'
 import styles from './Playlists.module.css'
 
-const Playlists = () => {
+const Playlists = (props) => {
     return <div className={styles.Playlists}>
         <h1 className={styles.Title}>Playlists</h1>
 
         <div className={styles.Container}>
-            <Playlist />
-            <Playlist />
-            <Playlist />
-            <Playlist />
-            <Playlist />
-            <Playlist />
-            <Playlist />
-            <Playlist />
-            <Playlist />
-            <Playlist />
-            <Playlist />
-            <Playlist />
-            <Playlist />
-            <Playlist />
-            <Playlist />
-            <Playlist />
-            <Playlist />
-            <Playlist />
-            <Playlist />
-            <Playlist />
-            <Playlist />
-            <Playlist />
-            <Playlist />
-            <Playlist />
-            <Playlist />
-            <Playlist />
-            <Playlist />
-            <Playlist />
-            <Playlist />
+            {props.playlists?.map(item => {
+                return <Playlist key={item.id} playlist={item} />
+            })}
+            
         </div>
         
     </div>

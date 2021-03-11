@@ -17,7 +17,7 @@ const SideBar = (props) => {
             
         <ul className={styles.List}>
             {props.playlists?.map(item => {
-                return <ListItem playlist={item} />
+                return <ListItem playlist={item} key={item.id}/>
             })}
         </ul>
         </div> 

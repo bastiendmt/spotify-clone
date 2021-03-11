@@ -26,8 +26,8 @@ const App = () => {
 
     return <div className={styles.App}>
         {playlists &&  <SideBar playlists={playlists} />}
+        {playlists &&  <Playlists playlists={playlists} />}
        
-        <Playlists />
     </div>
 }
 
