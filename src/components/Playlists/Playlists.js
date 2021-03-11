@@ -8,6 +8,34 @@ const Playlists = () => {
 
         <div className={styles.Container}>
             <Playlist />
+            <Playlist />
+            <Playlist />
+            <Playlist />
+            <Playlist />
+            <Playlist />
+            <Playlist />
+            <Playlist />
+            <Playlist />
+            <Playlist />
+            <Playlist />
+            <Playlist />
+            <Playlist />
+            <Playlist />
+            <Playlist />
+            <Playlist />
+            <Playlist />
+            <Playlist />
+            <Playlist />
+            <Playlist />
+            <Playlist />
+            <Playlist />
+            <Playlist />
+            <Playlist />
+            <Playlist />
+            <Playlist />
+            <Playlist />
+            <Playlist />
+            <Playlist />
         </div>
         
     </div>

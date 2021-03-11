@@ -15,5 +15,9 @@
 }
 
 .Container {
+  height: 90%;
   display: grid;
+  gap: 24px;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  overflow-y: scroll;
 }
