@@ -3,16 +3,21 @@
   padding: 16px;
   border-radius: 4px;
   max-height: 300px;
-  /* max-width: 220px; */
-  transition: all .2s ease-in-out;
+  transition: all 0.2s ease-in-out;
 }
 
 .Playlist:hover {
-  background-color: hsla(0, 0%, 100%, 0.3);
+  background-color: hsla(0, 0%, 100%, 0.1);
   cursor: pointer;
 }
 
+.Playlist:hover .PlayContainer{
+  opacity: 1;
+  transform: translateY(0);
+}
+
 .imgContainer {
+  position: relative;
   width: 100%;
   height: 200px;
   margin-bottom: 16px;
@@ -42,3 +47,24 @@
   letter-spacing: normal;
   text-transform: none;
 }
+
+.PlayContainer {
+  position: absolute;
+  right: 8px;
+  bottom: 8px;
+  opacity: 0;
+  transition: all .3s ease-in-out;
+  transform: translateY(10px);
+}
+
+.PlayContainer button {
+  color: #fff;
+  background-color: #1db954;
+  border: 0;
+  border-radius: 500px;
+  height: 40px;
+  width: 40px;
+
+  pointer-events: auto;
+}
+
