@@ -3,7 +3,13 @@
   padding: 16px;
   border-radius: 4px;
   max-height: 300px;
-  max-width: 200px;
+  /* max-width: 220px; */
+  transition: all .2s ease-in-out;
+}
+
+.Playlist:hover {
+  background-color: hsla(0, 0%, 100%, 0.3);
+  cursor: pointer;
 }
 
 .imgContainer {

@@ -1,8 +1,10 @@
 .Playlists {
   background-color: #121212;
   color: white;
-  width: 80vw;
-  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  position: relative;
   padding: 0 32px;
 }
 
@@ -15,9 +17,8 @@
 }
 
 .Container {
-  height: 90%;
   display: grid;
   gap: 24px;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
   overflow-y: scroll;
 }
