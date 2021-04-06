@@ -1,34 +1,42 @@
-import React, { useState, useEffect } from 'react'
-import styles from './App.module.css'
+import React, { useCallback, useEffect } from "react";
+import styles from "./App.module.css";
 
-import SideBar from './components/SideBar/SideBar'
-import Playlists from './components/Playlists/Playlists'
+import SideBar from "./components/SideBar/SideBar";
+import Playlists from "./components/Playlists/Playlists";
 
-import { GetPlaylists } from './API'
+import { GetPlaylists } from "./API";
+import { connect } from "react-redux";
 
-const App = () => {
+const App = ({ playlists, initPlaylists }) => {
+  const loadPlaylists = useCallback(async () => {
+    await GetPlaylists().then((data) => {
+      console.log(data);
+      initPlaylists(data.playlists.items);
+    });
+  }, [initPlaylists]);
 
-    const [playlists, setPlaylists] = useState()
+  useEffect(() => {
+    loadPlaylists();
+  }, [loadPlaylists]);
 
-    const loadPlaylists = async () => {
-        await GetPlaylists().then(data => {
-            console.log(data);
-            setPlaylists(data.playlists.items)
-        })
-
-    }
-
-    useEffect(() => {
-
-        loadPlaylists();
-
-    }, [])
-
-    return <div className={styles.App}>
-        {playlists &&  <SideBar playlists={playlists} />}
-        {playlists &&  <Playlists playlists={playlists} />}
-       
+  return (
+    <div className={styles.App}>
+      {playlists && <SideBar />}
+      {playlists && <Playlists />}
     </div>
-}
+  );
+};
 
-export default App
+const mapStateToProps = (state) => {
+  return {
+    playlists: state.playlists,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    initPlaylists: (data) => dispatch({ type: "init", playlists: data }),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
