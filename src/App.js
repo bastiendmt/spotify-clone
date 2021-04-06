@@ -31,7 +31,7 @@ const App = ({ playlists, initPlaylists }) => {
           {playlists && <Playlists />}
         </Route>
 
-        <Route path="/playlist">
+        <Route path="/playlist/:id">
           <PlaylistDetail />
         </Route>
       </Router>
