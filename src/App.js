@@ -7,6 +7,9 @@ import Playlists from "./components/Playlists/Playlists";
 import { GetPlaylists } from "./API";
 import { connect } from "react-redux";
 
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import PlaylistDetail from "./components/PlaylistDetail/PlaylistDetail";
+
 const App = ({ playlists, initPlaylists }) => {
   const loadPlaylists = useCallback(async () => {
     await GetPlaylists().then((data) => {
@@ -21,8 +24,17 @@ const App = ({ playlists, initPlaylists }) => {
 
   return (
     <div className={styles.App}>
-      {playlists && <SideBar />}
-      {playlists && <Playlists />}
+      <Router>
+        {playlists && <SideBar />}
+
+        <Route path="/" exact>
+          {playlists && <Playlists />}
+        </Route>
+
+        <Route path="/playlist">
+          <PlaylistDetail />
+        </Route>
+      </Router>
     </div>
   );
 };

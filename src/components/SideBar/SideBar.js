@@ -1,16 +1,19 @@
 import React from "react";
 import styles from "./SideBar.module.css";
-import Logo from "../../Assets/Logo";
+import Logo from "../../assets/Logo";
 import ListItem from "./ListItem/ListItem";
 
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 
 const SideBar = (props) => {
   return (
     <div className={styles.SideBar}>
-      <div className={styles.Logo}>
-        <Logo />
-      </div>
+      <Link style={{ textDecoration: "none", color: "white" }} to="/">
+        <div className={styles.Logo}>
+          <Logo />
+        </div>
+      </Link>
 
       <h1 className={styles.Title}>Playlists</h1>
 

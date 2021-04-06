@@ -4,6 +4,7 @@
   border-radius: 4px;
   max-height: 300px;
   transition: all 0.2s ease-in-out;
+  text-decoration: none;
 }
 
 .Playlist:hover {
@@ -36,6 +37,7 @@
   line-height: 24px;
   letter-spacing: normal;
   text-transform: none;
+  color: #fff;
 }
 
 .Artist {
@@ -68,3 +70,6 @@
   pointer-events: auto;
 }
 
+.LinkPlaylist {
+  text-decoration: none;
+}

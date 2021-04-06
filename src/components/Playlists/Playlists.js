@@ -9,9 +9,9 @@ const Playlists = (props) => {
       <h1 className={styles.Title}>Playlists</h1>
 
       <div className={styles.Container}>
-        {props.playlists?.map((item) => {
-          return <Playlist key={item.id} playlist={item} />;
-        })}
+        {props.playlists?.map((item) => (
+          <Playlist key={item.id} playlist={item} />
+        ))}
       </div>
     </div>
   );
