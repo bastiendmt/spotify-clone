@@ -5,7 +5,7 @@
   flex-direction: column;
   width: 100%;
   position: relative;
-  padding: 0 32px;
+  padding-left: 32px;
 }
 
 .Title {
@@ -21,4 +21,5 @@
   gap: 24px;
   grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
   overflow-y: scroll;
+  padding-right: 32px;
 }
