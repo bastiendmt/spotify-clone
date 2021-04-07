@@ -1,0 +1,28 @@
+.SongListContainer {
+  height: 54px;
+  display: grid;
+  grid-template-columns: [index] 16px [first] 6fr [var1] 4fr [var2] 3fr [last] minmax(
+      120px,
+      1fr
+    );
+  grid-gap: 16px;
+  padding: 0 16px;
+}
+
+.SongListContainer div {
+    display: flex;
+    align-items: center;
+
+    font-size: 14px;
+    font-weight: 400;
+    /* line-height: 16px; */
+    /* letter-spacing: normal; */
+    /* text-transform: none; */
+    color: #b3b3b3;
+}
+
+.SongListContainer div img {
+  height: 40px;
+  object-fit: cover;
+  margin-right: 16px;
+}

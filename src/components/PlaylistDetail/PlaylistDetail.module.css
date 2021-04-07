@@ -1,0 +1,99 @@
+.PlaylistDetail {
+  background-color: black;
+  flex: 1;
+}
+.PlaylistDetail * {
+  color: white;
+}
+
+.Cover {
+  display: flex;
+  padding: 32px 32px 32px 32px;
+  position: relative;
+}
+
+.Cover_Background {
+  background-color: rgb(80, 56, 160);
+}
+
+.Cover_Gradient {
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.5));
+}
+.Cover_Gradient,
+.Cover_Background {
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.Cover_Img {
+  width: 192px;
+  max-width: 192px;
+  height: 192px;
+  margin-right: 24px;
+}
+.Cover_Img img {
+  width: 100%;
+  height: 100%;
+  box-shadow: 0 4px 60px rgb(0 0 0 / 50%);
+}
+
+.Cover_Infos {
+  flex: 1;
+}
+
+.Cover_Img,
+.Cover_Infos {
+  z-index: 2;
+}
+
+.Cover_Infos_Title {
+  padding: 0.08em 0px;
+  font-size: 7vw;
+  font-weight: 700;
+}
+
+.Cover_Text_Light::before {
+  content: "•";
+  margin: 0px 4px;
+}
+
+.Cover_Text_Light,
+.Cover_Infos_Categ {
+  color: hsla(0, 0%, 100%, 0.7);
+}
+
+.Cover_Infos_Details span {
+  font-size: 14px;
+}
+
+.Cover_Text_Bold {
+  font-weight: 700;
+}
+
+.List {
+  padding: 0 32px;
+}
+
+.Heading {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: [index] 16px [first] 6fr [var1] 4fr [var2] 3fr [last] minmax(
+      120px,
+      1fr
+    );
+  padding: 0 16px;
+  height: 32px;
+}
+
+.Heading div {
+  align-items: center;
+  display: flex;
+  font-size: 12px;
+  font-weight: 400;
+  color: #b3b3b3;
+  text-transform: uppercase;
+}
