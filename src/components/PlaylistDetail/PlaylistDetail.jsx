@@ -1,58 +1,77 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import styles from "./PlaylistDetail.module.css";
 import { SongList } from "./SongList/SongList";
+import { GetPlaylistDetail } from "../../API";
 
 const PlaylistDetail = () => {
   const { id } = useParams();
+  const [playlist, setPlaylist] = useState();
 
   useEffect(() => {
     console.log(id);
-    //load details
+    loadPlaylistDetails(id);
   }, [id]);
 
+  const loadPlaylistDetails = async (playlistId) => {
+    await GetPlaylistDetail(playlistId).then((data) => {
+      console.log(data);
+      setPlaylist(data);
+    });
+  };
+
   return (
-    <div className={styles.PlaylistDetail}>
-      <div className={styles.Cover}>
-        <div className={styles.Cover_Background}></div>
-        <div className={styles.Cover_Gradient}></div>
-        <div className={styles.Cover_Img}>
-          <img
-            src="https://i.scdn.co/image/ab67706f0000000376a3e06aaf57c33ac79b94c0"
-            alt="playlist img"
-          />
-        </div>
-        <div className={styles.Cover_Infos}>
-          <div className={styles.Cover_Infos_Playlist}>PLAYLIST</div>
-          <div className={styles.Cover_Infos_Title}>Groove Theory</div>
-          <div className={styles.Cover_Infos_Categ}>Rap FR</div>
-          <div className={styles.Cover_Infos_Details}>
-            <span className={styles.Cover_Text_Bold}>Owner</span>
-            <span className={styles.Cover_Text_Light}>69 songs, about 4 hr 20 min</span>
+    <>
+      {playlist && (
+        <div className={styles.PlaylistDetail}>
+          <div className={styles.Cover}>
+            <div className={styles.Cover_Background}></div>
+            <div className={styles.Cover_Gradient}></div>
+            <div className={styles.Cover_Img}>
+              <img src={playlist.images[0].url} alt="playlist img" />
+            </div>
+            <div className={styles.Cover_Infos}>
+              <div className={styles.Cover_Infos_Playlist}>PLAYLIST</div>
+              <div className={styles.Cover_Infos_Title}>{playlist.name}</div>
+              <div className={styles.Cover_Infos_Categ}>
+                {playlist.description}
+              </div>
+              <div className={styles.Cover_Infos_Details}>
+                <span className={styles.Cover_Text_Bold}>
+                  {playlist.owner.display_name}
+                </span>
+                <span className={styles.Cover_Text_Light}>
+                  69 songs, about 4 hr 20 min
+                </span>
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
 
-      <div className={styles.List}>
-        <div className={styles.Heading}>
-          <div>#</div>
-          <div>Title</div>
-          <div>Album</div>
-          <div>Date added</div>
-          <div>Length</div>
-        </div>
-        
-        <SongList />
-        <SongList />
+          <div className={styles.List}>
+            <div className={styles.Heading}>
+              <div>#</div>
+              <div>Title</div>
+              <div>Album</div>
+              <div>Date added</div>
+              <div>Length</div>
+            </div>
 
+            {playlist.tracks.items.map((item) => (
+              <SongList key={item.id} song={item} />
+            ))}
 
-        {/* <SongList />
+            <SongList />
+            <SongList />
+
+            {/* <SongList />
         <SongList />
         <SongList />
         <SongList />
         <SongList /> */}
-      </div>
-    </div>
+          </div>
+        </div>
+      )}
+    </>
   );
 };
 

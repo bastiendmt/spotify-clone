@@ -1,20 +1,22 @@
 import React from "react";
 import styles from "./SongList.module.css";
 
-export const SongList = () => {
+export const SongList = ({ song }) => {
+  console.log(song);
   return (
-    <div className={styles.SongListContainer}>
-      <div>1</div>
-      <div>
-        <img
-          src="https://i.scdn.co/image/ab67616d0000b273e49b1bcaa060156dd2019e17"
-          alt="cover img"
-        />
-        Title
-      </div>
-      <div>Album</div>
-      <div>Date</div>
-      <div>3:60</div>
-    </div>
+    <>
+      {song && (
+        <div className={styles.SongListContainer}>
+          <div>1</div>
+          <div>
+            <img src={song.track.album.images[2].url} alt="cover img" />
+            {song.track.name}
+          </div>
+          <div>{song.track.album.name}</div>
+          <div>Date</div>
+          <div>{song.track.duration_ms}</div>
+        </div>
+      )}
+    </>
   );
 };
