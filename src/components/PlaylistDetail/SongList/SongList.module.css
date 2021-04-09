@@ -11,9 +11,12 @@
   font-size: 14px;
   font-weight: 400;
   line-height: 16px;
-  /* letter-spacing: normal; */
-  /* text-transform: none; */
   color: #b3b3b3;
+  border-radius: 4px;
+}
+
+.SongListContainer:hover {
+  background-color: hsla(0,0%,100%,.1);
 }
 
 .SongListContainer div,

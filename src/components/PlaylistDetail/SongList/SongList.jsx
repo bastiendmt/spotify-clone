@@ -4,7 +4,6 @@ import { millisToMinutesAndSeconds } from "../../../utils/msToMinutes";
 import { formatDate } from "../../../utils/formatDate";
 
 export const SongList = ({ song, index }) => {
-  console.log(song);
   return (
     <>
       {song && (
@@ -13,7 +12,9 @@ export const SongList = ({ song, index }) => {
           <div className={styles.SongInfos}>
             <img src={song.track.album.images[2].url} alt="cover img" />
             <div className={styles.SongNameContainer}>
-              <div className={styles.SongName}><span>{song.track.name}</span></div>
+              <div className={styles.SongName}>
+                <span>{song.track.name}</span>
+              </div>
               {song.track.explicit && (
                 <span className={styles.SongExplicit}>E</span>
               )}
