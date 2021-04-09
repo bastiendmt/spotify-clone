@@ -53,7 +53,7 @@ const PlaylistDetail = () => {
               <div>Title</div>
               <div>Album</div>
               <div>Date added</div>
-              <div>Length</div>
+              <div className={styles.Heading_Length}>Length</div>
             </div>
 
             {playlist.tracks.items.map((item, index) => (

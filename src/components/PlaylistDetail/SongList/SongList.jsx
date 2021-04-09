@@ -25,7 +25,10 @@ export const SongList = ({ song, index }) => {
           </div>
           <div>{song.track.album.name}</div>
           <div>{formatDate(song.added_at)}</div>
-          <div>{millisToMinutesAndSeconds(song.track.duration_ms)}</div>
+          <div className={styles.SongInfos_Length}>
+            {millisToMinutesAndSeconds(song.track.duration_ms)}
+            <button className={styles.SongInfos_More}>...</button>
+            </div>
         </div>
       )}
     </>
