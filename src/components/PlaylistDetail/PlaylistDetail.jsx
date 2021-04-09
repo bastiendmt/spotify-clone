@@ -47,7 +47,8 @@ const PlaylistDetail = () => {
             </div>
           </div>
 
-          <div className={styles.List}>
+          <div className={styles.List_Background}></div>
+          <div className={styles.List_Content}>
             <div className={styles.Heading}>
               <div>#</div>
               <div>Title</div>

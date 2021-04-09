@@ -10,7 +10,7 @@ export const SongList = ({ song, index }) => {
         <div className={styles.SongListContainer}>
           <div>{index + 1}</div>
           <div className={styles.SongInfos}>
-            <img src={song.track.album.images[2].url} alt="cover img" />
+            <img src={song.track.album.images[0].url} alt="cover img" />
             <div className={styles.SongNameContainer}>
               <div className={styles.SongName}>
                 <span>{song.track.name}</span>

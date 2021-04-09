@@ -1,7 +1,8 @@
 .PlaylistDetail {
-  background-color: black;
   flex: 1;
   overflow-y: scroll;
+  position: relative;
+  scroll-behavior: smooth;
 }
 
 .Cover * {
@@ -76,9 +77,17 @@
   font-weight: 700;
 }
 
-.List {
+.List_Content {
   padding: 0 32px;
-  background-color: rgb(18, 18, 18);
+}
+ 
+.List_Background {
+  background-color: rgb(80, 56, 160);
+  height: 232px;
+  width: 100%;
+  position: absolute;
+  z-index: -1;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.6), #121212);
 }
 
 .Heading {
