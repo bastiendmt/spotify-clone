@@ -32,7 +32,9 @@ const PlaylistDetail = () => {
             </div>
             <div className={styles.Cover_Infos}>
               <div className={styles.Cover_Infos_Playlist}>PLAYLIST</div>
-              <div className={styles.Cover_Infos_Title}><h1>{playlist.name}</h1></div>
+              <div className={styles.Cover_Infos_Title}>
+                <h1>{playlist.name}</h1>
+              </div>
               <div className={styles.Cover_Infos_Categ}>
                 {playlist.description}
               </div>
@@ -49,12 +51,14 @@ const PlaylistDetail = () => {
 
           <div className={styles.List_Background}></div>
           <div className={styles.List_Content}>
-            <div className={styles.Heading}>
-              <div>#</div>
-              <div>Title</div>
-              <div>Album</div>
-              <div>Date added</div>
-              <div className={styles.Heading_Length}>Length</div>
+            <div className={styles.Heading_Sticky}>
+              <div className={styles.Heading}>
+                <div>#</div>
+                <div>Title</div>
+                <div>Album</div>
+                <div>Date added</div>
+                <div className={styles.Heading_Length}>Length</div>
+              </div>
             </div>
 
             {playlist.tracks.items.map((item, index) => (
