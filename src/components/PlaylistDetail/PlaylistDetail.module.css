@@ -1,8 +1,10 @@
 .PlaylistDetail {
   background-color: black;
   flex: 1;
+  overflow-y: scroll;
 }
-.PlaylistDetail * {
+
+.Cover * {
   color: white;
 }
 
@@ -87,6 +89,7 @@
     );
   padding: 0 16px;
   height: 32px;
+  border-bottom: 1px solid hsla(0,0%,100%,.1);
 }
 
 .Heading div {

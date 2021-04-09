@@ -56,8 +56,8 @@ const PlaylistDetail = () => {
               <div>Length</div>
             </div>
 
-            {playlist.tracks.items.map((item) => (
-              <SongList key={item.id} song={item} />
+            {playlist.tracks.items.map((item, index) => (
+              <SongList key={item.id} song={item} index={index} />
             ))}
 
             <SongList />
