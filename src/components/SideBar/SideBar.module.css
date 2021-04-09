@@ -1,8 +1,8 @@
 .SideBar {
+  grid-area: side-bar;
   background-color: #000000;
   color: white;
-  width: 17vw;
-  height: 100vh;
+  /* width: 17vw; */
   position: relative;
 }
 

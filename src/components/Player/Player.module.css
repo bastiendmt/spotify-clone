@@ -1,0 +1,23 @@
+.Player {
+    grid-area: playing-bar;
+    background-color: #181818;
+    z-index: 4;
+
+    height: 90px;
+}
+
+footer {
+    border-top: 1px solid #282828;
+    padding: 0 16px;
+    display: flex;
+}
+
+.Song,
+.Volume {
+    width: 30%;
+    min-width: 180px;
+}
+
+.Controls {
+    width: 40%;
+}

@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
 import PlayButton from "../../../assets/PlayButton";
-import styles from "./Playlist.module.css";
+import styles from "./PlaylistItem.module.css";
 
-const Playlist = (props) => {
+const PlaylistItem = (props) => {
   return (
     <Link to={`/playlist/${props.playlist.id}`} className={styles.LinkPlaylist}>
       <div className={styles.Playlist}>
@@ -27,4 +27,4 @@ const Playlist = (props) => {
   );
 };
 
-export default Playlist;
+export default PlaylistItem;

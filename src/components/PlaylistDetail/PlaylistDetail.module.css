@@ -48,6 +48,10 @@
   flex: 1;
 }
 
+.Cover_Infos_Playlist {
+  font-weight: 600;
+}
+
 .Cover_Img,
 .Cover_Infos {
   z-index: 2;
@@ -103,6 +107,12 @@
   border-bottom: 1px solid hsla(0, 0%, 100%, 0.1);
   margin-bottom: 16px;
 }
+
+/* .Heading_Sticky {
+  position: sticky;
+  top: 60px;
+  z-index: 2;
+} */
 
 .Heading div {
   align-items: center;

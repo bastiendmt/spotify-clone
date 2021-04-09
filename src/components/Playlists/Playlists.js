@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import Playlist from "./Playlist/Playlist";
+import Playlist from "./PlaylistItem/PlaylistItem";
 import styles from "./Playlists.module.css";
 
 const Playlists = (props) => {
