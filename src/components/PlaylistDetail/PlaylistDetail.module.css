@@ -53,10 +53,11 @@
   z-index: 2;
 }
 
-.Cover_Infos_Title {
+.Cover_Infos_Title h1 {
   padding: 0.08em 0px;
-  font-size: 7vw;
+  font-size: 96px;
   font-weight: 700;
+  margin: 0;
 }
 
 .Cover_Text_Light::before {
@@ -80,7 +81,7 @@
 .List_Content {
   padding: 0 32px;
 }
- 
+
 .List_Background {
   background-color: rgb(80, 56, 160);
   height: 232px;

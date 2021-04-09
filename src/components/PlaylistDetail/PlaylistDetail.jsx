@@ -32,7 +32,7 @@ const PlaylistDetail = () => {
             </div>
             <div className={styles.Cover_Infos}>
               <div className={styles.Cover_Infos_Playlist}>PLAYLIST</div>
-              <div className={styles.Cover_Infos_Title}>{playlist.name}</div>
+              <div className={styles.Cover_Infos_Title}><h1>{playlist.name}</h1></div>
               <div className={styles.Cover_Infos_Categ}>
                 {playlist.description}
               </div>
