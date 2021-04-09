@@ -58,17 +58,8 @@ const PlaylistDetail = () => {
             </div>
 
             {playlist.tracks.items.map((item, index) => (
-              <SongList key={item.id} song={item} index={index} />
+              <SongList key={item.track.id} song={item} index={index} />
             ))}
-
-            <SongList />
-            <SongList />
-
-            {/* <SongList />
-        <SongList />
-        <SongList />
-        <SongList />
-        <SongList /> */}
           </div>
         </div>
       )}

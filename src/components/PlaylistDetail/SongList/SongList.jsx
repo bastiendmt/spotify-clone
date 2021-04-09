@@ -16,9 +16,16 @@ export const SongList = ({ song, index }) => {
                 <span>{song.track.name}</span>
               </div>
               {song.track.explicit && (
-                <span className={styles.SongExplicit}>E</span>
+                <span className={styles.SongExplicit}>e</span>
               )}
-              <span className={styles.SongArtist}>
+              <span
+                className={[
+                  styles.SongArtist,
+                  song.track.explicit
+                    ? styles.SongArtist_sub
+                    : styles.SongArtist_badg,
+                ]}
+              >
                 {song.track.artists[0].name}
               </span>
             </div>
@@ -28,7 +35,7 @@ export const SongList = ({ song, index }) => {
           <div className={styles.SongInfos_Length}>
             {millisToMinutesAndSeconds(song.track.duration_ms)}
             <button className={styles.SongInfos_More}>...</button>
-            </div>
+          </div>
         </div>
       )}
     </>
