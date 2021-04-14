@@ -1,6 +1,7 @@
-# Getting Started with Create React App
+# Spoti-like
+A web app that recreates spotify UI.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+See my mobile version on [rn-spotify-like](https://github.com/Bastiendmt/rn-spotify-like)
 
 ## Available Scripts
 
