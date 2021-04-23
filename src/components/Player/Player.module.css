@@ -1,23 +1,60 @@
 .Player {
-    grid-area: playing-bar;
-    background-color: #181818;
-    z-index: 4;
-
-    height: 90px;
+  grid-area: playing-bar;
+  background-color: #181818;
+  z-index: 4;
+  height: 90px;
+  color: white;
+  display: flex;
 }
 
 footer {
-    border-top: 1px solid #282828;
-    padding: 0 16px;
-    display: flex;
+  border-top: 1px solid #282828;
+  padding: 0 16px;
+  display: flex;
+  flex: 1;
+  align-items: center;
 }
 
 .Song,
 .Volume {
-    width: 30%;
-    min-width: 180px;
+  width: 30%;
+  min-width: 180px;
 }
 
 .Controls {
-    width: 40%;
+  width: 40%;
+}
+
+.Song {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.Song_Img img {
+  width: 56px;
+  height: 56px;
+}
+
+.Song_Infos {
+  margin: 0 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.Sonf_Infos_Artist {
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--color-secondary);
+}
+
+.Song_Like {
+    display: flex;
+    align-items: center;
+}
+
+.Song_Like svg {
+  width: 16px;
+  height: 16px;
+  fill: white;
 }
