@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import PlayButton from "../../../assets/PlayButton";
+import Play from "../../../assets/Play";
 import styles from "./PlaylistItem.module.css";
 
 const PlaylistItem = (props) => {
@@ -14,7 +14,7 @@ const PlaylistItem = (props) => {
           />
           <div className={styles.PlayContainer}>
             <button className={styles.PlayButton} title="Play">
-              <PlayButton />
+              <Play />
             </button>
           </div>
         </div>

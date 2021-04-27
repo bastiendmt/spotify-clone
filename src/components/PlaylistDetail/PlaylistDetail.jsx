@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import styles from "./PlaylistDetail.module.css";
-import { SongList } from "./SongList/SongList";
+import { SongItem } from "./SongItem/SongItem";
 import { GetPlaylistDetail } from "../../API";
 
 const PlaylistDetail = () => {
@@ -18,6 +18,11 @@ const PlaylistDetail = () => {
       console.log(data);
       setPlaylist(data);
     });
+  };
+
+  const loadSong = (song) => {
+    console.log(song);
+    console.log("load song :" + song.track.preview_url);
   };
 
   return (
@@ -62,7 +67,12 @@ const PlaylistDetail = () => {
             </div>
 
             {playlist.tracks.items.map((item, index) => (
-              <SongList key={item.track.id} song={item} index={index} />
+              <SongItem
+                key={item.track.id}
+                song={item}
+                index={index}
+                songClicked={() => loadSong(item)}
+              />
             ))}
           </div>
         </div>

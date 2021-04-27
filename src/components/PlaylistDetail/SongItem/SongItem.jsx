@@ -1,13 +1,13 @@
 import React from "react";
-import styles from "./SongList.module.css";
+import styles from "./SongItem.module.css";
 import { millisToMinutesAndSeconds } from "../../../utils/msToMinutes";
 import { formatDate } from "../../../utils/formatDate";
 
-export const SongList = ({ song, index }) => {
+export const SongItem = ({ song, index, songClicked }) => {
   return (
     <>
       {song && (
-        <div className={styles.SongListContainer}>
+        <div className={styles.SongListContainer} onClick={songClicked}>
           <div>{index + 1}</div>
           <div className={styles.SongInfos}>
             <img src={song.track.album.images[0].url} alt="cover img" />

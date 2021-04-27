@@ -79,11 +79,9 @@
 .SongArtist_sub {
   grid-column-start: subtitle;
 }
-  .SongArtist_badge {
+.SongArtist_badge {
   grid-column-start: badge;
 }
-
-
 
 .SongInfos_Length {
   display: flex;
