@@ -19,7 +19,7 @@ const Playlists = (props) => {
 
 const mapStateToProps = (state) => {
   return {
-    playlists: state.playlists,
+    playlists: state.playlists.playlists,
   };
 };
 
