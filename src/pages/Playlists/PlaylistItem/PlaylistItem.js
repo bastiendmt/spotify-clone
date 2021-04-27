@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import Play from "../../../assets/Play";
+import { Play } from "../../../assets/Play";
 import styles from "./PlaylistItem.module.css";
 
 const PlaylistItem = (props) => {

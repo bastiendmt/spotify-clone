@@ -1,4 +1,4 @@
-const Play = () => {
+export const Play = () => {
   return (
     <svg
       height="16"
@@ -14,5 +14,3 @@ const Play = () => {
     </svg>
   );
 };
-
-export default Play;

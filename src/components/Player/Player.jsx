@@ -1,6 +1,7 @@
 import React from "react";
-import { HeartEmpty } from "../../assets/HeartEmpty";
+import { connect } from "react-redux";
 import { Like } from "../../assets/Like";
+import { Play } from "../../assets/Play";
 import { Volume } from "../../assets/Volume";
 import styles from "./Player.module.scss";
 
@@ -20,14 +21,14 @@ const Player = () => {
             <div className={styles.Artist}>Artist</div>
           </div>
           <div className={styles.Like}>
-            <HeartEmpty />
+            <Like />
           </div>
         </div>
 
         <div className={styles.Controls}>
           <div>
             <button>
-              <Like />
+              <Play />
             </button>
           </div>
           <div className={styles.Bar}></div>
@@ -46,4 +47,10 @@ const Player = () => {
   );
 };
 
-export default Player;
+const mapStateToProps = (state) => {
+  return {
+    playing: state.playing,
+  };
+};
+
+export default connect(mapStateToProps)(Player);

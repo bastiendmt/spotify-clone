@@ -1,4 +1,4 @@
-const Logo = () => {
+export const Logo = () => {
   return (
     <svg viewBox="0 0 1134 340" className="spotify-logo--text">
       <title>Spoti-like</title>
@@ -9,5 +9,3 @@ const Logo = () => {
     </svg>
   );
 };
-
-export default Logo;
