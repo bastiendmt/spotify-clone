@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { connect } from "react-redux";
 import { Like } from "../../assets/Like";
 import { Play } from "../../assets/Play";
@@ -7,7 +7,15 @@ import { Volume } from "../../assets/Volume";
 import styles from "./Player.module.scss";
 import Sound from "react-sound";
 
-const Player = ({ playPause, song, playing }) => {
+type PlayerProps = {
+  playPause: any;
+  song: any;
+  playing: boolean;
+};
+
+const Player = ({ playPause, song, playing }: PlayerProps) => {
+  const [position, setPosition] = useState(0);
+  
   if (!song) {
     return null;
   } else {
@@ -52,24 +60,22 @@ const Player = ({ playPause, song, playing }) => {
         <Sound
           url={song.track.preview_url}
           playStatus={playing ? "PLAYING" : "PAUSED"}
-          position
-          onPlaying={({ position, duration }) => {
-            console.log("playing song" + position + " / " + duration);
-          }}
         />
       </div>
     );
   }
 };
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state: {
+  playing: { song: any; playing: boolean };
+}) => {
   return {
     song: state.playing.song,
     playing: state.playing.playing,
   };
 };
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = (dispatch: (arg0: { type: string }) => any) => {
   return {
     playPause: () => dispatch({ type: "playpause" }),
   };
