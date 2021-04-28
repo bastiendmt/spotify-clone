@@ -33,7 +33,11 @@ const Player = ({ playPause, song, playing }) => {
                 {playing ? <Pause /> : <Play />}
               </button>
             </div>
-            <div className={styles.Bar}></div>
+            <div className={styles.BarContainer}>
+              <div>0</div>
+              <div className={styles.Bar}></div>
+              <div>0:30</div>
+            </div>
           </div>
 
           <div className={styles.Volume}>
@@ -49,8 +53,8 @@ const Player = ({ playPause, song, playing }) => {
           url={song.track.preview_url}
           playStatus={playing ? "PLAYING" : "PAUSED"}
           position
-          onPlaying={({position, duration}) => {
-            console.log('playing song'+ position + ' / ' + duration )
+          onPlaying={({ position, duration }) => {
+            console.log("playing song" + position + " / " + duration);
           }}
         />
       </div>
