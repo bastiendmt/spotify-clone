@@ -1,6 +1,6 @@
 const playingReducer = (
   state = {
-    song: [],
+    song: null,
     playing: true,
   },
   action

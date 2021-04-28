@@ -3,8 +3,9 @@ import { useParams } from "react-router-dom";
 import styles from "./PlaylistDetail.module.css";
 import { SongItem } from "./SongItem/SongItem";
 import { GetPlaylistDetail } from "../../API";
+import { connect } from "react-redux";
 
-const PlaylistDetail = () => {
+const PlaylistDetail = ({ loadSong }) => {
   const { id } = useParams();
   const [playlist, setPlaylist] = useState();
 
@@ -20,9 +21,10 @@ const PlaylistDetail = () => {
     });
   };
 
-  const loadSong = (song) => {
+  const songClicked = (song) => {
     console.log(song);
     console.log("load song :" + song.track.preview_url);
+    loadSong(song);
   };
 
   return (
@@ -71,7 +73,7 @@ const PlaylistDetail = () => {
                 key={item.track.id}
                 song={item}
                 index={index}
-                songClicked={() => loadSong(item)}
+                songClicked={() => songClicked(item)}
               />
             ))}
           </div>
@@ -81,4 +83,10 @@ const PlaylistDetail = () => {
   );
 };
 
-export default PlaylistDetail;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    loadSong: (song) => dispatch({ type: "load", song }),
+  };
+};
+
+export default connect(null, mapDispatchToProps)(PlaylistDetail);
