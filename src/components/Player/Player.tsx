@@ -6,6 +6,7 @@ import { Pause } from "../../assets/Pause";
 import { Volume } from "../../assets/Volume";
 import styles from "./Player.module.scss";
 import Sound from "react-sound";
+import { millisToMinutesAndSeconds } from "../../utils/msToMinutes";
 
 type PlayerProps = {
   playPause: any;
@@ -14,8 +15,8 @@ type PlayerProps = {
 };
 
 const Player = ({ playPause, song, playing }: PlayerProps) => {
-  const [position, setPosition] = useState(0);
-  
+  const [position, setPosition] = useState("0:00");
+
   if (!song) {
     return null;
   } else {
@@ -42,7 +43,7 @@ const Player = ({ playPause, song, playing }: PlayerProps) => {
               </button>
             </div>
             <div className={styles.BarContainer}>
-              <div>0</div>
+              <div>{position}</div>
               <div className={styles.Bar}></div>
               <div>0:30</div>
             </div>
@@ -60,6 +61,11 @@ const Player = ({ playPause, song, playing }: PlayerProps) => {
         <Sound
           url={song.track.preview_url}
           playStatus={playing ? "PLAYING" : "PAUSED"}
+          //@ts-ignore
+          onPlaying={({ position }) =>
+            setPosition(millisToMinutesAndSeconds(position))
+          }
+          onFinishedPlaying={() => playPause()}
         />
       </div>
     );
