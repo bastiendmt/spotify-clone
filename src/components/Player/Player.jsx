@@ -5,6 +5,7 @@ import { Play } from "../../assets/Play";
 import { Pause } from "../../assets/Pause";
 import { Volume } from "../../assets/Volume";
 import styles from "./Player.module.scss";
+import Sound from "react-sound";
 
 const Player = ({ playPause, song, playing }) => {
   if (!song) {
@@ -44,6 +45,14 @@ const Player = ({ playPause, song, playing }) => {
             <div className={styles.VolumeBar}></div>
           </div>
         </footer>
+        <Sound
+          url={song.track.preview_url}
+          playStatus={playing ? "PLAYING" : "PAUSED"}
+          position
+          onPlaying={({position, duration}) => {
+            console.log('playing song'+ position + ' / ' + duration )
+          }}
+        />
       </div>
     );
   }

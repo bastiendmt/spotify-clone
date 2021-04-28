@@ -8,7 +8,7 @@ const playingReducer = (
   switch (action.type) {
     case "load":
       return {
-        ...state,
+        playing: true,
         song: action.song,
       };
     case "playpause":
