@@ -15,7 +15,6 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 const App = ({ playlists, initPlaylists }) => {
   const loadPlaylists = useCallback(async () => {
     await GetPlaylists().then((data) => {
-      console.log(data);
       initPlaylists(data.playlists.items);
     });
   }, [initPlaylists]);

@@ -4976,6 +4976,11 @@ extsprintf@^1.2.0:
   resolved "https://registry.yarnpkg.com/extsprintf/-/extsprintf-1.4.0.tgz"
   integrity sha1-4mifjzVvrWLMplo6kcXfX5VRaS8=
 
+fast-average-color@^6.4.0:
+  version "6.4.0"
+  resolved "https://registry.yarnpkg.com/fast-average-color/-/fast-average-color-6.4.0.tgz#c8063e734bc1d98ca66af77765ce669b0cea2417"
+  integrity sha512-K02qOR6MSJIGrGm3p/yPvUnxztL2wDhBHy1wz0ad9X00YQJNPC3jh9ntuj5FnekuYDr8yTjl2CsAiALwZ1QA/w==
+
 fast-deep-equal@^3.1.1:
   version "3.1.3"
   resolved "https://registry.yarnpkg.com/fast-deep-equal/-/fast-deep-equal-3.1.3.tgz"

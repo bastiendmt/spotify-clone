@@ -1,29 +1,45 @@
-import React, { useEffect, useState } from "react";
+import FastAverageColor from "fast-average-color";
+import React, { useEffect, useRef, useState } from "react";
+import { connect } from "react-redux";
 import { useParams } from "react-router-dom";
+import { GetPlaylistDetail } from "../../API";
 import styles from "./PlaylistDetail.module.css";
 import { SongItem } from "./SongItem/SongItem";
-import { GetPlaylistDetail } from "../../API";
-import { connect } from "react-redux";
 
 const PlaylistDetail = ({ loadSong }) => {
   const { id } = useParams();
   const [playlist, setPlaylist] = useState();
+  const coverRef = useRef();
 
   useEffect(() => {
-    console.log(id);
     loadPlaylistDetails(id);
   }, [id]);
 
+  useEffect(() => {
+    if (coverRef.current) {
+      coverRef.current.crossOrigin = "Anonymous";
+      const fac = new FastAverageColor();
+      fac
+        .getColorAsync(coverRef.current)
+        .then((color) => {
+          document.getElementById("Background").style.backgroundColor =
+            color.rgb;
+          document.getElementById("PlaylistBackgorund").style.backgroundColor =
+            color.rgb;
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+  }, [playlist]);
+
   const loadPlaylistDetails = async (playlistId) => {
     await GetPlaylistDetail(playlistId).then((data) => {
-      console.log(data);
       setPlaylist(data);
     });
   };
 
   const songClicked = (song) => {
-    console.log(song);
-    console.log("load song :" + song.track.preview_url);
     loadSong(song);
   };
 
@@ -32,10 +48,14 @@ const PlaylistDetail = ({ loadSong }) => {
       {playlist && (
         <div className={styles.PlaylistDetail}>
           <div className={styles.Cover}>
-            <div className={styles.Cover_Background}></div>
+            <div className={styles.Cover_Background} id="Background"></div>
             <div className={styles.Cover_Gradient}></div>
             <div className={styles.Cover_Img}>
-              <img src={playlist.images[0].url} alt="playlist img" />
+              <img
+                src={playlist.images[0].url}
+                alt="playlist img"
+                ref={coverRef}
+              />
             </div>
             <div className={styles.Cover_Infos}>
               <div className={styles.Cover_Infos_Playlist}>PLAYLIST</div>
@@ -56,7 +76,7 @@ const PlaylistDetail = ({ loadSong }) => {
             </div>
           </div>
 
-          <div className={styles.List_Background}></div>
+          <div className={styles.List_Background} id="PlaylistBackgorund"></div>
           <div className={styles.List_Content}>
             <div className={styles.Heading_Sticky}>
               <div className={styles.Heading}>
