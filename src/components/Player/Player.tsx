@@ -123,7 +123,7 @@ const Player = ({ playPause, song, playing }: PlayerProps) => {
             setProgress((position * 100) / 30000);
           }}
           onFinishedPlaying={() => playPause()}
-          volume={volume}
+          volume={mute ? 0 : volume}
           position={time}
         />
       </div>
