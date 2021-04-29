@@ -16,6 +16,7 @@ type PlayerProps = {
 
 const Player = ({ playPause, song, playing }: PlayerProps) => {
   const [position, setPosition] = useState("0:00");
+  const [progress, setProgres] = useState(0);
 
   if (!song) {
     return null;
@@ -44,7 +45,14 @@ const Player = ({ playPause, song, playing }: PlayerProps) => {
             </div>
             <div className={styles.BarContainer}>
               <div>{position}</div>
-              <div className={styles.Bar}></div>
+              <div className={styles.Wrapper}>
+                <div className={styles.Bar}>
+                  <div
+                    className={styles.Progress}
+                    style={{ transform: `translateX(-${100 - progress}%)` }}
+                  />
+                </div>
+              </div>
               <div>0:30</div>
             </div>
           </div>
@@ -62,9 +70,11 @@ const Player = ({ playPause, song, playing }: PlayerProps) => {
           url={song.track.preview_url}
           playStatus={playing ? "PLAYING" : "PAUSED"}
           //@ts-ignore
-          onPlaying={({ position }) =>
-            setPosition(millisToMinutesAndSeconds(position))
-          }
+          onPlaying={({ position }) => {
+            console.log(position / 1000, " / ", song.track.duration_ms);
+            setPosition(millisToMinutesAndSeconds(position));
+            setProgres((position * 100) / 30000);
+          }}
           onFinishedPlaying={() => playPause()}
         />
       </div>
