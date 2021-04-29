@@ -112,7 +112,7 @@
   align-items: center;
 
   &:hover .Bar .Progress {
-    background-color: #1db954;
+    background-color: var(--color-green);
   }
 
   &:hover button {
@@ -153,7 +153,7 @@
   position: relative;
 
   &:hover .Bar .Progress {
-    background-color: #1db954;
+    background-color: var(--color-green);
   }
 
   &:hover button {
