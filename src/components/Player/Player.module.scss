@@ -93,28 +93,13 @@
     }
 
     .Wrapper {
-      height: 12px;
       width: 100%;
-      display: flex;
-      align-items: center;
-
-      &:hover .Bar .Progress {
-        background-color: #1db954;
-      }
 
       .Bar {
-        border-radius: 4px;
         width: 100%;
-        height: 4px;
-        background-color: #535353;
-        overflow: hidden;
 
         .Progress {
-          border-radius: 4px;
-          background-color: #b3b3b3;
-          width: 100%;
-          height: 4px;
-          transform: translateX(-75%);
+          transform: translateX(-100%);
         }
       }
     }
@@ -134,18 +119,65 @@
     border: none;
     color: #b3b3b3;
     height: 32px;
-    min-width: 32px;
     width: 32px;
 
     svg {
+      min-width: 32px;
       fill: currentcolor;
     }
   }
 
-  .VolumeBar {
+  .Wrapper {
+    .Bar {
+      width: 100px;
+
+      .Progress {
+        transform: translateX(-20%);
+      }
+    }
+  }
+}
+
+.Wrapper {
+  height: 12px;
+  display: flex;
+  align-items: center;
+  position: relative;
+
+  &:hover .Bar .Progress {
+    background-color: #1db954;
+  }
+
+  &:hover button {
+    opacity: 1;
+  }
+
+  .Bar {
+    overflow: hidden;
     border-radius: 4px;
-    width: 100px;
     height: 4px;
-    background-color: white;
+    background-color: var(--bg-color);
+
+    .Progress {
+      border-radius: 4px;
+      background-color: var(--fg-color);
+      width: 100%;
+      height: 4px;
+    }
+  }
+
+  button {
+    background-color: #fff;
+    border: 0;
+    border-radius: 50%;
+    height: 12px;
+    width: 12px;
+    opacity: 0;
+    z-index: 100;
+    position: absolute;
+    left: 20%;
+    min-width: none;
+    margin-bottom: 0 !important;
+    margin-left: -6px;
   }
 }

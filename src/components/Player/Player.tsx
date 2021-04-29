@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { connect } from "react-redux";
 import { Like } from "../../assets/Like";
 import { Play } from "../../assets/Play";
@@ -17,6 +17,22 @@ type PlayerProps = {
 const Player = ({ playPause, song, playing }: PlayerProps) => {
   const [position, setPosition] = useState("0:00");
   const [progress, setProgres] = useState(0);
+  const [volume, setVolume] = useState(70);
+  const volumeRef = useRef<HTMLDivElement | null>(null);
+
+  const handleVolumeChange = (event: any) => {
+    if (volumeRef.current) {
+      const right = volumeRef.current.getBoundingClientRect().right;
+      const left = volumeRef.current.getBoundingClientRect().left;
+      const pos = event.screenX;
+
+      const scale = right - left;
+      const input = pos - left;
+      const percent = Math.round((input * 100) / scale);
+
+      setVolume(percent);
+    }
+  };
 
   if (!song) {
     return null;
@@ -52,6 +68,7 @@ const Player = ({ playPause, song, playing }: PlayerProps) => {
                     style={{ transform: `translateX(-${100 - progress}%)` }}
                   />
                 </div>
+                <button style={{ left: `${progress}%` }} />
               </div>
               <div>0:30</div>
             </div>
@@ -63,7 +80,20 @@ const Player = ({ playPause, song, playing }: PlayerProps) => {
                 <Volume />
               </button>
             </div>
-            <div className={styles.VolumeBar}></div>
+
+            <div
+              className={styles.Wrapper}
+              onClick={handleVolumeChange}
+              ref={volumeRef}
+            >
+              <div className={styles.Bar}>
+                <div
+                  className={styles.Progress}
+                  style={{ transform: `translateX(-${100 - volume}%)` }}
+                />
+              </div>
+              <button style={{ left: `${volume}%` }} />
+            </div>
           </div>
         </footer>
         <Sound
@@ -71,11 +101,11 @@ const Player = ({ playPause, song, playing }: PlayerProps) => {
           playStatus={playing ? "PLAYING" : "PAUSED"}
           //@ts-ignore
           onPlaying={({ position }) => {
-            console.log(position / 1000, " / ", song.track.duration_ms);
             setPosition(millisToMinutesAndSeconds(position));
             setProgres((position * 100) / 30000);
           }}
           onFinishedPlaying={() => playPause()}
+          volume={volume}
         />
       </div>
     );
