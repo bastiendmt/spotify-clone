@@ -5,6 +5,7 @@ import { useParams } from "react-router-dom";
 import { GetPlaylistDetail } from "../../API";
 import styles from "./PlaylistDetail.module.css";
 import { SongItem } from "./SongItem/SongItem";
+import { Time } from "../../assets/Time";
 
 const PlaylistDetail = ({ loadSong, currentSong }) => {
   const { id } = useParams();
@@ -84,7 +85,7 @@ const PlaylistDetail = ({ loadSong, currentSong }) => {
                 <div>Title</div>
                 <div>Album</div>
                 <div>Date added</div>
-                <div className={styles.Heading_Length}>Length</div>
+                <div className={styles.Heading_Length}><Time /></div>
               </div>
             </div>
 

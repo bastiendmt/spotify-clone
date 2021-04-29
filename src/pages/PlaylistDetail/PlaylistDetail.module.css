@@ -126,4 +126,5 @@
 .Heading_Length {
   display: flex;
   justify-self: end;
+  margin-right: 10px;
 }
