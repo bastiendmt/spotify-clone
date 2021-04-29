@@ -7,6 +7,7 @@ import { Volume } from "../../assets/Volume";
 import styles from "./Player.module.scss";
 import Sound from "react-sound";
 import { millisToMinutesAndSeconds } from "../../utils/msToMinutes";
+import { useBar } from "../../utils/useBar";
 
 type PlayerProps = {
   playPause: any;
@@ -22,37 +23,18 @@ const Player = ({ playPause, song, playing }: PlayerProps) => {
   const [volume, setVolume] = useState(70);
   const volumeRef = useRef<HTMLDivElement | null>(null);
 
-  const handleVolumeChange = (event: any) => {
-    if (volumeRef.current) {
-      const right = volumeRef.current.getBoundingClientRect().right;
-      const left = volumeRef.current.getBoundingClientRect().left;
-      const pos = event.screenX;
-
-      const scale = right - left;
-      const input = pos - left;
-      const percent = Math.round((input * 100) / scale);
-
-      setVolume(percent);
-    }
-  };
-
-  const handleTimeChange = (event: any) => {
-    if (timeRef.current) {
-      const right = timeRef.current.getBoundingClientRect().right;
-      const left = timeRef.current.getBoundingClientRect().left;
-      const pos = event.screenX;
-
-      const scale = right - left;
-      const input = pos - left;
-      const percent = Math.round((input * 100) / scale);
-
-      setTime((percent * 30000) / 100);
-    }
-  };
+  const barCallBack = useBar;
 
   useEffect(() => {
-    setProgress((time * 100) / 30000);
-  }, [time]);
+    // Adjust time when progress bar is clicked
+    setTime((progress * 30000) / 100);
+  }, [progress]);
+
+  useEffect(() => {
+    //Reset progress if the song change
+    setProgress(0);
+    setTime(0);
+  }, [song]);
 
   if (!song) {
     return null;
@@ -83,7 +65,7 @@ const Player = ({ playPause, song, playing }: PlayerProps) => {
               <div>{millisToMinutesAndSeconds(time)}</div>
               <div
                 className={styles.Wrapper}
-                onClick={handleTimeChange}
+                onClick={(event) => barCallBack(event, timeRef, setProgress)}
                 ref={timeRef}
               >
                 <div className={styles.Bar}>
@@ -104,10 +86,9 @@ const Player = ({ playPause, song, playing }: PlayerProps) => {
                 <Volume />
               </button>
             </div>
-
             <div
               className={styles.Wrapper}
-              onClick={handleVolumeChange}
+              onClick={(event) => barCallBack(event, volumeRef, setVolume)}
               ref={volumeRef}
             >
               <div className={styles.Bar}>
@@ -126,6 +107,7 @@ const Player = ({ playPause, song, playing }: PlayerProps) => {
           //@ts-ignore
           onPlaying={({ position }) => {
             setTime(position);
+            setProgress((position * 100) / 30000);
           }}
           onFinishedPlaying={() => playPause()}
           volume={volume}
