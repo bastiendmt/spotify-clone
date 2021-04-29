@@ -4,13 +4,15 @@ import { millisToMinutesAndSeconds } from "../../../utils/msToMinutes";
 import { formatDate } from "../../../utils/formatDate";
 import { Play } from "../../../assets/Play";
 
-export const SongItem = ({ song, index, songClicked }) => {
+export const SongItem = ({ song, index, songClicked, current }) => {
   return (
     <>
       {song && (
         <div className={styles.Item} onClick={songClicked}>
           <div className={styles.Index}>
-            <span>{index + 1} </span>
+            <span style={current ? { color: "#1db954" } : null}>
+              {index + 1}
+            </span>
             <button>
               <Play />
             </button>
@@ -19,7 +21,10 @@ export const SongItem = ({ song, index, songClicked }) => {
           <div className={styles.Title}>
             <img src={song.track.album.images[0].url} alt="cover img" />
             <div className={styles.NameContainer}>
-              <div className={styles.Name}>
+              <div
+                className={styles.Name}
+                style={current ? { color: "#1db954" } : null}
+              >
                 <span>{song.track.name}</span>
               </div>
               {song.track.explicit && (
@@ -28,9 +33,7 @@ export const SongItem = ({ song, index, songClicked }) => {
               <span
                 className={[
                   styles.Artist,
-                  song.track.explicit
-                    ? styles.Artist_sub
-                    : styles.Artist_badg,
+                  song.track.explicit ? styles.Artist_sub : styles.Artist_badg,
                 ]}
               >
                 {song.track.artists[0].name}

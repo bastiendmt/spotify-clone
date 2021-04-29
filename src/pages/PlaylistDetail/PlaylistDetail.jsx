@@ -6,7 +6,7 @@ import { GetPlaylistDetail } from "../../API";
 import styles from "./PlaylistDetail.module.css";
 import { SongItem } from "./SongItem/SongItem";
 
-const PlaylistDetail = ({ loadSong }) => {
+const PlaylistDetail = ({ loadSong, currentSong }) => {
   const { id } = useParams();
   const [playlist, setPlaylist] = useState();
   const coverRef = useRef();
@@ -93,6 +93,7 @@ const PlaylistDetail = ({ loadSong }) => {
                 key={item.track.id}
                 song={item}
                 index={index}
+                current={item.track.id === currentSong?.track.id ? true : false}
                 songClicked={() => songClicked(item)}
               />
             ))}
@@ -103,10 +104,16 @@ const PlaylistDetail = ({ loadSong }) => {
   );
 };
 
+const mapStateToProps = (state) => {
+  return {
+    currentSong: state.playing.song,
+  };
+};
+
 const mapDispatchToProps = (dispatch) => {
   return {
     loadSong: (song) => dispatch({ type: "load", song }),
   };
 };
 
-export default connect(null, mapDispatchToProps)(PlaylistDetail);
+export default connect(mapStateToProps, mapDispatchToProps)(PlaylistDetail);
