@@ -111,6 +111,14 @@
   justify-content: flex-end;
   align-items: center;
 
+  &:hover .Bar .Progress {
+    background-color: #1db954;
+  }
+
+  &:hover button {
+    opacity: 1;
+  }
+
   button {
     display: flex;
     align-items: center;
