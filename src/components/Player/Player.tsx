@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { connect } from "react-redux";
 import { Like } from "../../assets/Like";
 import { Play } from "../../assets/Play";
@@ -15,8 +15,10 @@ type PlayerProps = {
 };
 
 const Player = ({ playPause, song, playing }: PlayerProps) => {
-  const [position, setPosition] = useState("0:00");
-  const [progress, setProgres] = useState(0);
+  const [time, setTime] = useState(0);
+  const timeRef = useRef<HTMLDivElement | null>(null);
+  const [progress, setProgress] = useState(0);
+
   const [volume, setVolume] = useState(70);
   const volumeRef = useRef<HTMLDivElement | null>(null);
 
@@ -33,6 +35,24 @@ const Player = ({ playPause, song, playing }: PlayerProps) => {
       setVolume(percent);
     }
   };
+
+  const handleTimeChange = (event: any) => {
+    if (timeRef.current) {
+      const right = timeRef.current.getBoundingClientRect().right;
+      const left = timeRef.current.getBoundingClientRect().left;
+      const pos = event.screenX;
+
+      const scale = right - left;
+      const input = pos - left;
+      const percent = Math.round((input * 100) / scale);
+
+      setTime((percent * 30000) / 100);
+    }
+  };
+
+  useEffect(() => {
+    setProgress((time * 100) / 30000);
+  }, [time]);
 
   if (!song) {
     return null;
@@ -60,8 +80,12 @@ const Player = ({ playPause, song, playing }: PlayerProps) => {
               </button>
             </div>
             <div className={styles.BarContainer}>
-              <div>{position}</div>
-              <div className={styles.Wrapper}>
+              <div>{millisToMinutesAndSeconds(time)}</div>
+              <div
+                className={styles.Wrapper}
+                onClick={handleTimeChange}
+                ref={timeRef}
+              >
                 <div className={styles.Bar}>
                   <div
                     className={styles.Progress}
@@ -101,11 +125,11 @@ const Player = ({ playPause, song, playing }: PlayerProps) => {
           playStatus={playing ? "PLAYING" : "PAUSED"}
           //@ts-ignore
           onPlaying={({ position }) => {
-            setPosition(millisToMinutesAndSeconds(position));
-            setProgres((position * 100) / 30000);
+            setTime(position);
           }}
           onFinishedPlaying={() => playPause()}
           volume={volume}
+          position={time}
         />
       </div>
     );
