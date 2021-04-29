@@ -8,6 +8,7 @@ import styles from "./Player.module.scss";
 import Sound from "react-sound";
 import { millisToMinutesAndSeconds } from "../../utils/msToMinutes";
 import { useBar } from "../../utils/useBar";
+import { VolumeMuted } from "../../assets/VolumeMuted";
 
 type PlayerProps = {
   playPause: any;
@@ -23,6 +24,8 @@ const Player = ({ playPause, song, playing }: PlayerProps) => {
   const [volume, setVolume] = useState(70);
   const volumeRef = useRef<HTMLDivElement | null>(null);
 
+  const [mute, setMute] = useState(false);
+
   const barCallBack = useBar;
 
   useEffect(() => {
@@ -35,6 +38,14 @@ const Player = ({ playPause, song, playing }: PlayerProps) => {
     setProgress(0);
     setTime(0);
   }, [song]);
+
+  useEffect(() => {
+    if (volume < 5) {
+      setMute(true);
+    } else {
+      setMute(false);
+    }
+  }, [volume]);
 
   if (!song) {
     return null;
@@ -82,8 +93,8 @@ const Player = ({ playPause, song, playing }: PlayerProps) => {
 
           <div className={styles.Volume}>
             <div>
-              <button>
-                <Volume />
+              <button onClick={() => setMute(!mute)}>
+                {mute ? <VolumeMuted /> : <Volume />}
               </button>
             </div>
             <div
@@ -94,10 +105,12 @@ const Player = ({ playPause, song, playing }: PlayerProps) => {
               <div className={styles.Bar}>
                 <div
                   className={styles.Progress}
-                  style={{ transform: `translateX(-${100 - volume}%)` }}
+                  style={{
+                    transform: `translateX(-${mute ? "100" : 100 - volume}%)`,
+                  }}
                 />
               </div>
-              <button style={{ left: `${volume}%` }} />
+              <button style={{ left: `${mute ? "0" : volume}%` }} />
             </div>
           </div>
         </footer>
