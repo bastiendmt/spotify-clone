@@ -71,7 +71,7 @@ const PlaylistDetail = ({ loadSong, currentSong }) => {
                   {playlist.owner.display_name}
                 </span>
                 <span className={styles.Cover_Text_Light}>
-                  69 songs, about 4 hr 20 min
+                  {playlist.tracks.items.length} songs, about 4 hr 20 min
                 </span>
               </div>
             </div>
@@ -85,7 +85,9 @@ const PlaylistDetail = ({ loadSong, currentSong }) => {
                 <div>Title</div>
                 <div>Album</div>
                 <div>Date added</div>
-                <div className={styles.Heading_Length}><Time /></div>
+                <div className={styles.Heading_Length}>
+                  <Time />
+                </div>
               </div>
             </div>
 
