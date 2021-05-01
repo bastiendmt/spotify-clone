@@ -1,7 +1,7 @@
 import { connect } from "react-redux";
 import { Playlist as PlaylistType } from "../../types/Playlist";
 import Playlist from "./PlaylistItem/PlaylistItem";
-import styles from "./Playlists.module.css";
+import styles from "./Playlists.module.scss";
 
 type PlaylistsProps = {
   playlists: PlaylistType[];

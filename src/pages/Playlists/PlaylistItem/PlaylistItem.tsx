@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { Play } from "../../../assets/Play";
 import { Playlist } from "../../../types/Playlist";
-import styles from "./PlaylistItem.module.css";
+import styles from "./PlaylistItem.module.scss";
 
 type PlaylistItemProps = {
   playlist: Playlist;
@@ -15,7 +15,6 @@ const PlaylistItem = ({ playlist }: PlaylistItemProps) => {
           <img
             src={playlist.images[0].url}
             alt="Tokyo"
-            className={styles.Img}
           />
           <div className={styles.PlayContainer}>
             <button className={styles.PlayButton} title="Play">

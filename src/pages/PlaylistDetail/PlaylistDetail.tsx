@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import { connect } from "react-redux";
 import { useParams } from "react-router-dom";
 import { GetPlaylistDetail } from "../../API";
-import styles from "./PlaylistDetail.module.css";
+import styles from "./PlaylistDetail.module.scss";
 import { SongItem } from "./SongItem/SongItem";
 import { Time } from "../../assets/Time";
 import { Track } from "../../types/Track";
@@ -56,43 +56,41 @@ const PlaylistDetail = ({ loadSong, currentSong }: PlaylistDetailProps) => {
       {playlist && (
         <div className={styles.PlaylistDetail}>
           <div className={styles.Cover}>
-            <div className={styles.Cover_Background} id="Background"></div>
-            <div className={styles.Cover_Gradient}></div>
-            <div className={styles.Cover_Img}>
+            <div className={styles.Background} id="Background"></div>
+            <div className={styles.Gradient}></div>
+            <div className={styles.Img}>
               <img
                 src={playlist.images[0].url}
                 alt="playlist img"
                 ref={coverRef}
               />
             </div>
-            <div className={styles.Cover_Infos}>
-              <div className={styles.Cover_Infos_Playlist}>PLAYLIST</div>
-              <div className={styles.Cover_Infos_Title}>
+            <div className={styles.Infos}>
+              <div className={styles.Playlist}>PLAYLIST</div>
+              <div className={styles.Title}>
                 <h1>{playlist.name}</h1>
               </div>
-              <div className={styles.Cover_Infos_Categ}>
-                {playlist.description}
-              </div>
-              <div className={styles.Cover_Infos_Details}>
-                <span className={styles.Cover_Text_Bold}>
+              <div className={styles.Categ}>{playlist.description}</div>
+              <div className={styles.Details}>
+                <span className={styles.Text_Bold}>
                   {playlist.owner.display_name}
                 </span>
-                <span className={styles.Cover_Text_Light}>
+                <span className={styles.Text_Light}>
                   {playlist.tracks.items.length} songs, about 4 hr 20 min
                 </span>
               </div>
             </div>
           </div>
 
-          <div className={styles.List_Background} id="PlaylistBackgorund"></div>
-          <div className={styles.List_Content}>
+          <div className={styles.List_Background} id="PlaylistBackgorund" />
+          <div className={styles.List}>
             <div className={styles.Heading_Sticky}>
               <div className={styles.Heading}>
                 <div>#</div>
                 <div>Title</div>
                 <div>Album</div>
                 <div>Date added</div>
-                <div className={styles.Heading_Length}>
+                <div className={styles.Length}>
                   <Time />
                 </div>
               </div>

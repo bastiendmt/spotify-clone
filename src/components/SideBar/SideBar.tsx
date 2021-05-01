@@ -1,4 +1,4 @@
-import styles from "./SideBar.module.css";
+import styles from "./SideBar.module.scss";
 import { Logo } from "../../assets/Logo";
 import ListItem from "./ListItem/ListItem";
 
@@ -21,7 +21,7 @@ const SideBar = ({ playlists }: SideBarProps) => {
 
       <h1 className={styles.Title}>Playlists</h1>
 
-      <hr className={styles.Separator}></hr>
+      <hr className={styles.Separator} />
 
       <div className={styles.ListContainer}>
         <ul className={styles.List}>

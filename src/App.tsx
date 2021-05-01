@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
-import styles from "./App.module.css";
+import styles from "./App.module.scss";
 
 import SideBar from "./components/SideBar/SideBar";
 import Player from "./components/Player/Player";
