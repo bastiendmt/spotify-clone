@@ -1,9 +1,11 @@
+import { Track } from "../../types/Track";
+
 const playingReducer = (
   state = {
     song: null,
     playing: true,
   },
-  action
+  action: { type: "load" | "playpause"; song: Track }
 ) => {
   switch (action.type) {
     case "load":

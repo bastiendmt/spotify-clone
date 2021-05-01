@@ -1,14 +1,19 @@
 import { Link } from "react-router-dom";
 import { Play } from "../../../assets/Play";
+import { Playlist } from "../../../types/Playlist";
 import styles from "./PlaylistItem.module.css";
 
-const PlaylistItem = (props) => {
+type PlaylistItemProps = {
+  playlist: Playlist;
+};
+
+const PlaylistItem = ({ playlist }: PlaylistItemProps) => {
   return (
-    <Link to={`/playlist/${props.playlist.id}`} className={styles.LinkPlaylist}>
+    <Link to={`/playlist/${playlist.id}`} className={styles.LinkPlaylist}>
       <div className={styles.Playlist}>
         <div className={styles.imgContainer}>
           <img
-            src={props.playlist.images[0].url}
+            src={playlist.images[0].url}
             alt="Tokyo"
             className={styles.Img}
           />
@@ -18,10 +23,8 @@ const PlaylistItem = (props) => {
             </button>
           </div>
         </div>
-        <div className={styles.Name}>{props.playlist.name}</div>
-        <div className={styles.Artist}>
-          {props.playlist.owner?.display_name}
-        </div>
+        <div className={styles.Name}>{playlist.name}</div>
+        <div className={styles.Artist}>{playlist.owner?.display_name}</div>
       </div>
     </Link>
   );

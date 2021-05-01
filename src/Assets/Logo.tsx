@@ -1,4 +1,4 @@
-export const Logo = () => {
+export const Logo: React.FC = () => {
   return (
     <svg viewBox="0 0 1134 340" className="spotify-logo--text">
       <title>Spoti-like</title>

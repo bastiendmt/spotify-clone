@@ -1,4 +1,4 @@
-export const Pause = () => {
+export const Pause: React.FC = () => {
   return (
     <svg
       role="img"

@@ -8,6 +8,12 @@ import { createStore, compose, combineReducers } from "redux";
 import playlistReducer from "./store/reducers/playlists";
 import playingReducer from "./store/reducers/playing";
 
+declare global {
+  interface Window {
+    __REDUX_DEVTOOLS_EXTENSION_COMPOSE__?: typeof compose;
+  }
+}
+
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const reducers = combineReducers({

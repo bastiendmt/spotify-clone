@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { connect } from "react-redux";
 import { Like } from "../../assets/Like";
 import { Play } from "../../assets/Play";
@@ -9,10 +9,11 @@ import Sound from "react-sound";
 import { millisToMinutesAndSeconds } from "../../utils/msToMinutes";
 import { useBar } from "../../utils/useBar";
 import { VolumeMuted } from "../../assets/VolumeMuted";
+import { Track } from "../../types/Track";
 
 type PlayerProps = {
-  playPause: any;
-  song: any;
+  playPause: () => void;
+  song: Track;
   playing: boolean;
 };
 
@@ -114,25 +115,27 @@ const Player = ({ playPause, song, playing }: PlayerProps) => {
             </div>
           </div>
         </footer>
-        <Sound
-          url={song.track.preview_url}
-          playStatus={playing ? "PLAYING" : "PAUSED"}
-          //@ts-ignore
-          onPlaying={({ position }) => {
-            setTime(position);
-            setProgress((position * 100) / 30000);
-          }}
-          onFinishedPlaying={() => playPause()}
-          volume={mute ? 0 : volume}
-          position={time}
-        />
+        {song.track.preview_url && (
+          <Sound
+            url={song.track.preview_url}
+            playStatus={playing ? "PLAYING" : "PAUSED"}
+            //@ts-ignore
+            onPlaying={({ position }) => {
+              setTime(position);
+              setProgress((position * 100) / 30000);
+            }}
+            onFinishedPlaying={() => playPause()}
+            volume={mute ? 0 : volume}
+            position={time}
+          />
+        )}
       </div>
     );
   }
 };
 
 const mapStateToProps = (state: {
-  playing: { song: any; playing: boolean };
+  playing: { song: Track; playing: boolean };
 }) => {
   return {
     song: state.playing.song,
@@ -140,7 +143,9 @@ const mapStateToProps = (state: {
   };
 };
 
-const mapDispatchToProps = (dispatch: (arg0: { type: string }) => any) => {
+const mapDispatchToProps = (
+  dispatch: (playPause: { type: string }) => void
+) => {
   return {
     playPause: () => dispatch({ type: "playpause" }),
   };

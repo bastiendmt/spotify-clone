@@ -12,7 +12,7 @@ export async function GetPlaylists() {
     });
 }
 
-export async function GetPlaylistDetail(idPlayslit) {
+export async function GetPlaylistDetail(idPlayslit : string) {
   return axios
     .get("http://localhost:3030/playlist/" + idPlayslit)
     .then((response) => {

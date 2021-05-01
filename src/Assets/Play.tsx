@@ -1,4 +1,4 @@
-export const Play = () => {
+export const Play: React.FC = () => {
   return (
     <svg
       height="16"

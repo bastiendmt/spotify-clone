@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import styles from "./App.module.css";
 
 import SideBar from "./components/SideBar/SideBar";
@@ -12,14 +12,21 @@ import { connect } from "react-redux";
 
 import { BrowserRouter as Router, Route } from "react-router-dom";
 
-const App = ({ playlists, initPlaylists }) => {
-  const [error, setError] = useState();
+import { Playlists as PlaylistsType } from "./types/Playlists";
+
+type AppProps = {
+  playlists: PlaylistsType;
+  initPlaylists: (data: PlaylistsType) => void;
+};
+
+const App = ({ playlists, initPlaylists }: AppProps) => {
+  const [error, setError] = useState<null | string>();
   const loadPlaylists = useCallback(async () => {
     await GetPlaylists().then((data) => {
       if (data?.playlists) {
         initPlaylists(data?.playlists?.items);
       } else {
-        setError(<div className={styles.Error}>Could not load data</div>);
+        setError("Could not load data");
       }
     });
   }, [initPlaylists]);
@@ -29,7 +36,7 @@ const App = ({ playlists, initPlaylists }) => {
   }, [loadPlaylists]);
 
   if (error) {
-    return error;
+    return <div className={styles.Error}>{error}</div>;
   } else {
     return (
       <div className={styles.App}>
@@ -51,15 +58,18 @@ const App = ({ playlists, initPlaylists }) => {
   }
 };
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state: { playlists: PlaylistsType }) => {
   return {
     playlists: state.playlists,
   };
 };
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = (
+  dispatch: (initPlaylists: { type: string; playlists: PlaylistsType }) => void
+) => {
   return {
-    initPlaylists: (data) => dispatch({ type: "init", playlists: data }),
+    initPlaylists: (data: PlaylistsType) =>
+      dispatch({ type: "init", playlists: data }),
   };
 };
 

@@ -1,6 +1,4 @@
-import React from "react";
-
-export const Volume = () => {
+export const Volume: React.FC = () => {
   return (
     <svg
       role="presentation"

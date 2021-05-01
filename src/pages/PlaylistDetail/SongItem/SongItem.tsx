@@ -1,16 +1,28 @@
-import React from "react";
-import styles from "./SongItem.module.scss";
-import { millisToMinutesAndSeconds } from "../../../utils/msToMinutes";
-import { formatDate } from "../../../utils/formatDate";
 import { Play } from "../../../assets/Play";
+import { Track } from "../../../types/Track";
+import { formatDate } from "../../../utils/formatDate";
+import { millisToMinutesAndSeconds } from "../../../utils/msToMinutes";
+import styles from "./SongItem.module.scss";
 
-export const SongItem = ({ song, index, songClicked, current }) => {
+type SongItemPros = {
+  song: Track;
+  index: number;
+  songClicked: () => void;
+  current: boolean;
+};
+
+export const SongItem = ({
+  song,
+  index,
+  songClicked,
+  current,
+}: SongItemPros) => {
   return (
     <>
       {song && (
         <div className={styles.Item} onClick={songClicked}>
           <div className={styles.Index}>
-            <span style={current ? { color: "#1db954" } : null}>
+            <span style={current ? { color: "#1db954" } : { color: "white" }}>
               {index + 1}
             </span>
             <button>
@@ -23,7 +35,7 @@ export const SongItem = ({ song, index, songClicked, current }) => {
             <div className={styles.NameContainer}>
               <div
                 className={styles.Name}
-                style={current ? { color: "#1db954" } : null}
+                style={current ? { color: "#1db954" } : { color: "white" }}
               >
                 <span>{song.track.name}</span>
               </div>
@@ -34,7 +46,7 @@ export const SongItem = ({ song, index, songClicked, current }) => {
                 className={[
                   styles.Artist,
                   song.track.explicit ? styles.Artist_sub : styles.Artist_badg,
-                ]}
+                ].join(", ")}
               >
                 {song.track.artists[0].name}
               </span>

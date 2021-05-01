@@ -1,5 +1,3 @@
-import React from "react";
-
 export const VolumeMuted: React.FC = () => {
   return (
     <svg

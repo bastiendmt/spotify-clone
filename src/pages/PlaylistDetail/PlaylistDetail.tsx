@@ -1,16 +1,23 @@
 import FastAverageColor from "fast-average-color";
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { connect } from "react-redux";
 import { useParams } from "react-router-dom";
 import { GetPlaylistDetail } from "../../API";
 import styles from "./PlaylistDetail.module.css";
 import { SongItem } from "./SongItem/SongItem";
 import { Time } from "../../assets/Time";
+import { Track } from "../../types/Track";
+import { Playlist } from "../../types/Playlist";
 
-const PlaylistDetail = ({ loadSong, currentSong }) => {
-  const { id } = useParams();
-  const [playlist, setPlaylist] = useState();
-  const coverRef = useRef();
+type PlaylistDetailProps = {
+  loadSong: (song: Track) => void;
+  currentSong: Track;
+};
+
+const PlaylistDetail = ({ loadSong, currentSong }: PlaylistDetailProps) => {
+  const { id } = useParams<{ id: string }>();
+  const [playlist, setPlaylist] = useState<Playlist | null>();
+  const coverRef = useRef<HTMLImageElement | null>(null);
 
   useEffect(() => {
     loadPlaylistDetails(id);
@@ -23,9 +30,9 @@ const PlaylistDetail = ({ loadSong, currentSong }) => {
       fac
         .getColorAsync(coverRef.current)
         .then((color) => {
-          document.getElementById("Background").style.backgroundColor =
+          document.getElementById("Background")!.style.backgroundColor =
             color.rgb;
-          document.getElementById("PlaylistBackgorund").style.backgroundColor =
+          document.getElementById("PlaylistBackgorund")!.style.backgroundColor =
             color.rgb;
         })
         .catch((err) => {
@@ -34,13 +41,13 @@ const PlaylistDetail = ({ loadSong, currentSong }) => {
     }
   }, [playlist]);
 
-  const loadPlaylistDetails = async (playlistId) => {
+  const loadPlaylistDetails = async (playlistId: string) => {
     await GetPlaylistDetail(playlistId).then((data) => {
       setPlaylist(data);
     });
   };
 
-  const songClicked = (song) => {
+  const songClicked = (song: Track) => {
     loadSong(song);
   };
 
@@ -91,7 +98,7 @@ const PlaylistDetail = ({ loadSong, currentSong }) => {
               </div>
             </div>
 
-            {playlist.tracks.items.map((item, index) => (
+            {playlist.tracks.items.map((item: Track, index: number) => (
               <SongItem
                 key={item.track.id}
                 song={item}
@@ -107,15 +114,17 @@ const PlaylistDetail = ({ loadSong, currentSong }) => {
   );
 };
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state: { playing: { song: Track } }) => {
   return {
     currentSong: state.playing.song,
   };
 };
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = (
+  dispatch: (loadSong: { type: string; song: Track }) => void
+) => {
   return {
-    loadSong: (song) => dispatch({ type: "load", song }),
+    loadSong: (song: Track) => dispatch({ type: "load", song }),
   };
 };
 

@@ -1,12 +1,16 @@
-import React from "react";
 import styles from "./SideBar.module.css";
 import { Logo } from "../../assets/Logo";
 import ListItem from "./ListItem/ListItem";
 
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
+import { Playlist } from "../../types/Playlist";
 
-const SideBar = (props) => {
+type SideBarProps = {
+  playlists: Playlist[];
+};
+
+const SideBar = ({ playlists }: SideBarProps) => {
   return (
     <div className={styles.SideBar}>
       <Link style={{ textDecoration: "none", color: "white" }} to="/">
@@ -21,7 +25,7 @@ const SideBar = (props) => {
 
       <div className={styles.ListContainer}>
         <ul className={styles.List}>
-          {props.playlists?.map((item) => {
+          {playlists?.map((item: Playlist) => {
             return <ListItem playlist={item} key={item.id} />;
           })}
         </ul>
@@ -30,7 +34,7 @@ const SideBar = (props) => {
   );
 };
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state: { playlists: { playlists: Playlist[] } }) => {
   return {
     playlists: state.playlists.playlists,
   };

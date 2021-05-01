@@ -1,15 +1,19 @@
-import React from "react";
 import { connect } from "react-redux";
+import { Playlist as PlaylistType } from "../../types/Playlist";
 import Playlist from "./PlaylistItem/PlaylistItem";
 import styles from "./Playlists.module.css";
 
-const Playlists = (props) => {
+type PlaylistsProps = {
+  playlists: PlaylistType[];
+};
+
+const Playlists = ({ playlists }: PlaylistsProps) => {
   return (
     <div className={styles.Playlists}>
       <h1 className={styles.Title}>Playlists</h1>
 
       <div className={styles.Container}>
-        {props.playlists?.map((item) => (
+        {playlists?.map((item: PlaylistType) => (
           <Playlist key={item.id} playlist={item} />
         ))}
       </div>
@@ -17,7 +21,9 @@ const Playlists = (props) => {
   );
 };
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state: {
+  playlists: { playlists: PlaylistType[] };
+}) => {
   return {
     playlists: state.playlists.playlists,
   };
