@@ -48,7 +48,9 @@ const PlaylistDetail = ({ loadSong, currentSong }: PlaylistDetailProps) => {
   };
 
   const songClicked = (song: Track) => {
-    loadSong(song);
+    if (song.track.preview_url) {
+      loadSong(song);
+    }
   };
 
   return (

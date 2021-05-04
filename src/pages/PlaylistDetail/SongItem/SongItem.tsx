@@ -20,7 +20,13 @@ export const SongItem = ({
   return (
     <>
       {song && (
-        <div className={styles.Item} onClick={songClicked}>
+        <div
+          className={[
+            styles.Item,
+            song.track.preview_url ? styles.Enabled : styles.Disabled,
+          ].join(" ")}
+          onClick={songClicked}
+        >
           <div className={styles.Index}>
             <span style={current ? { color: "#1db954" } : { color: "white" }}>
               {index + 1}

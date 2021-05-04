@@ -13,10 +13,10 @@
   line-height: 16px;
   color: #b3b3b3;
   border-radius: 4px;
+  cursor: pointer;
 
   &:hover {
     background-color: hsla(0, 0%, 100%, 0.1);
-    cursor: pointer;
 
     .Index {
       span {
@@ -37,12 +37,12 @@
 .Index {
   position: relative;
   display: inline-block;
-  
+
   span {
     display: inline-block;
     position: absolute;
   }
-  
+
   button {
     position: absolute;
     background: transparent;
@@ -130,4 +130,8 @@
     align-items: flex-start;
     opacity: 0;
   }
+}
+
+.Disabled {
+  cursor: not-allowed !important;
 }
