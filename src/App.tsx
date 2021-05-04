@@ -35,6 +35,7 @@ const App = ({ playlists, initPlaylists }: AppProps) => {
     loadPlaylists();
   }, [loadPlaylists]);
 
+
   if (error) {
     return <div className={styles.Error}>{error}</div>;
   } else {
