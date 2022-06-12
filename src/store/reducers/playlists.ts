@@ -1,17 +1,24 @@
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { Playlists } from "../../types/Playlists";
+import { RootState } from "../store";
 
-const playlistReducer = (
-  state = {
-    playlists: [],
-  },
-  action: { type: "init"; playlists: Playlists }
-) => {
-  switch (action.type) {
-    case "init":
-      return { playlists: action.playlists };
-    default:
-      return state;
-  }
+interface PlaylistState {
+  playlists: Playlists | [];
+}
+
+const initialState: PlaylistState = {
+  playlists: [],
 };
 
-export default playlistReducer;
+export const playlistsSlice = createSlice({
+  name: "playlists",
+  initialState,
+  reducers: {
+    init: (state, action: PayloadAction<Playlists>) => {
+      state.playlists = action.payload;
+    },
+  },
+});
+
+export const { init } = playlistsSlice.actions;
+export const selectPlaylists = (state: RootState) => state.playlists.playlists;

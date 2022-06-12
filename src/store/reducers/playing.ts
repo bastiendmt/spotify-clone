@@ -1,26 +1,32 @@
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { Track } from "../../types/Track";
+import { RootState } from "../store";
 
-const playingReducer = (
-  state = {
-    song: null,
-    playing: true,
-  },
-  action: { type: "load" | "playpause"; song: Track }
-) => {
-  switch (action.type) {
-    case "load":
-      return {
-        playing: true,
-        song: action.song,
-      };
-    case "playpause":
-      return {
-        ...state,
-        playing: !state.playing,
-      };
-    default:
-      return state;
-  }
+interface PlayingState {
+  song: Track | null;
+  playing: boolean;
+}
+
+const initialState: PlayingState = {
+  song: null,
+  playing: true,
 };
 
-export default playingReducer;
+export const playingSlice = createSlice({
+  name: "playing",
+  initialState,
+  reducers: {
+    loadSong: (state, action: PayloadAction<Track>) => {
+      state.playing = true;
+      state.song = action.payload;
+    },
+    playpause: (state) => {
+      state.playing = !state.playing;
+    },
+  },
+});
+
+export const { loadSong, playpause } = playingSlice.actions;
+
+export const playing = (state: RootState) => state.playing.playing;
+export const song = (state: RootState) => state.playing.song;

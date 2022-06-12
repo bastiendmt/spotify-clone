@@ -18,7 +18,6 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
     "react-sound": "^1.2.0",
-    "redux": "^4.2.0",
     "request": "^2.88.2",
     "typescript": "^4.2.4",
     "universal-cookie": "^4.0.4",

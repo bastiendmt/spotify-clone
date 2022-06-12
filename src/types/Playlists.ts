@@ -1,6 +1,6 @@
 import { Playlist } from "./Playlist";
 
-export declare interface Playlists  {
+export declare interface Playlists {
   href: string;
   items: Playlist[];
   limit: number;
@@ -8,4 +8,4 @@ export declare interface Playlists  {
   offset: number;
   previous: null;
   total: number;
-};
+}

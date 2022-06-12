@@ -1,23 +1,21 @@
 import FastAverageColor from "fast-average-color";
 import { useEffect, useRef, useState } from "react";
-import { connect } from "react-redux";
 import { useParams } from "react-router-dom";
 import { GetPlaylistDetail } from "../../API";
+import { Time } from "../../assets/Time";
+import { useAppDispatch, useAppSelector } from "../../store/hooks";
+import { loadSong } from "../../store/reducers/playing";
+import { Playlist } from "../../types/Playlist";
+import { Track } from "../../types/Track";
 import styles from "./PlaylistDetail.module.scss";
 import { SongItem } from "./SongItem/SongItem";
-import { Time } from "../../assets/Time";
-import { Track } from "../../types/Track";
-import { Playlist } from "../../types/Playlist";
 
-type PlaylistDetailProps = {
-  loadSong: (song: Track) => void;
-  currentSong: Track;
-};
-
-const PlaylistDetail = ({ loadSong, currentSong }: PlaylistDetailProps) => {
+const PlaylistDetail = () => {
   const { id } = useParams<{ id: string }>();
   const [playlist, setPlaylist] = useState<Playlist | null>();
   const coverRef = useRef<HTMLImageElement | null>(null);
+  const currentSong = useAppSelector((state) => state.playing.song);
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
     loadPlaylistDetails(id);
@@ -49,7 +47,7 @@ const PlaylistDetail = ({ loadSong, currentSong }: PlaylistDetailProps) => {
 
   const songClicked = (song: Track) => {
     if (song.track.preview_url) {
-      loadSong(song);
+      dispatch(loadSong(song));
     }
   };
 
@@ -114,18 +112,4 @@ const PlaylistDetail = ({ loadSong, currentSong }: PlaylistDetailProps) => {
   );
 };
 
-const mapStateToProps = (state: { playing: { song: Track } }) => {
-  return {
-    currentSong: state.playing.song,
-  };
-};
-
-const mapDispatchToProps = (
-  dispatch: (loadSong: { type: string; song: Track }) => void
-) => {
-  return {
-    loadSong: (song: Track) => dispatch({ type: "load", song }),
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(PlaylistDetail);
+export default PlaylistDetail;

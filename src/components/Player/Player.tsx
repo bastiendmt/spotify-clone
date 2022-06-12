@@ -1,23 +1,17 @@
 import { useEffect, useRef, useState } from "react";
-import { connect } from "react-redux";
-import { Like } from "../../assets/Like";
-import { Play } from "../../assets/Play";
-import { Pause } from "../../assets/Pause";
-import { Volume } from "../../assets/Volume";
-import styles from "./Player.module.scss";
 import Sound from "react-sound";
+import { Like } from "../../assets/Like";
+import { Pause } from "../../assets/Pause";
+import { Play } from "../../assets/Play";
+import { Volume } from "../../assets/Volume";
+import { VolumeMuted } from "../../assets/VolumeMuted";
+import { useAppDispatch, useAppSelector } from "../../store/hooks";
+import { playpause } from "../../store/reducers/playing";
 import { millisToMinutesAndSeconds } from "../../utils/msToMinutes";
 import { useBar } from "../../utils/useBar";
-import { VolumeMuted } from "../../assets/VolumeMuted";
-import { Track } from "../../types/Track";
+import styles from "./Player.module.scss";
 
-type PlayerProps = {
-  playPause: () => void;
-  song: Track;
-  playing: boolean;
-};
-
-const Player = ({ playPause, song, playing }: PlayerProps) => {
+const Player = () => {
   const [time, setTime] = useState(0);
   const timeRef = useRef<HTMLDivElement | null>(null);
   const [progress, setProgress] = useState(0);
@@ -28,6 +22,9 @@ const Player = ({ playPause, song, playing }: PlayerProps) => {
   const [mute, setMute] = useState(false);
 
   const barCallBack = useBar;
+
+  const { song, playing } = useAppSelector((state) => state.playing);
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
     // Adjust time when progress bar is clicked
@@ -69,7 +66,7 @@ const Player = ({ playPause, song, playing }: PlayerProps) => {
 
           <div className={styles.Controls}>
             <div>
-              <button onClick={playPause}>
+              <button onClick={() => dispatch(playpause())}>
                 {playing ? <Pause /> : <Play />}
               </button>
             </div>
@@ -124,7 +121,7 @@ const Player = ({ playPause, song, playing }: PlayerProps) => {
               setTime(position);
               setProgress((position * 100) / 30000);
             }}
-            onFinishedPlaying={() => playPause()}
+            onFinishedPlaying={() => dispatch(playpause())}
             volume={mute ? 0 : volume}
             position={time}
           />
@@ -134,21 +131,4 @@ const Player = ({ playPause, song, playing }: PlayerProps) => {
   }
 };
 
-const mapStateToProps = (state: {
-  playing: { song: Track; playing: boolean };
-}) => {
-  return {
-    song: state.playing.song,
-    playing: state.playing.playing,
-  };
-};
-
-const mapDispatchToProps = (
-  dispatch: (playPause: { type: string }) => void
-) => {
-  return {
-    playPause: () => dispatch({ type: "playpause" }),
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Player);
+export default Player;
