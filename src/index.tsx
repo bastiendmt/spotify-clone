@@ -1,27 +1,17 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import "./index.module.scss";
 import App from "./App";
+import "./index.module.scss";
 
 import { Provider } from "react-redux";
-import { createStore, compose, combineReducers } from "redux";
-import playlistReducer from "./store/reducers/playlists";
-import playingReducer from "./store/reducers/playing";
+import { compose } from "redux";
+import { store } from "./store/store";
 
 declare global {
   interface Window {
     __REDUX_DEVTOOLS_EXTENSION_COMPOSE__?: typeof compose;
   }
 }
-
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-
-const reducers = combineReducers({
-  playlists: playlistReducer,
-  playing: playingReducer,
-});
-
-const store = createStore(reducers, composeEnhancers());
 
 ReactDOM.render(
   <React.StrictMode>
