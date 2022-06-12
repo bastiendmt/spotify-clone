@@ -7,7 +7,7 @@ export declare interface Track {
     type: string;
     uri: string;
   };
-  is_local: Boolean;
+  is_local: boolean;
   primary_color: null;
   track: {
     album: {
@@ -47,17 +47,17 @@ export declare interface Track {
     available_markets: string[];
     disc_number: number;
     duration_ms: number;
-    episode: Boolean;
-    explicit: Boolean;
+    episode: boolean;
+    explicit: boolean;
     external_ids: { isrc: string };
     external_urls: { spotify: string };
     href: string;
     id: string;
-    is_local: Boolean;
+    is_local: boolean;
     name: string;
     popularity: number;
     preview_url: string;
-    track: Boolean;
+    track: boolean;
     track_number: number;
     type: string;
     uri: string;
