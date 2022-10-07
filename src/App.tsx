@@ -1,16 +1,11 @@
 import { useCallback, useEffect, useState } from "react";
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import { GetPlaylists } from "./API";
 import styles from "./App.module.scss";
-
 import Player from "./components/Player/Player";
 import SideBar from "./components/SideBar/SideBar";
-
 import PlaylistDetail from "./pages/PlaylistDetail/PlaylistDetail";
 import Playlists from "./pages/Playlists/Playlists";
-
-import { GetPlaylists } from "./API";
-
-import { BrowserRouter as Router, Route } from "react-router-dom";
-
 import { useAppDispatch, useAppSelector } from "./store/hooks";
 import { init } from "./store/reducers/playlists";
 

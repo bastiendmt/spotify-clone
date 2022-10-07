@@ -1,8 +1,8 @@
 import axios from "axios";
 import qs from "qs";
 import Cookies from "universal-cookie";
-const baseUrl = "https://api.spotify.com/v1";
 
+const baseUrl = "https://api.spotify.com/v1";
 const cookies = new Cookies();
 
 async function getAuthorizationToken() {

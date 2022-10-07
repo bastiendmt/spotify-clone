@@ -1,10 +1,9 @@
-import styles from "./SideBar.module.scss";
-import { Logo } from "../../assets/Logo";
-import ListItem from "./ListItem/ListItem";
-
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
+import { Logo } from "../../assets/Logo";
 import { Playlist } from "../../types/Playlist";
+import ListItem from "./ListItem/ListItem";
+import styles from "./SideBar.module.scss";
 
 type SideBarProps = {
   playlists: Playlist[];

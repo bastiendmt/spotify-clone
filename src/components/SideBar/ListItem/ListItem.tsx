@@ -1,6 +1,6 @@
-import styles from "./ListItem.module.scss";
 import { Link } from "react-router-dom";
 import { Playlist } from "../../../types/Playlist";
+import styles from "./ListItem.module.scss";
 
 type ListItemProps = {
   playlist: Playlist;
