@@ -1,3 +1,13 @@
+import { Image } from "./image.interface";
+
+interface Artist {
+  external_urls: { spotify: string };
+  href: string;
+  id: string;
+  name: string;
+  type: string;
+  uri: string;
+}
 export interface Track {
   added_at: string;
   added_by: {
@@ -12,23 +22,12 @@ export interface Track {
   track: {
     album: {
       album_type: string;
-      artists: {
-        external_urls: { spotify: string };
-        href: string;
-        id: string;
-        name: string;
-        type: string;
-        uri: string;
-      }[];
+      artists: Artist[];
       available_markets: string[];
       external_urls: { spotify: string };
       href: string;
       id: string;
-      images: {
-        height: number;
-        width: number;
-        url: string;
-      }[];
+      images: Image[];
       name: string;
       release_date: string;
       release_date_precision: string;
@@ -36,14 +35,7 @@ export interface Track {
       type: string;
       uri: string;
     };
-    artists: {
-      external_urls: { spotify: string };
-      href: string;
-      id: string;
-      name: string;
-      type: string;
-      uri: string;
-    }[];
+    artists: Artist[];
     available_markets: string[];
     disc_number: number;
     duration_ms: number;

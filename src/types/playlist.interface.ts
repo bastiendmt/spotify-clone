@@ -1,3 +1,4 @@
+import { Image } from "./image.interface";
 import { Track } from "./track.interface";
 
 export interface Playlist {
@@ -6,11 +7,7 @@ export interface Playlist {
   external_urls: { spotify: string };
   href: string;
   id: string;
-  images: {
-    height: number;
-    width: number;
-    url: string;
-  }[];
+  images: Image[];
   name: string;
   owner: {
     display_name: string;
