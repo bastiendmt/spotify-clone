@@ -1,4 +1,4 @@
-export declare interface Track {
+export interface Track {
   added_at: string;
   added_by: {
     external_urls: { spotify: string };

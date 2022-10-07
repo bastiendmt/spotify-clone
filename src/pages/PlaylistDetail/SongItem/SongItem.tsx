@@ -1,5 +1,5 @@
 import { Play } from "../../../assets/Play";
-import { Track } from "../../../types/Track";
+import { Track } from "../../../types/track.interface";
 import { formatDate } from "../../../utils/formatDate";
 import { millisToMinutesAndSeconds } from "../../../utils/msToMinutes";
 import styles from "./SongItem.module.scss";

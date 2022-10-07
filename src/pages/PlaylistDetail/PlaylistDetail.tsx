@@ -5,8 +5,8 @@ import { GetPlaylistDetail } from "../../API";
 import { Time } from "../../assets/Time";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import { loadSong } from "../../store/reducers/playing.reducer";
-import { Playlist } from "../../types/Playlist";
-import { Track } from "../../types/Track";
+import { Playlist } from "../../types/playlist.interface";
+import { Track } from "../../types/track.interface";
 import styles from "./PlaylistDetail.module.scss";
 import { SongItem } from "./SongItem/SongItem";
 

@@ -1,6 +1,6 @@
-import { Track } from "./Track";
+import { Track } from "./track.interface";
 
-export declare interface Playlist {
+export interface Playlist {
   collaborative: boolean;
   description: string;
   external_urls: { spotify: string };

@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import { Playlist as PlaylistType } from "../../types/Playlist";
+import { Playlist as PlaylistType } from "../../types/playlist.interface";
 import Playlist from "./PlaylistItem/PlaylistItem";
 import styles from "./Playlists.module.scss";
 

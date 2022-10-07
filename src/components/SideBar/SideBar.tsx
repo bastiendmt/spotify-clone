@@ -1,7 +1,7 @@
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { Logo } from "../../assets/Logo";
-import { Playlist } from "../../types/Playlist";
+import { Playlist } from "../../types/playlist.interface";
 import ListItem from "./ListItem/ListItem";
 import styles from "./SideBar.module.scss";
 
