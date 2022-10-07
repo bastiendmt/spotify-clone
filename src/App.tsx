@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import { GetPlaylists } from "./API";
+import { GetFeaturedPlaylists } from "./API";
 import styles from "./App.module.scss";
 import Player from "./components/Player/Player";
 import SideBar from "./components/SideBar/SideBar";
@@ -15,7 +15,7 @@ const App = () => {
   const dispatch = useAppDispatch();
 
   const loadPlaylists = useCallback(async () => {
-    await GetPlaylists().then((data) => {
+    await GetFeaturedPlaylists().then((data) => {
       if (data?.playlists) {
         dispatch(init(data.playlists.items));
       } else {

@@ -1,12 +1,13 @@
 import axios from "axios";
 import qs from "qs";
 import Cookies from "universal-cookie";
+// import { FeaturedPlaylistsResponse } from "./types/Playlists";
 
-const baseUrl = "https://api.spotify.com/v1";
+const BASE_URL = "https://api.spotify.com/v1";
 const cookies = new Cookies();
 
-async function getAuthorizationToken() {
-  return axios
+const getAuthorizationToken = async () => {
+  axios
     .post(
       "https://accounts.spotify.com/api/token",
       qs.stringify({
@@ -20,54 +21,43 @@ async function getAuthorizationToken() {
         },
       }
     )
-    .then(function (response) {
+    .then((response) => {
       cookies.set("auth", response.data.access_token, {
         maxAge: response.data.expires_in,
       });
     });
-}
+};
 
 const getAuth = async () => {
-  let auth = cookies.get("auth");
-
+  let auth: string = cookies.get("auth");
   if (!auth) {
     await getAuthorizationToken();
     auth = cookies.get("auth");
   }
-
   return auth;
 };
-
-export async function GetPlaylists() {
+//TODO FeaturedPlaylistsResponse
+export const GetFeaturedPlaylists = async (): Promise<any> => {
   const auth = await getAuth();
-
   return axios
-    .get(baseUrl + "/browse/featured-playlists", {
+    .get(`${BASE_URL}/browse/featured-playlists`, {
       headers: {
         Authorization: `Bearer ${auth}`,
       },
     })
-    .then((response) => {
-      return response.data;
-    })
-    .catch((e) => {
-      console.log(e);
-    });
-}
+    .then((response) => response.data)
+    .catch((e) => console.log(e));
+};
 
-export async function GetPlaylistDetail(idPlayslit: string) {
+//TODO return type
+export const GetPlaylistDetail = async (playlistID: string): Promise<any> => {
   const auth = await getAuth();
-
   return axios
-    .get(baseUrl + "/playlists/" + idPlayslit, {
+    .get(`${BASE_URL}/playlists/${playlistID}`, {
       headers: {
         Authorization: `Bearer ${auth}`,
       },
     })
-    .then((response) => {
-      return response.data;
-    })
-    .catch((e) => {
-      console.log(e);
-    });
-}
+    .then((response) => response.data)
+    .catch((e) => console.log(e));
+};
