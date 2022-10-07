@@ -10,7 +10,7 @@
     "axios": "^0.21.2",
     "fast-average-color": "^6.4.0",
     "node-sass": "^5.0.0",
-    "qs": "^6.10.1",
+    "qs": "^6.11.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-redux": "^7.2.2",
