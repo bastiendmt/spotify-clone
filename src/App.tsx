@@ -7,7 +7,7 @@ import SideBar from "./components/SideBar/SideBar";
 import PlaylistDetail from "./pages/PlaylistDetail/PlaylistDetail";
 import Playlists from "./pages/Playlists/Playlists";
 import { useAppDispatch, useAppSelector } from "./store/hooks";
-import { init } from "./store/reducers/playlists";
+import { init } from "./store/reducers/playlists.reducer";
 
 const App = () => {
   const [error, setError] = useState<null | string>();

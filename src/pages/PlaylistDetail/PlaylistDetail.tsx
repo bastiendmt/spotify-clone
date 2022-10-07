@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import { GetPlaylistDetail } from "../../API";
 import { Time } from "../../assets/Time";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
-import { loadSong } from "../../store/reducers/playing";
+import { loadSong } from "../../store/reducers/playing.reducer";
 import { Playlist } from "../../types/Playlist";
 import { Track } from "../../types/Track";
 import styles from "./PlaylistDetail.module.scss";
@@ -39,8 +39,8 @@ const PlaylistDetail = () => {
     }
   }, [playlist]);
 
-  const loadPlaylistDetails = async (playlistId: string) => {
-    await GetPlaylistDetail(playlistId).then((data) => {
+  const loadPlaylistDetails = async (playlistID: string) => {
+    await GetPlaylistDetail(playlistID).then((data) => {
       setPlaylist(data);
     });
   };

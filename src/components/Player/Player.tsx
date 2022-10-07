@@ -6,7 +6,7 @@ import { Play } from "../../assets/Play";
 import { Volume } from "../../assets/Volume";
 import { VolumeMuted } from "../../assets/VolumeMuted";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
-import { playpause } from "../../store/reducers/playing";
+import { playpause } from "../../store/reducers/playing.reducer";
 import { millisToMinutesAndSeconds } from "../../utils/msToMinutes";
 import { useBar } from "../../utils/useBar";
 import styles from "./Player.module.scss";
