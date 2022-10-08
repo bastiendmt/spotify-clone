@@ -1,4 +1,3 @@
-//TODO just keep svg ?
 export const Like: React.FC = () => {
   return (
     <svg role="img" height="16" width="16" viewBox="0 0 16 16">
