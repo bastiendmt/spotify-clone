@@ -7,11 +7,11 @@ import SideBar from "./components/SideBar/SideBar";
 import PlaylistDetail from "./pages/PlaylistDetail/PlaylistDetail";
 import Playlists from "./pages/Playlists/Playlists";
 import { useAppDispatch, useAppSelector } from "./store/hooks";
-import { init, selectPlaylists } from "./store/reducers/playlists.reducer";
-import { store } from "./store/store";
+import { init } from "./store/reducers/playlists.reducer";
 
 const App = () => {
   const [error, setError] = useState<null | string>();
+  //TODO use selectPlaylists(store.getState());
   const playlists = useAppSelector((state) => state.playlists.playlists);
   const dispatch = useAppDispatch();
 
@@ -29,30 +29,25 @@ const App = () => {
     loadPlaylists();
   }, [loadPlaylists]);
 
-  const playlistsSelected = selectPlaylists(store.getState());
-  console.log(playlistsSelected);
-
-  if (error) {
-    return <div className={styles.Error}>{error}</div>;
-  } else {
-    return (
-      <div className={styles.App}>
-        <Router>
-          {playlists && <SideBar playlists={playlists} />}
-
-          <Route path="/" exact>
-            {playlists && <Playlists playlists={playlists} />}
-          </Route>
-
-          <Route path="/playlist/:id">
-            <PlaylistDetail />
-          </Route>
-
-          <Player />
-        </Router>
-      </div>
-    );
-  }
+  return (
+    <>
+      {error && <div className={styles.Error}>{error}</div>}
+      {!error && (
+        <div className={styles.App}>
+          <Router>
+            {playlists && <SideBar playlists={playlists} />}
+            <Route path="/" exact>
+              {playlists && <Playlists playlists={playlists} />}
+            </Route>
+            <Route path="/playlist/:id">
+              <PlaylistDetail />
+            </Route>
+            <Player />
+          </Router>
+        </div>
+      )}
+    </>
+  );
 };
 
 export default App;

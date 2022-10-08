@@ -21,7 +21,4 @@ export const playlistsSlice = createSlice({
 });
 
 export const { init } = playlistsSlice.actions;
-export const selectPlaylists = (state: RootState) => {
-  console.log("select playlists called");
-  return state.playlists.playlists;
-};
+export const selectPlaylists = (state: RootState) => state.playlists.playlists;
