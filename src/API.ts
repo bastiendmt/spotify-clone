@@ -51,7 +51,6 @@ export const GetFeaturedPlaylists =
       .catch((e) => console.log(e));
   };
 
-//TODO return type
 export const GetPlaylistDetail = async (
   playlistID: string
 ): Promise<PlaylistType> => {
