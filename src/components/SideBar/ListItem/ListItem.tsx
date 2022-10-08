@@ -6,14 +6,12 @@ type ListItemProps = {
   playlist: PlaylistType;
 };
 
-const ListItem = ({ playlist }: ListItemProps) => {
-  return (
-    <Link to={`/playlist/${playlist.id}`} className={styles.ListItem}>
-      <li className={styles.Item}>
-        <span className={styles.Title}>{playlist.name}</span>
-      </li>
-    </Link>
-  );
-};
+const ListItem = ({ playlist }: ListItemProps) => (
+  <Link to={`/playlist/${playlist.id}`} className={styles.ListItem}>
+    <li className={styles.Item}>
+      <span className={styles.Title}>{playlist.name}</span>
+    </li>
+  </Link>
+);
 
 export default ListItem;

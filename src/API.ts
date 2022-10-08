@@ -29,7 +29,7 @@ const getAuthorizationToken = async () => {
     });
 };
 
-const getAuth = async () => {
+const getAuth = async (): Promise<string> => {
   let auth: string = cookies.get("auth");
   if (!auth) {
     await getAuthorizationToken();
