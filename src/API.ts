@@ -1,6 +1,7 @@
 import axios from "axios";
 import qs from "qs";
 import Cookies from "universal-cookie";
+import { PlaylistType } from "./types/playlist.interface";
 import { FeaturedPlaylistsResponse } from "./types/playlists.interface";
 
 const BASE_URL = "https://api.spotify.com/v1";
@@ -51,7 +52,9 @@ export const GetFeaturedPlaylists =
   };
 
 //TODO return type
-export const GetPlaylistDetail = async (playlistID: string): Promise<any> => {
+export const GetPlaylistDetail = async (
+  playlistID: string
+): Promise<PlaylistType> => {
   const auth = await getAuth();
   return axios
     .get(`${BASE_URL}/playlists/${playlistID}`, {
