@@ -7,7 +7,8 @@ import SideBar from "./components/SideBar/SideBar";
 import PlaylistDetail from "./pages/PlaylistDetail/PlaylistDetail";
 import Playlists from "./pages/Playlists/Playlists";
 import { useAppDispatch, useAppSelector } from "./store/hooks";
-import { init } from "./store/reducers/playlists.reducer";
+import { init, selectPlaylists } from "./store/reducers/playlists.reducer";
+import { store } from "./store/store";
 
 const App = () => {
   const [error, setError] = useState<null | string>();
@@ -28,13 +29,16 @@ const App = () => {
     loadPlaylists();
   }, [loadPlaylists]);
 
+  const playlistsSelected = selectPlaylists(store.getState());
+  console.log(playlistsSelected);
+
   if (error) {
     return <div className={styles.Error}>{error}</div>;
   } else {
     return (
       <div className={styles.App}>
         <Router>
-          {playlists && <SideBar />}
+          {playlists && <SideBar playlists={playlists} />}
 
           <Route path="/" exact>
             {playlists && <Playlists />}
