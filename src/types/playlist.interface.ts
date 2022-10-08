@@ -1,7 +1,7 @@
 import { Image } from "./image.interface";
 import { Track } from "./track.interface";
 
-export interface Playlist {
+export interface PlaylistType {
   collaborative: boolean;
   description: string;
   external_urls: { spotify: string };

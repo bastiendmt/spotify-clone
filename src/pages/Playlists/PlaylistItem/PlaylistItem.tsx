@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
 import { Play } from "../../../assets/Play";
-import { Playlist } from "../../../types/playlist.interface";
+import { PlaylistType } from "../../../types/playlist.interface";
 import styles from "./PlaylistItem.module.scss";
 
 type PlaylistItemProps = {
-  playlist: Playlist;
+  playlist: PlaylistType;
 };
 
 const PlaylistItem = ({ playlist }: PlaylistItemProps) => {

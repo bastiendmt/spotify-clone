@@ -1,8 +1,8 @@
-import { Playlist } from "./playlist.interface";
+import { PlaylistType } from "./playlist.interface";
 
-export interface Playlists {
+export interface PlaylistsType {
   href: string;
-  items: Playlist[];
+  items: PlaylistType[];
   limit: number;
   next: null;
   offset: number;
@@ -12,5 +12,5 @@ export interface Playlists {
 
 export interface FeaturedPlaylistsResponse {
   message: string;
-  playlists: Playlists;
+  playlists: PlaylistsType;
 }

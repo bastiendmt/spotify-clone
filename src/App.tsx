@@ -41,7 +41,7 @@ const App = () => {
           {playlists && <SideBar playlists={playlists} />}
 
           <Route path="/" exact>
-            {playlists && <Playlists />}
+            {playlists && <Playlists playlists={playlists} />}
           </Route>
 
           <Route path="/playlist/:id">

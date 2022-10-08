@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
-import { Playlist } from "../../../types/playlist.interface";
+import { PlaylistType } from "../../../types/playlist.interface";
 import styles from "./ListItem.module.scss";
 
 type ListItemProps = {
-  playlist: Playlist;
+  playlist: PlaylistType;
 };
 
 const ListItem = ({ playlist }: ListItemProps) => {
