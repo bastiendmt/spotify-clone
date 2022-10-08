@@ -1,7 +1,7 @@
 import axios from "axios";
 import qs from "qs";
 import Cookies from "universal-cookie";
-// import { FeaturedPlaylistsResponse } from "./types/Playlists";
+import { FeaturedPlaylistsResponse } from "./types/playlists.interface";
 
 const BASE_URL = "https://api.spotify.com/v1";
 const cookies = new Cookies();
@@ -36,18 +36,19 @@ const getAuth = async () => {
   }
   return auth;
 };
-//TODO FeaturedPlaylistsResponse
-export const GetFeaturedPlaylists = async (): Promise<any> => {
-  const auth = await getAuth();
-  return axios
-    .get(`${BASE_URL}/browse/featured-playlists`, {
-      headers: {
-        Authorization: `Bearer ${auth}`,
-      },
-    })
-    .then((response) => response.data)
-    .catch((e) => console.log(e));
-};
+
+export const GetFeaturedPlaylists =
+  async (): Promise<FeaturedPlaylistsResponse> => {
+    const auth = await getAuth();
+    return axios
+      .get(`${BASE_URL}/browse/featured-playlists`, {
+        headers: {
+          Authorization: `Bearer ${auth}`,
+        },
+      })
+      .then((response) => response.data)
+      .catch((e) => console.log(e));
+  };
 
 //TODO return type
 export const GetPlaylistDetail = async (playlistID: string): Promise<any> => {
