@@ -1,32 +1,22 @@
-import { connect } from "react-redux";
-import { Playlist as PlaylistType } from "../../types/playlist.interface";
-// import Playlist from "./PlaylistItem/PlaylistItem";
+import { selectPlaylists } from "../../store/reducers/playlists.reducer";
+import { store } from "../../store/store";
+import { Playlist } from "../../types/playlist.interface";
+import PlaylistItem from "./PlaylistItem/PlaylistItem";
 import styles from "./Playlists.module.scss";
 
-type PlaylistsProps = {
-  playlists: PlaylistType[];
-};
+const Playlists = () => {
+  const playlists = selectPlaylists(store.getState());
 
-const Playlists = ({ playlists }: PlaylistsProps) => {
   return (
     <div className={styles.Playlists}>
       <h1 className={styles.Title}>Playlists</h1>
-
       <div className={styles.Container}>
-        {/* {playlists?.map((item: PlaylistType) => (
-          <Playlist key={item.id} playlist={item} />
-        ))} */}
+        {playlists?.items.map((item: Playlist) => (
+          <PlaylistItem key={item.id} playlist={item} />
+        ))}
       </div>
     </div>
   );
 };
 
-const mapStateToProps = (state: {
-  playlists: { playlists: PlaylistType[] };
-}) => {
-  return {
-    playlists: state.playlists.playlists,
-  };
-};
-
-export default connect(mapStateToProps)(Playlists);
+export default Playlists;

@@ -17,7 +17,7 @@ const App = () => {
   const loadPlaylists = useCallback(async () => {
     await GetFeaturedPlaylists().then((data) => {
       if (data?.playlists) {
-        dispatch(init(data.playlists.items));
+        dispatch(init(data.playlists));
       } else {
         setError("Could not load data");
       }
