@@ -40,9 +40,8 @@ const PlaylistDetail = () => {
   }, [playlist]);
 
   const loadPlaylistDetails = async (playlistID: string) => {
-    await GetPlaylistDetail(playlistID).then((data) => {
-      setPlaylist(data);
-    });
+    const playlistData = await GetPlaylistDetail(playlistID);
+    setPlaylist(playlistData);
   };
 
   const songClicked = (song: Track) => {

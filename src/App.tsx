@@ -16,13 +16,12 @@ const App = () => {
   const dispatch = useAppDispatch();
 
   const loadPlaylists = useCallback(async () => {
-    await GetFeaturedPlaylists().then((data) => {
-      if (data?.playlists) {
-        dispatch(init(data.playlists));
-      } else {
-        setError("Could not load data");
-      }
-    });
+    const playlistsData = await GetFeaturedPlaylists();
+    if (playlistsData.playlists) {
+      dispatch(init(playlistsData.playlists));
+    } else {
+      setError("Could not load data");
+    }
   }, [dispatch]);
 
   useEffect(() => {
