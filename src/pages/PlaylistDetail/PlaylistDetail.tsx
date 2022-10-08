@@ -5,14 +5,14 @@ import { GetPlaylistDetail } from "../../API";
 import { Time } from "../../assets/Time";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import { loadSong } from "../../store/reducers/playing.reducer";
-import { Playlist } from "../../types/playlist.interface";
+import { PlaylistType } from "../../types/playlist.interface";
 import { Track } from "../../types/track.interface";
 import styles from "./PlaylistDetail.module.scss";
 import { SongItem } from "./SongItem/SongItem";
 
 const PlaylistDetail = () => {
   const { id } = useParams<{ id: string }>();
-  const [playlist, setPlaylist] = useState<Playlist | null>();
+  const [playlist, setPlaylist] = useState<PlaylistType | null>();
   const coverRef = useRef<HTMLImageElement | null>(null);
   const currentSong = useAppSelector((state) => state.playing.song);
   const dispatch = useAppDispatch();
