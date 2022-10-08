@@ -13,8 +13,8 @@ const getAuthorizationToken = async () => {
       "https://accounts.spotify.com/api/token",
       qs.stringify({
         grant_type: "client_credentials",
-        client_id: process.env.REACT_APP_CLIENT_ID,
-        client_secret: process.env.REACT_APP_CLLIENT_SECRET,
+        client_id: process.env.REACT_APP_SPOTIFY_CLIENT_ID,
+        client_secret: process.env.REACT_APP_SPOTIFY_CLIENT_SECRET,
       }),
       {
         headers: {
