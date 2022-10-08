@@ -1,18 +1,20 @@
 import axios from "axios";
 import qs from "qs";
 import Cookies from "universal-cookie";
-const baseUrl = "https://api.spotify.com/v1";
+import { PlaylistType } from "./types/playlist.interface";
+import { FeaturedPlaylistsResponse } from "./types/playlists.interface";
 
+const BASE_URL = "https://api.spotify.com/v1";
 const cookies = new Cookies();
 
-async function getAuthorizationToken() {
-  return axios
+const getAuthorizationToken = async () => {
+  axios
     .post(
       "https://accounts.spotify.com/api/token",
       qs.stringify({
         grant_type: "client_credentials",
-        client_id: process.env.REACT_APP_CLIENT_ID,
-        client_secret: process.env.REACT_APP_CLLIENT_SECRET,
+        client_id: process.env.REACT_APP_SPOTIFY_CLIENT_ID,
+        client_secret: process.env.REACT_APP_SPOTIFY_CLIENT_SECRET,
       }),
       {
         headers: {
@@ -20,54 +22,45 @@ async function getAuthorizationToken() {
         },
       }
     )
-    .then(function (response) {
+    .then((response) => {
       cookies.set("auth", response.data.access_token, {
         maxAge: response.data.expires_in,
       });
     });
-}
+};
 
-const getAuth = async () => {
-  let auth = cookies.get("auth");
-
+const getAuth = async (): Promise<string> => {
+  let auth: string = cookies.get("auth");
   if (!auth) {
     await getAuthorizationToken();
     auth = cookies.get("auth");
   }
-
   return auth;
 };
 
-export async function GetPlaylists() {
-  const auth = await getAuth();
+export const GetFeaturedPlaylists =
+  async (): Promise<FeaturedPlaylistsResponse> => {
+    const auth = await getAuth();
+    return axios
+      .get(`${BASE_URL}/browse/featured-playlists`, {
+        headers: {
+          Authorization: `Bearer ${auth}`,
+        },
+      })
+      .then((response) => response.data)
+      .catch((e) => console.log(e));
+  };
 
+export const GetPlaylistDetail = async (
+  playlistID: string
+): Promise<PlaylistType> => {
+  const auth = await getAuth();
   return axios
-    .get(baseUrl + "/browse/featured-playlists", {
+    .get(`${BASE_URL}/playlists/${playlistID}`, {
       headers: {
         Authorization: `Bearer ${auth}`,
       },
     })
-    .then((response) => {
-      return response.data;
-    })
-    .catch((e) => {
-      console.log(e);
-    });
-}
-
-export async function GetPlaylistDetail(idPlayslit: string) {
-  const auth = await getAuth();
-
-  return axios
-    .get(baseUrl + "/playlists/" + idPlayslit, {
-      headers: {
-        Authorization: `Bearer ${auth}`,
-      },
-    })
-    .then((response) => {
-      return response.data;
-    })
-    .catch((e) => {
-      console.log(e);
-    });
-}
+    .then((response) => response.data)
+    .catch((e) => console.log(e));
+};

@@ -4,15 +4,15 @@ import { useParams } from "react-router-dom";
 import { GetPlaylistDetail } from "../../API";
 import { Time } from "../../assets/Time";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
-import { loadSong } from "../../store/reducers/playing";
-import { Playlist } from "../../types/Playlist";
-import { Track } from "../../types/Track";
+import { loadSong } from "../../store/reducers/playing.reducer";
+import { PlaylistType } from "../../types/playlist.interface";
+import { Track } from "../../types/track.interface";
 import styles from "./PlaylistDetail.module.scss";
 import { SongItem } from "./SongItem/SongItem";
 
 const PlaylistDetail = () => {
   const { id } = useParams<{ id: string }>();
-  const [playlist, setPlaylist] = useState<Playlist | null>();
+  const [playlist, setPlaylist] = useState<PlaylistType | null>();
   const coverRef = useRef<HTMLImageElement | null>(null);
   const currentSong = useAppSelector((state) => state.playing.song);
   const dispatch = useAppDispatch();
@@ -39,10 +39,9 @@ const PlaylistDetail = () => {
     }
   }, [playlist]);
 
-  const loadPlaylistDetails = async (playlistId: string) => {
-    await GetPlaylistDetail(playlistId).then((data) => {
-      setPlaylist(data);
-    });
+  const loadPlaylistDetails = async (playlistID: string) => {
+    const playlistData = await GetPlaylistDetail(playlistID);
+    setPlaylist(playlistData);
   };
 
   const songClicked = (song: Track) => {

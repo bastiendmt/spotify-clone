@@ -1,16 +1,13 @@
-import { Track } from "./Track";
+import { Image } from "./image.interface";
+import { Track } from "./track.interface";
 
-export declare interface Playlist {
+export interface PlaylistType {
   collaborative: boolean;
   description: string;
   external_urls: { spotify: string };
   href: string;
   id: string;
-  images: {
-    height: number;
-    width: number;
-    url: string;
-  }[];
+  images: Image[];
   name: string;
   owner: {
     display_name: string;
