@@ -5,6 +5,7 @@ import { compose } from "redux";
 import App from "./App";
 import "./index.module.scss";
 import { store } from "./store/store";
+
 declare global {
   interface Window {
     __REDUX_DEVTOOLS_EXTENSION_COMPOSE__?: typeof compose;
@@ -20,12 +21,3 @@ root.render(
     </Provider>
   </React.StrictMode>
 );
-
-// ReactDOM.render(
-//   <React.StrictMode>
-//     <Provider store={store}>
-//       <App />
-//     </Provider>
-//   </React.StrictMode>,
-//   document.getElementById("root")
-// );
