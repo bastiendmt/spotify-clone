@@ -3,7 +3,7 @@ import { PlaylistsType } from "../../types/playlists.interface";
 import PlaylistItem from "./PlaylistItem/PlaylistItem";
 import styles from "./Playlists.module.scss";
 
-const Playlists = ({ playlists }: { playlists: PlaylistsType }) => (
+const Playlists = ({ playlists }: { playlists: PlaylistsType | null }) => (
   <div className={styles.Playlists}>
     <h1 className={styles.Title}>Playlists</h1>
     <div className={styles.Container}>

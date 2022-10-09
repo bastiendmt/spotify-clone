@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { GetFeaturedPlaylists } from "./API";
 import styles from "./App.module.scss";
 import Player from "./components/Player/Player";
@@ -33,16 +33,14 @@ const App = () => {
       {error && <div className={styles.Error}>{error}</div>}
       {!error && (
         <div className={styles.App}>
-          <Router>
+          <BrowserRouter>
             {playlists && <SideBar playlists={playlists} />}
-            <Route path="/" exact>
-              {playlists && <Playlists playlists={playlists} />}
-            </Route>
-            <Route path="/playlist/:id">
-              <PlaylistDetail />
-            </Route>
+            <Routes>
+              <Route path="/" element={<Playlists playlists={playlists} />} />
+              <Route path="/playlist/:id" element={<PlaylistDetail />} />
+            </Routes>
             <Player />
-          </Router>
+          </BrowserRouter>
         </div>
       )}
     </>

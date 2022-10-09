@@ -3,11 +3,19 @@ import { PlaylistsType } from "../../types/playlists.interface";
 import { RootState } from "../store";
 
 interface PlaylistState {
-  playlists: PlaylistsType | null;
+  playlists: PlaylistsType;
 }
 
 const initialState: PlaylistState = {
-  playlists: null,
+  playlists: {
+    href: "",
+    items: [],
+    limit: 0,
+    next: null,
+    offset: 0,
+    previous: null,
+    total: 0,
+  },
 };
 
 export const playlistsSlice = createSlice({

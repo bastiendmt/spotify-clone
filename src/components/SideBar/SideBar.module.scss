@@ -2,7 +2,7 @@
   grid-area: side-bar;
   background-color: #000000;
   color: white;
-  /* width: 17vw; */
+  width: 20vw;
   position: relative;
 
   .Logo {
@@ -35,9 +35,7 @@
     .List {
       list-style: none;
       padding: 0;
-      overflow: scroll;
-      overflow-x: hidden;
-      max-height: 600px;
+      max-width: 20vw;
     }
   }
 }
