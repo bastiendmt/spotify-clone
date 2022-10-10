@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Cookies from "universal-cookie";
 import { GetFeaturedPlaylists } from "./API";
 import styles from "./App.module.scss";
 import Player from "./components/Player/Player";
@@ -11,16 +12,17 @@ import { init } from "./store/reducers/playlists.reducer";
 
 const App = () => {
   const [error, setError] = useState<null | string>();
+  const cookies = new Cookies();
   //TODO use selectPlaylists(store.getState());
   const playlists = useAppSelector((state) => state.playlists.playlists);
   const dispatch = useAppDispatch();
 
   const loadPlaylists = useCallback(async () => {
     const playlistsData = await GetFeaturedPlaylists();
-    if (playlistsData.playlists) {
+    if (playlistsData?.playlists) {
       dispatch(init(playlistsData.playlists));
     } else {
-      setError("Could not load data");
+      setError("Could not load data, try to clean cookies and reload the app.");
     }
   }, [dispatch]);
 
@@ -28,9 +30,16 @@ const App = () => {
     loadPlaylists();
   }, [loadPlaylists]);
 
+  const cleanCookies = () => cookies.remove("auth");
+
   return (
     <>
-      {error && <div className={styles.Error}>{error}</div>}
+      {error && (
+        <div className={styles.Error}>
+          <p>{error}</p>
+          <button onClick={cleanCookies}>Clean coockies</button>
+        </div>
+      )}
       {!error && (
         <div className={styles.App}>
           <BrowserRouter>
