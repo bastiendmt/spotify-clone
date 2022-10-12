@@ -30,6 +30,7 @@ const Player = () => {
   useEffect(() => {
     audioEml.current?.play();
     resetTime();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [song]);
 
   //Handles play / pause
@@ -41,7 +42,7 @@ const Player = () => {
       audioEml.current?.pause();
       toggleStopwatch(false);
     }
-  }, [playing]);
+  }, [playing, toggleStopwatch]);
 
   // Adjust progress bar when playing
   useEffect(() => {
