@@ -128,22 +128,6 @@ const Player = () => {
           </footer>
         </div>
       )}
-      {/* {song && (
-          {song.track.preview_url && (
-            <Sound
-              url={song.track.preview_url}
-              playStatus={playing ? "PLAYING" : "PAUSED"}
-              //@ts-ignore
-              onPlaying={({ position }) => {
-                setTime(position);
-                setProgress((position * 100) / 30000);
-              }}
-              onFinishedPlaying={() => dispatch(playpause())}
-              volume={mute ? 0 : volume}
-              position={time}
-            />
-          )}
-      )} */}
     </>
   );
 };
