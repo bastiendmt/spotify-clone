@@ -65,12 +65,12 @@ const Player = () => {
           <footer>
             <div className={styles.Song}>
               <div className={styles.Img}>
-                <img src={song.track.album.images[0].url} alt="song" />
+                <img src={song.track.album.images[0]?.url} alt="song" />
               </div>
               <div className={styles.Infos}>
                 <div className={styles.Name}>{song.track.name}</div>
                 <div className={styles.Artist}>
-                  {song.track.artists[0].name}
+                  {song.track.artists[0]?.name}
                 </div>
               </div>
               <div className={styles.Like}>

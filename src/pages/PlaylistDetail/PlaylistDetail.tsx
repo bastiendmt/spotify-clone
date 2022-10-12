@@ -59,7 +59,7 @@ const PlaylistDetail = () => {
             <div className={styles.Gradient}></div>
             <div className={styles.Img}>
               <img
-                src={playlist.images[0].url}
+                src={playlist.images[0]?.url}
                 alt="playlist img"
                 ref={coverRef}
               />

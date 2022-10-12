@@ -36,7 +36,7 @@ export const SongItem = ({
         </div>
 
         <div className={styles.Title}>
-          <img src={song.track.album.images[0].url} alt="cover img" />
+          <img src={song.track.album.images[0]?.url} alt="cover img" />
           <div className={styles.NameContainer}>
             <div
               className={styles.Name}
@@ -51,7 +51,7 @@ export const SongItem = ({
                 song.track.explicit ? styles.Artist_sub : styles.Artist_badg,
               ].join(", ")}
             >
-              {song.track.artists[0].name}
+              {song.track.artists[0]?.name}
             </span>
           </div>
         </div>

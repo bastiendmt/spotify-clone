@@ -7,7 +7,7 @@ const PlaylistItem = ({ playlist }: { playlist: PlaylistType }) => (
   <Link to={`/playlist/${playlist.id}`} className={styles.LinkPlaylist}>
     <div className={styles.Playlist}>
       <div className={styles.imgContainer}>
-        <img src={playlist.images[0].url} alt="Tokyo" />
+        <img src={playlist.images[0]?.url} alt="Tokyo" />
         <div className={styles.PlayContainer}>
           <button className={styles.PlayButton} title="Play">
             <Play />

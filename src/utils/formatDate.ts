@@ -18,6 +18,6 @@ export const formatDate = (dateString: string) => {
 
   const year = arr[0];
   const month = MONTHS[Number(arr[1]) - 1];
-  const day = arr[2].substring(0, 2);
+  const day = arr[2]!.substring(0, 2);
   return `${month} ${day}, ${year}`;
 };
