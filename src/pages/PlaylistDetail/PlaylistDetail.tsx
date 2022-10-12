@@ -18,7 +18,7 @@ const PlaylistDetail = () => {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    loadPlaylistDetails(id!);
+    if (id) loadPlaylistDetails(id);
   }, [id]);
 
   useEffect(() => {
