@@ -17,13 +17,13 @@
 
   &:hover {
     background-color: hsla(0, 0%, 100%, 0.1);
-
     .Index {
       span {
         display: none;
       }
       button {
         display: inline-block;
+        cursor: inherit;
       }
     }
   }
