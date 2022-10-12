@@ -9,7 +9,7 @@
     "@testing-library/user-event": "^12.1.10",
     "axios": "^0.21.2",
     "fast-average-color": "^9.1.1",
-    "node-sass": "^5.0.0",
+    "node-sass": "^7.0.3",
     "qs": "^6.10.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -53,5 +53,13 @@
     "@types/react-redux": "^7.1.24",
     "@types/react-router-dom": "^5.3.3",
     "@types/react-sound": "^1.2.2"
-  }
+  },
+  "presets": [
+    [
+      "react-app",
+      {
+        "absoluteRuntime": false
+      }
+    ]
+  ]
 }
