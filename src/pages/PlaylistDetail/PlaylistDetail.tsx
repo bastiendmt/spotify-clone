@@ -1,4 +1,4 @@
-import FastAverageColor from "fast-average-color";
+import { FastAverageColor } from "fast-average-color";
 import { useEffect, useRef, useState } from "react";
 import { useParams } from "react-router-dom";
 import { GetPlaylistDetail } from "../../API";
