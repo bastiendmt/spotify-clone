@@ -1,9 +1,9 @@
 export const useBar = (
   event: React.MouseEvent<HTMLDivElement, MouseEvent>,
   elmRef: React.MutableRefObject<HTMLDivElement | null>,
-  callback: React.Dispatch<React.SetStateAction<number>>
-) => {
-  if (elmRef.current) {
+  callback: React.Dispatch<React.SetStateAction<number>>,
+): void => {
+  if (elmRef.current != null) {
     const right = elmRef.current.getBoundingClientRect().right;
     const left = elmRef.current.getBoundingClientRect().left;
     const pos = event.screenX;

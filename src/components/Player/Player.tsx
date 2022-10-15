@@ -11,7 +11,7 @@ import { useBar } from '../../utils/useBar';
 import useStopwatch from '../../utils/useStopwatch';
 import styles from './Player.module.scss';
 
-const Player = () => {
+const Player = (): JSX.Element => {
   const { song, playing } = useAppSelector((state) => state.playing);
   const audioEml = useRef<HTMLAudioElement | null>(null);
   const dispatch = useAppDispatch();
@@ -26,14 +26,14 @@ const Player = () => {
   const volumeRef = useRef<HTMLDivElement | null>(null);
   const [mute, setMute] = useState(false);
 
-  //If the songs changes, plays it
+  // If the songs changes, plays it
   useEffect(() => {
     audioEml.current?.play();
     resetTime();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [song]);
 
-  //Handles play / pause
+  // Handles play / pause
   useEffect(() => {
     if (playing) {
       audioEml.current?.play();
@@ -59,8 +59,8 @@ const Player = () => {
 
   return (
     <>
-      {!song && null}
-      {song && (
+      {song == null && null}
+      {song != null && (
         <div className={styles.Player}>
           <footer>
             <div className={styles.Song}>

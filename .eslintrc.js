@@ -3,17 +3,35 @@ module.exports = {
     browser: true,
     es2021: true,
   },
-  extends: ['plugin:react/recommended', 'standard-with-typescript'],
+  extends: [
+    'plugin:react/recommended',
+    'standard-with-typescript',
+    'plugin:react/jsx-runtime',
+  ],
   overrides: [],
   parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaVersion: 'latest',
     sourceType: 'module',
+    project: ['./tsconfig.json'],
   },
   plugins: ['react'],
   rules: {
-    commaDangle: 1,
+    'comma-dangle': 'off',
+    '@typescript-eslint/comma-dangle': 'off',
+
     quotes: 1,
-    semi: 'always',
+
+    semi: 'off',
+    '@typescript-eslint/semi': 'off',
+
+    '@typescript-eslint/member-delimiter-style': 'off',
+
+    '@typescript-eslint/space-before-function-paren': 'off',
+  },
+  settings: {
+    react: {
+      version: 'detect',
+    },
   },
 };

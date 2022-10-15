@@ -1,8 +1,8 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { Track } from "../../types/track.interface";
-import { RootState } from "../store";
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { Track } from '../../types/track.interface';
+import { RootState } from '../store';
 
-interface PlayingState {
+export interface PlayingState {
   song: Track | null;
   playing: boolean;
 }
@@ -13,7 +13,7 @@ const initialState: PlayingState = {
 };
 
 export const playingSlice = createSlice({
-  name: "playing",
+  name: 'playing',
   initialState,
   reducers: {
     loadSong: (state, action: PayloadAction<Track>) => {
@@ -28,5 +28,5 @@ export const playingSlice = createSlice({
 
 export const { loadSong, playpause } = playingSlice.actions;
 
-export const playing = (state: RootState) => state.playing.playing;
-export const song = (state: RootState) => state.playing.song;
+export const playing = (state: RootState): boolean => state.playing.playing;
+export const song = (state: RootState): Track | null => state.playing.song;

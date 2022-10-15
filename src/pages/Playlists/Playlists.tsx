@@ -1,9 +1,13 @@
-import { PlaylistType } from "../../types/playlist.interface";
-import { PlaylistsType } from "../../types/playlists.interface";
-import PlaylistItem from "./PlaylistItem/PlaylistItem";
-import styles from "./Playlists.module.scss";
+import { PlaylistType } from '../../types/playlist.interface';
+import { PlaylistsType } from '../../types/playlists.interface';
+import PlaylistItem from './PlaylistItem/PlaylistItem';
+import styles from './Playlists.module.scss';
 
-const Playlists = ({ playlists }: { playlists: PlaylistsType | null }) => (
+const Playlists = ({
+  playlists,
+}: {
+  playlists: PlaylistsType | null;
+}): JSX.Element => (
   <div className={styles.Playlists}>
     <h1 className={styles.Title}>Playlists</h1>
     <div className={styles.Container}>

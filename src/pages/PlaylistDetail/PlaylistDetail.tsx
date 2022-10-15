@@ -1,16 +1,16 @@
-import { FastAverageColor } from "fast-average-color";
-import { useEffect, useRef, useState } from "react";
-import { useParams } from "react-router-dom";
-import { GetPlaylistDetail } from "../../API";
-import { Time } from "../../assets/Time";
-import { useAppDispatch, useAppSelector } from "../../store/hooks";
-import { loadSong } from "../../store/reducers/playing.reducer";
-import { PlaylistType } from "../../types/playlist.interface";
-import { Track } from "../../types/track.interface";
-import styles from "./PlaylistDetail.module.scss";
-import { SongItem } from "./SongItem/SongItem";
+import { FastAverageColor } from 'fast-average-color';
+import { useEffect, useRef, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import { GetPlaylistDetail } from '../../API';
+import { Time } from '../../assets/Time';
+import { useAppDispatch, useAppSelector } from '../../store/hooks';
+import { loadSong } from '../../store/reducers/playing.reducer';
+import { PlaylistType } from '../../types/playlist.interface';
+import { Track } from '../../types/track.interface';
+import styles from './PlaylistDetail.module.scss';
+import { SongItem } from './SongItem/SongItem';
 
-const PlaylistDetail = () => {
+const PlaylistDetail = (): JSX.Element => {
   const { id } = useParams<{ id: string }>();
   const [playlist, setPlaylist] = useState<PlaylistType | null>();
   const coverRef = useRef<HTMLImageElement | null>(null);
@@ -18,19 +18,23 @@ const PlaylistDetail = () => {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    if (id) loadPlaylistDetails(id);
+    async function loadPlaylistDetails(playlistID: string): Promise<void> {
+      const playlistData = await GetPlaylistDetail(playlistID);
+      setPlaylist(playlistData);
+    }
+    if (id != null) await loadPlaylistDetails(id);
   }, [id]);
 
   useEffect(() => {
-    if (coverRef.current) {
-      coverRef.current.crossOrigin = "Anonymous";
+    if (coverRef.current != null) {
+      coverRef.current.crossOrigin = 'Anonymous';
       const fac = new FastAverageColor();
       fac
         .getColorAsync(coverRef.current)
         .then((color) => {
-          document.getElementById("Background")!.style.backgroundColor =
+          document.getElementById('Background').style.backgroundColor =
             color.rgb;
-          document.getElementById("PlaylistBackgorund")!.style.backgroundColor =
+          document.getElementById('PlaylistBackgorund')!.style.backgroundColor =
             color.rgb;
         })
         .catch((err) => {
@@ -39,20 +43,15 @@ const PlaylistDetail = () => {
     }
   }, [playlist]);
 
-  const loadPlaylistDetails = async (playlistID: string) => {
-    const playlistData = await GetPlaylistDetail(playlistID);
-    setPlaylist(playlistData);
-  };
-
-  const songClicked = (song: Track) => {
-    if (song.track.preview_url) {
+  const songClicked = (song: Track): void => {
+    if (song.track.preview_url !== '') {
       dispatch(loadSong(song));
     }
   };
 
   return (
     <>
-      {playlist && (
+      {playlist != null && (
         <div className={styles.PlaylistDetail}>
           <div className={styles.Cover}>
             <div className={styles.Background} id="Background"></div>
@@ -100,7 +99,7 @@ const PlaylistDetail = () => {
                 key={item.track.id}
                 song={item}
                 index={index}
-                current={item.track.id === currentSong?.track.id ? true : false}
+                current={item.track.id === currentSong?.track.id}
                 songClicked={() => songClicked(item)}
               />
             ))}

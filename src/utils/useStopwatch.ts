@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction, useState, useEffect } from "react";
+import { Dispatch, SetStateAction, useState, useEffect } from 'react';
 
 /**
  * Custom stopwatch
@@ -7,7 +7,7 @@ import { Dispatch, SetStateAction, useState, useEffect } from "react";
 const useStopwatch = (): [
   number,
   () => void,
-  Dispatch<SetStateAction<boolean>>
+  Dispatch<SetStateAction<boolean>>,
 ] => {
   const [time, setTime] = useState(0);
   const [running, setRunning] = useState(false);

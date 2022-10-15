@@ -1,19 +1,19 @@
-import { useCallback, useEffect, useState } from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Cookies from "universal-cookie";
-import { GetFeaturedPlaylists } from "./API";
-import styles from "./App.module.scss";
-import Player from "./components/Player/Player";
-import SideBar from "./components/SideBar/SideBar";
-import PlaylistDetail from "./pages/PlaylistDetail/PlaylistDetail";
-import Playlists from "./pages/Playlists/Playlists";
-import { useAppDispatch, useAppSelector } from "./store/hooks";
-import { init } from "./store/reducers/playlists.reducer";
+import { useCallback, useEffect, useState } from 'react';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import Cookies from 'universal-cookie';
+import { GetFeaturedPlaylists } from './API';
+import styles from './App.module.scss';
+import Player from './components/Player/Player';
+import SideBar from './components/SideBar/SideBar';
+import PlaylistDetail from './pages/PlaylistDetail/PlaylistDetail';
+import Playlists from './pages/Playlists/Playlists';
+import { useAppDispatch, useAppSelector } from './store/hooks';
+import { init } from './store/reducers/playlists.reducer';
 
-const App = () => {
+const App = (): JSX.Element => {
   const [error, setError] = useState<null | string>();
   const cookies = new Cookies();
-  //TODO use selectPlaylists(store.getState());
+  // TODO use selectPlaylists(store.getState());
   const playlists = useAppSelector((state) => state.playlists.playlists);
   const dispatch = useAppDispatch();
 
@@ -22,7 +22,7 @@ const App = () => {
     if (playlistsData?.playlists) {
       dispatch(init(playlistsData.playlists));
     } else {
-      setError("Could not load data, try to clean cookies and reload the app.");
+      setError('Could not load data, try to clean cookies and reload the app.');
     }
   }, [dispatch]);
 
@@ -30,7 +30,7 @@ const App = () => {
     loadPlaylists();
   }, [loadPlaylists]);
 
-  const cleanCookies = () => cookies.remove("auth");
+  const cleanCookies = (): void => cookies.remove('auth');
 
   return (
     <>
