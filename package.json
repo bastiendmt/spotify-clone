@@ -19,8 +19,7 @@
     "react-scripts": "^5.0.1",
     "sass": "^1.55.0",
     "typescript": "^4.8.4",
-    "universal-cookie": "^4.0.4",
-    "web-vitals": "^1.0.1"
+    "universal-cookie": "^4.0.4"
   },
   "scripts": {
     "start": "react-scripts start",
