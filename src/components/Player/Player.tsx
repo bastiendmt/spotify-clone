@@ -1,15 +1,15 @@
-import { useEffect, useRef, useState } from "react";
-import { Like } from "../../assets/Like";
-import { Pause } from "../../assets/Pause";
-import { Play } from "../../assets/Play";
-import { Volume } from "../../assets/Volume";
-import { VolumeMuted } from "../../assets/VolumeMuted";
-import { useAppDispatch, useAppSelector } from "../../store/hooks";
-import { playpause } from "../../store/reducers/playing.reducer";
-import { millisToMinutesAndSeconds } from "../../utils/msToMinutes";
-import { useBar } from "../../utils/useBar";
-import useStopwatch from "../../utils/useStopwatch";
-import styles from "./Player.module.scss";
+import { useEffect, useRef, useState } from 'react';
+import { Like } from '../../assets/Like';
+import { Pause } from '../../assets/Pause';
+import { Play } from '../../assets/Play';
+import { Volume } from '../../assets/Volume';
+import { VolumeMuted } from '../../assets/VolumeMuted';
+import { useAppDispatch, useAppSelector } from '../../store/hooks';
+import { playpause } from '../../store/reducers/playing.reducer';
+import { millisToMinutesAndSeconds } from '../../utils/msToMinutes';
+import { useBar } from '../../utils/useBar';
+import useStopwatch from '../../utils/useStopwatch';
+import styles from './Player.module.scss';
 
 const Player = () => {
   const { song, playing } = useAppSelector((state) => state.playing);
@@ -119,11 +119,11 @@ const Player = () => {
                   <div
                     className={styles.Progress}
                     style={{
-                      transform: `translateX(-${mute ? "100" : 100 - volume}%)`,
+                      transform: `translateX(-${mute ? '100' : 100 - volume}%)`,
                     }}
                   />
                 </div>
-                <button style={{ left: `${mute ? "0" : volume}%` }} />
+                <button style={{ left: `${mute ? '0' : volume}%` }} />
               </div>
             </div>
           </footer>

@@ -3,15 +3,17 @@ module.exports = {
     browser: true,
     es2021: true,
   },
-  extends: ["plugin:react/recommended", "standard-with-typescript"],
+  extends: ['plugin:react/recommended', 'standard-with-typescript'],
   overrides: [],
-  parser: "@typescript-eslint/parser",
+  parser: '@typescript-eslint/parser',
   parserOptions: {
-    ecmaVersion: "latest",
-    sourceType: "module",
+    ecmaVersion: 'latest',
+    sourceType: 'module',
   },
-  plugins: ["react"],
+  plugins: ['react'],
   rules: {
-    "comma-dangle": "always",
+    commaDangle: 1,
+    quotes: 1,
+    semi: 'always',
   },
 };
