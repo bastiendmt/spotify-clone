@@ -28,15 +28,18 @@ const Player = (): JSX.Element => {
 
   // If the songs changes, plays it
   useEffect(() => {
-    audioEml.current?.play();
+    audioEml.current?.play().catch(() => {
+      console.log('Unable to play');
+    });
     resetTime();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [song]);
 
   // Handles play / pause
   useEffect(() => {
     if (playing) {
-      audioEml.current?.play();
+      audioEml.current?.play().catch(() => {
+        console.log('Unable to play');
+      });
       toggleStopwatch(true);
     } else {
       audioEml.current?.pause();

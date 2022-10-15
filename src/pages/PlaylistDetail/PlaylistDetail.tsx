@@ -18,24 +18,34 @@ const PlaylistDetail = (): JSX.Element => {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    async function loadPlaylistDetails(playlistID: string): Promise<void> {
-      const playlistData = await GetPlaylistDetail(playlistID);
-      setPlaylist(playlistData);
-    }
-    if (id != null) await loadPlaylistDetails(id);
+    const loadPlaylistDetails = async (): Promise<PlaylistType | undefined> => {
+      if (id != null) {
+        return await GetPlaylistDetail(id);
+      }
+      return undefined;
+    };
+    loadPlaylistDetails()
+      .then((playlistData) => setPlaylist(playlistData))
+      .catch(() => {
+        console.log('error');
+      });
   }, [id]);
 
   useEffect(() => {
     if (coverRef.current != null) {
       coverRef.current.crossOrigin = 'Anonymous';
-      const fac = new FastAverageColor();
-      fac
+      new FastAverageColor()
         .getColorAsync(coverRef.current)
         .then((color) => {
-          document.getElementById('Background').style.backgroundColor =
-            color.rgb;
-          document.getElementById('PlaylistBackgorund')!.style.backgroundColor =
-            color.rgb;
+          const background = document.getElementById('Background');
+          const playlistBackground =
+            document.getElementById('PlaylistBackgorund');
+          if (background != null) {
+            background.style.backgroundColor = color.rgb;
+          }
+          if (playlistBackground != null) {
+            playlistBackground.style.backgroundColor = color.rgb;
+          }
         })
         .catch((err) => {
           console.log(err);
