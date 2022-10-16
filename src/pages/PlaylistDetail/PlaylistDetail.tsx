@@ -7,6 +7,7 @@ import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import { loadSong } from '../../store/reducers/playing.reducer';
 import { PlaylistType } from '../../types/playlist.interface';
 import { Track } from '../../types/track.interface';
+import millisToMinutesAndSeconds from '../../utils/msToMinutes';
 import styles from './PlaylistDetail.module.scss';
 import SongItem from './SongItem/SongItem';
 
@@ -60,6 +61,16 @@ const PlaylistDetail = (): JSX.Element => {
     }
   };
 
+  const getPlaylistDuration = (): string => {
+    let totalMS = 0;
+    if (playlist != null) {
+      const { items } = playlist.tracks;
+      items.forEach(({ track }) => (totalMS += track.duration_ms));
+      return `about ${millisToMinutesAndSeconds(totalMS)}`;
+    }
+    return 'could not load duration';
+  };
+
   return (
     <>
       {playlist == null && <div />}
@@ -86,7 +97,7 @@ const PlaylistDetail = (): JSX.Element => {
                   {playlist.owner.display_name}
                 </span>
                 <span className={styles.Text_Light}>
-                  {playlist.tracks.items.length} songs, about 4 hr 20 min
+                  {playlist.tracks.items.length} songs, {getPlaylistDuration()}
                 </span>
               </div>
             </div>

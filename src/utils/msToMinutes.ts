@@ -1,7 +1,10 @@
 const millisToMinutesAndSeconds = (millis: number): string => {
-  const minutes = Math.floor(millis / 60000);
-  const seconds = Number(((millis % 60000) / 1000).toFixed(0));
-  return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+  const seconds = Number((millis % 1000) % 60);
+  const minutes = Math.floor((millis / (1000 * 60)) % 60);
+  const hours = Math.floor((millis / (1000 * 60 * 60)) % 24);
+
+  const hoursText = hours !== 0 ? `${hours}:` : '';
+  return `${hoursText}${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
 };
 
 export default millisToMinutesAndSeconds;
