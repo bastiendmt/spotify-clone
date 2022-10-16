@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { PlaylistsType } from '../../types/playlists.interface';
 import { RootState } from '../store';

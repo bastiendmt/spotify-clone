@@ -34,7 +34,7 @@ const App = (): JSX.Element => {
 
   useEffect(() => {
     const load = async (): Promise<FeaturedPlaylistsResponse> =>
-      await GetFeaturedPlaylists();
+      GetFeaturedPlaylists();
 
     load()
       .then((playlistsData) => {
@@ -54,7 +54,9 @@ const App = (): JSX.Element => {
       {error != null && (
         <div className={styles.Error}>
           <p>{error}</p>
-          <button onClick={cleanCookies}>Clean coockies</button>
+          <button type="button" onClick={cleanCookies}>
+            Clean coockies
+          </button>
         </div>
       )}
       {error == null && (

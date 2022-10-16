@@ -1,13 +1,12 @@
+/* eslint-disable jsx-a11y/media-has-caption */
+/* eslint-disable jsx-a11y/control-has-associated-label */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 import { useEffect, useRef, useState } from 'react';
-import { Like } from '../../assets/Like';
-import { Pause } from '../../assets/Pause';
-import { Play } from '../../assets/Play';
-import { Volume } from '../../assets/Volume';
-import { VolumeMuted } from '../../assets/VolumeMuted';
+import { Like, Pause, Play, VolumeMuted, Volume } from '../../assets';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import { playpause } from '../../store/reducers/playing.reducer';
-import { millisToMinutesAndSeconds } from '../../utils/msToMinutes';
-import { useBar } from '../../utils/useBar';
+import millisToMinutesAndSeconds from '../../utils/msToMinutes';
+import useBar from '../../utils/useBar';
 import useStopwatch from '../../utils/useStopwatch';
 import styles from './Player.module.scss';
 
@@ -84,7 +83,7 @@ const Player = (): JSX.Element => {
             <div className={styles.Controls}>
               <audio ref={audioEml} src={song.track.preview_url} />
               <div>
-                <button onClick={() => dispatch(playpause())}>
+                <button type="button" onClick={() => dispatch(playpause())}>
                   {playing ? <Pause /> : <Play />}
                 </button>
               </div>
@@ -93,6 +92,8 @@ const Player = (): JSX.Element => {
                 <div
                   className={styles.Wrapper}
                   onClick={(event) => barCallBack(event, timeRef, setProgress)}
+                  role="button"
+                  tabIndex={0}
                   ref={timeRef}
                 >
                   <div className={styles.Bar}>
@@ -101,7 +102,7 @@ const Player = (): JSX.Element => {
                       style={{ transform: `translateX(-${100 - progress}%)` }}
                     />
                   </div>
-                  <button style={{ left: `${progress}%` }} />
+                  <button type="button" style={{ left: `${progress}%` }} />
                 </div>
                 <div>0:30</div>
               </div>
@@ -109,7 +110,7 @@ const Player = (): JSX.Element => {
 
             <div className={styles.Volume}>
               <div>
-                <button onClick={() => setMute(!mute)}>
+                <button type="button" onClick={() => setMute(!mute)}>
                   {mute ? <VolumeMuted /> : <Volume />}
                 </button>
               </div>
@@ -117,6 +118,8 @@ const Player = (): JSX.Element => {
                 className={styles.Wrapper}
                 onClick={(event) => barCallBack(event, volumeRef, setVolume)}
                 ref={volumeRef}
+                role="button"
+                tabIndex={0}
               >
                 <div className={styles.Bar}>
                   <div
@@ -126,7 +129,10 @@ const Player = (): JSX.Element => {
                     }}
                   />
                 </div>
-                <button style={{ left: `${mute ? '0' : volume}%` }} />
+                <button
+                  type="button"
+                  style={{ left: `${mute ? '0' : volume}%` }}
+                />
               </div>
             </div>
           </footer>

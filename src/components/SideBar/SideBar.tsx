@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Logo } from '../../assets/Logo';
+import { Logo } from '../../assets';
 import { PlaylistType } from '../../types/playlist.interface';
 import { PlaylistsType } from '../../types/playlists.interface';
 import ListItem from './ListItem/ListItem';

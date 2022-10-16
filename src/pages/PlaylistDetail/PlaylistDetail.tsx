@@ -2,13 +2,13 @@ import { FastAverageColor } from 'fast-average-color';
 import { useEffect, useRef, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { GetPlaylistDetail } from '../../API';
-import { Time } from '../../assets/Time';
+import { Time } from '../../assets';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import { loadSong } from '../../store/reducers/playing.reducer';
 import { PlaylistType } from '../../types/playlist.interface';
 import { Track } from '../../types/track.interface';
 import styles from './PlaylistDetail.module.scss';
-import { SongItem } from './SongItem/SongItem';
+import SongItem from './SongItem/SongItem';
 
 const PlaylistDetail = (): JSX.Element => {
   const { id } = useParams<{ id: string }>();
@@ -20,7 +20,7 @@ const PlaylistDetail = (): JSX.Element => {
   useEffect(() => {
     const loadPlaylistDetails = async (): Promise<PlaylistType | undefined> => {
       if (id != null) {
-        return await GetPlaylistDetail(id);
+        return GetPlaylistDetail(id);
       }
       return undefined;
     };
@@ -61,11 +61,12 @@ const PlaylistDetail = (): JSX.Element => {
 
   return (
     <>
+      {playlist == null && <div />}
       {playlist != null && (
         <div className={styles.PlaylistDetail}>
           <div className={styles.Cover}>
-            <div className={styles.Background} id="Background"></div>
-            <div className={styles.Gradient}></div>
+            <div className={styles.Background} id="Background" />
+            <div className={styles.Gradient} />
             <div className={styles.Img}>
               <img
                 src={playlist.images[0].url}

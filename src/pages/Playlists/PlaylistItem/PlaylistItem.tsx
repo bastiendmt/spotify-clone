@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Play } from '../../../assets/Play';
+import { Play } from '../../../assets';
 import { PlaylistType } from '../../../types/playlist.interface';
 import styles from './PlaylistItem.module.scss';
 
@@ -13,7 +13,7 @@ const PlaylistItem = ({
       <div className={styles.imgContainer}>
         <img src={playlist.images[0].url} alt="Tokyo" />
         <div className={styles.PlayContainer}>
-          <button className={styles.PlayButton} title="Play">
+          <button type="button" className={styles.PlayButton} title="Play">
             <Play />
           </button>
         </div>

@@ -1,7 +1,7 @@
-import { Play } from '../../../assets/Play';
+import { Play } from '../../../assets';
 import { Track } from '../../../types/track.interface';
-import { formatDate } from '../../../utils/formatDate';
-import { millisToMinutesAndSeconds } from '../../../utils/msToMinutes';
+import formatDate from '../../../utils/formatDate';
+import millisToMinutesAndSeconds from '../../../utils/msToMinutes';
 import styles from './SongItem.module.scss';
 
 interface SongItemPros {
@@ -11,7 +11,7 @@ interface SongItemPros {
   current: boolean;
 }
 
-export const SongItem = ({
+const SongItem = ({
   song,
   index,
   songClicked,
@@ -22,13 +22,16 @@ export const SongItem = ({
       styles.Item,
       song.track.preview_url !== '' ? styles.Enabled : styles.Disabled,
     ].join(' ')}
+    role="button"
+    tabIndex={0}
     onClick={songClicked}
+    onKeyDown={songClicked}
   >
     <div className={styles.Index}>
       <span style={current ? { color: '#1db954' } : { color: 'white' }}>
         {index + 1}
       </span>
-      <button>
+      <button type="button">
         <Play />
       </button>
     </div>
@@ -57,7 +60,11 @@ export const SongItem = ({
     <div>{formatDate(song.added_at)}</div>
     <div className={styles.Length}>
       {millisToMinutesAndSeconds(song.track.duration_ms)}
-      <button className={styles.More}>...</button>
+      <button type="button" className={styles.More}>
+        ...
+      </button>
     </div>
   </div>
 );
+
+export default SongItem;

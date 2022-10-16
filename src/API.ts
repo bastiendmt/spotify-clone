@@ -31,17 +31,18 @@ const getAuthorizationToken = async (): Promise<void> => {
 
 const getAuth = async (): Promise<string> => {
   let auth: string = cookies.get('auth');
-  if (auth === '') {
+  if (auth === undefined) {
     await getAuthorizationToken();
     auth = cookies.get('auth');
   }
+
   return auth;
 };
 
 export const GetFeaturedPlaylists =
   async (): Promise<FeaturedPlaylistsResponse> => {
     const auth = await getAuth();
-    return await axios
+    return axios
       .get(`${BASE_URL}/browse/featured-playlists`, {
         headers: {
           Authorization: `Bearer ${auth}`,
@@ -55,7 +56,7 @@ export const GetPlaylistDetail = async (
   playlistID: string,
 ): Promise<PlaylistType> => {
   const auth = await getAuth();
-  return await axios
+  return axios
     .get(`${BASE_URL}/playlists/${playlistID}`, {
       headers: {
         Authorization: `Bearer ${auth}`,
