@@ -1,37 +1,28 @@
 import { FastAverageColor } from 'fast-average-color';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import { useParams } from 'react-router-dom';
-import { GetPlaylistDetail } from '../../API';
 import { Time } from '../../assets';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import { loadSong } from '../../store/reducers/playing.reducer';
-import { PlaylistType } from '../../types/playlist.interface';
 import { Track } from '../../types/track.interface';
 import millisToMinutesAndSeconds from '../../utils/msToMinutes';
+import { fetchPlaylistById } from '../../store/reducers/playlistDetail.slice';
 import styles from './PlaylistDetail.module.scss';
 import SongItem from './SongItem/SongItem';
 
 const PlaylistDetail = (): JSX.Element => {
   const { id } = useParams<{ id: string }>();
-  const [playlist, setPlaylist] = useState<PlaylistType | null>();
+
   const coverRef = useRef<HTMLImageElement | null>(null);
-  const currentSong = useAppSelector((state) => state.playing.song);
   const dispatch = useAppDispatch();
+  const currentSong = useAppSelector((state) => state.playing.song);
+  const { loading, playlist } = useAppSelector((state) => state.playlistDetail);
 
   useEffect(() => {
-    const loadPlaylistDetails = async (): Promise<PlaylistType | undefined> => {
-      if (id != null) {
-        return GetPlaylistDetail(id);
-      }
-      return undefined;
-    };
-    loadPlaylistDetails()
-      .then((playlistData) => setPlaylist(playlistData))
-      .catch(() => {
-        // TODO render component "could not load playlist, go back"
-        console.log('error');
-      });
-  }, [id]);
+    if (id != null) {
+      void dispatch(fetchPlaylistById(id));
+    }
+  }, []);
 
   useEffect(() => {
     if (coverRef.current != null) {
@@ -73,6 +64,8 @@ const PlaylistDetail = (): JSX.Element => {
 
   return (
     <>
+      {/* TODO style loading */}
+      {loading === 'pending' && <div>loading...</div>}
       {playlist == null && <div />}
       {playlist != null && (
         <div className={styles.PlaylistDetail}>

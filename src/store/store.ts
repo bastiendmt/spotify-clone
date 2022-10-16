@@ -1,11 +1,14 @@
 import { configureStore } from '@reduxjs/toolkit';
+import playlistDetailSlice from './reducers/playlistDetail.slice';
 import { playingSlice } from './reducers/playing.reducer';
 import { playlistsSlice } from './reducers/playlists.reducer';
 
 export const store = configureStore({
   reducer: {
     playlists: playlistsSlice.reducer,
+    // TODO rename with currentSong
     playing: playingSlice.reducer,
+    playlistDetail: playlistDetailSlice.reducer,
   },
 });
 

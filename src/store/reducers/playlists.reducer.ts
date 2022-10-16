@@ -32,3 +32,4 @@ export const playlistsSlice = createSlice({
 export const { init } = playlistsSlice.actions;
 export const selectPlaylists = (state: RootState): PlaylistsType =>
   state.playlists.playlists;
+export default playlistsSlice.reducer;
