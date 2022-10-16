@@ -9,10 +9,10 @@ import millisToMinutesAndSeconds from '../../utils/msToMinutes';
 import { fetchPlaylistById } from '../../store/reducers/playlistDetail.slice';
 import styles from './PlaylistDetail.module.scss';
 import SongItem from './SongItem/SongItem';
+import Loader from '../../components/Loader/Loader';
 
 const PlaylistDetail = (): JSX.Element => {
   const { id } = useParams<{ id: string }>();
-
   const coverRef = useRef<HTMLImageElement | null>(null);
   const dispatch = useAppDispatch();
   const currentSong = useAppSelector((state) => state.playing.song);
@@ -22,7 +22,7 @@ const PlaylistDetail = (): JSX.Element => {
     if (id != null) {
       void dispatch(fetchPlaylistById(id));
     }
-  }, []);
+  }, [id]);
 
   useEffect(() => {
     if (coverRef.current != null) {
@@ -65,62 +65,67 @@ const PlaylistDetail = (): JSX.Element => {
   return (
     <>
       {/* TODO style loading */}
-      {loading === 'pending' && <div>loading...</div>}
-      {playlist == null && <div />}
-      {playlist != null && (
-        <div className={styles.PlaylistDetail}>
-          <div className={styles.Cover}>
-            <div className={styles.Background} id="Background" />
-            <div className={styles.Gradient} />
-            <div className={styles.Img}>
-              <img
-                src={playlist.images[0].url}
-                alt="playlist img"
-                ref={coverRef}
-              />
-            </div>
-            <div className={styles.Infos}>
-              <div className={styles.Playlist}>PLAYLIST</div>
-              <div className={styles.Title}>
-                <h1>{playlist.name}</h1>
-              </div>
-              <div className={styles.Categ}>{playlist.description}</div>
-              <div className={styles.Details}>
-                <span className={styles.Text_Bold}>
-                  {playlist.owner.display_name}
-                </span>
-                <span className={styles.Text_Light}>
-                  {playlist.tracks.items.length} songs, {getPlaylistDuration()}
-                </span>
-              </div>
-            </div>
-          </div>
-
-          <div className={styles.List_Background} id="PlaylistBackgorund" />
-          <div className={styles.List}>
-            <div className={styles.Heading_Sticky}>
-              <div className={styles.Heading}>
-                <div>#</div>
-                <div>Title</div>
-                <div>Album</div>
-                <div>Date added</div>
-                <div className={styles.Length}>
-                  <Time />
+      {loading === 'pending' && <Loader />}
+      {loading !== 'pending' && (
+        <>
+          {playlist == null && <div />}
+          {playlist != null && (
+            <div className={styles.PlaylistDetail}>
+              <div className={styles.Cover}>
+                <div className={styles.Background} id="Background" />
+                <div className={styles.Gradient} />
+                <div className={styles.Img}>
+                  <img
+                    src={playlist.images[0].url}
+                    alt="playlist img"
+                    ref={coverRef}
+                  />
+                </div>
+                <div className={styles.Infos}>
+                  <div className={styles.Playlist}>PLAYLIST</div>
+                  <div className={styles.Title}>
+                    <h1>{playlist.name}</h1>
+                  </div>
+                  <div className={styles.Categ}>{playlist.description}</div>
+                  <div className={styles.Details}>
+                    <span className={styles.Text_Bold}>
+                      {playlist.owner.display_name}
+                    </span>
+                    <span className={styles.Text_Light}>
+                      {playlist.tracks.items.length} songs,{' '}
+                      {getPlaylistDuration()}
+                    </span>
+                  </div>
                 </div>
               </div>
-            </div>
 
-            {playlist.tracks.items.map((item: Track, index: number) => (
-              <SongItem
-                key={item.track.id}
-                song={item}
-                index={index}
-                current={item.track.id === currentSong?.track.id}
-                songClicked={() => songClicked(item)}
-              />
-            ))}
-          </div>
-        </div>
+              <div className={styles.List_Background} id="PlaylistBackgorund" />
+              <div className={styles.List}>
+                <div className={styles.Heading_Sticky}>
+                  <div className={styles.Heading}>
+                    <div>#</div>
+                    <div>Title</div>
+                    <div>Album</div>
+                    <div>Date added</div>
+                    <div className={styles.Length}>
+                      <Time />
+                    </div>
+                  </div>
+                </div>
+
+                {playlist.tracks.items.map((item: Track, index: number) => (
+                  <SongItem
+                    key={item.track.id}
+                    song={item}
+                    index={index}
+                    current={item.track.id === currentSong?.track.id}
+                    songClicked={() => songClicked(item)}
+                  />
+                ))}
+              </div>
+            </div>
+          )}
+        </>
       )}
     </>
   );
