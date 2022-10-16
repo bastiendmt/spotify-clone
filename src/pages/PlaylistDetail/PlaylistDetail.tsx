@@ -27,6 +27,7 @@ const PlaylistDetail = (): JSX.Element => {
     loadPlaylistDetails()
       .then((playlistData) => setPlaylist(playlistData))
       .catch(() => {
+        // TODO render component "could not load playlist, go back"
         console.log('error');
       });
   }, [id]);

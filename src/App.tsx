@@ -23,15 +23,6 @@ const App = (): JSX.Element => {
   );
   const dispatch = useAppDispatch();
 
-  // const loadPlaylists = useCallback(async () => {
-  //   const playlistsData = await GetFeaturedPlaylists();
-  //   if (playlistsData?.playlists.items.length > 0) {
-  //     dispatch(init(playlistsData.playlists));
-  //   } else {
-  //     setError('Could not load data, try to clean cookies and reload the app.');
-  //   }
-  // }, [dispatch]);
-
   useEffect(() => {
     const load = async (): Promise<FeaturedPlaylistsResponse> =>
       GetFeaturedPlaylists();
