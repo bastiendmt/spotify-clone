@@ -1,14 +1,15 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { PlaylistsType } from "../../types/playlists.interface";
-import { RootState } from "../store";
+/* eslint-disable no-param-reassign */
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { PlaylistsType } from '../../types/playlists.interface';
+import { RootState } from '../store';
 
-interface PlaylistState {
+export interface PlaylistState {
   playlists: PlaylistsType;
 }
 
 const initialState: PlaylistState = {
   playlists: {
-    href: "",
+    href: '',
     items: [],
     limit: 0,
     next: null,
@@ -19,7 +20,7 @@ const initialState: PlaylistState = {
 };
 
 export const playlistsSlice = createSlice({
-  name: "playlists",
+  name: 'playlists',
   initialState,
   reducers: {
     init: (state, action: PayloadAction<PlaylistsType>) => {
@@ -29,4 +30,5 @@ export const playlistsSlice = createSlice({
 });
 
 export const { init } = playlistsSlice.actions;
-export const selectPlaylists = (state: RootState) => state.playlists.playlists;
+export const selectPlaylists = (state: RootState): PlaylistsType =>
+  state.playlists.playlists;

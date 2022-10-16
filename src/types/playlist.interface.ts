@@ -1,5 +1,5 @@
-import { Image } from "./image.interface";
-import { Track } from "./track.interface";
+import { Image } from './image.interface';
+import { Track } from './track.interface';
 
 export interface PlaylistType {
   collaborative: boolean;
