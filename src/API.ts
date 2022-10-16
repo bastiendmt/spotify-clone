@@ -48,8 +48,7 @@ export const GetFeaturedPlaylists =
           Authorization: `Bearer ${auth}`,
         },
       })
-      .then((response) => response.data)
-      .catch((e) => console.log(e));
+      .then((response) => response.data);
   };
 
 export const GetPlaylistDetail = async (
