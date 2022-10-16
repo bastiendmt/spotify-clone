@@ -15,9 +15,10 @@ import {
 } from './types/playlists.interface';
 
 const App = (): JSX.Element => {
-  const [error, setError] = useState<null | string>();
   const cookies = new Cookies();
-  // TODO use selectPlaylists(store.getState());
+  const [error, setError] = useState<null | string>();
+  const [loading, setloading] = useState(true);
+
   const playlists: PlaylistsType = useAppSelector(
     (state) => state.playlists.playlists,
   );
@@ -30,37 +31,52 @@ const App = (): JSX.Element => {
     load()
       .then((playlistsData) => {
         dispatch(init(playlistsData.playlists));
+        setloading(false);
       })
       .catch(() => {
         setError(
           'Could not load data, try to clean cookies and reload the app.',
         );
+        setloading(false);
+        console.log('error');
       });
+
+    console.log(playlists);
   }, []);
 
   const cleanCookies = (): void => cookies.remove('auth');
 
   return (
     <>
-      {error != null && (
-        <div className={styles.Error}>
-          <p>{error}</p>
-          <button type="button" onClick={cleanCookies}>
-            Clean coockies
-          </button>
-        </div>
-      )}
-      {error == null && (
-        <div className={styles.App}>
-          <BrowserRouter>
-            {playlists.items.length > 0 && <SideBar playlists={playlists} />}
-            <Routes>
-              <Route path="/" element={<Playlists playlists={playlists} />} />
-              <Route path="/playlist/:id" element={<PlaylistDetail />} />
-            </Routes>
-            <Player />
-          </BrowserRouter>
-        </div>
+      {loading && <div>loading...</div>}
+      {!loading && (
+        <>
+          {error != null && (
+            <div className={styles.Error}>
+              <p>{error}</p>
+              <button type="button" onClick={cleanCookies}>
+                Clean coockies
+              </button>
+            </div>
+          )}
+          {error == null && (
+            <div className={styles.App}>
+              <BrowserRouter>
+                {playlists.items.length > 0 && (
+                  <SideBar playlists={playlists} />
+                )}
+                <Routes>
+                  <Route
+                    path="/"
+                    element={<Playlists playlists={playlists} />}
+                  />
+                  <Route path="/playlist/:id" element={<PlaylistDetail />} />
+                </Routes>
+                <Player />
+              </BrowserRouter>
+            </div>
+          )}
+        </>
       )}
     </>
   );
