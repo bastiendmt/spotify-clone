@@ -1,13 +1,13 @@
-import { Link } from "react-router-dom";
-import { Logo } from "../../assets/Logo";
-import { PlaylistType } from "../../types/playlist.interface";
-import { PlaylistsType } from "../../types/playlists.interface";
-import ListItem from "./ListItem/ListItem";
-import styles from "./SideBar.module.scss";
+import { Link } from 'react-router-dom';
+import { Logo } from '../../assets';
+import { PlaylistType } from '../../types/playlist.interface';
+import { PlaylistsType } from '../../types/playlists.interface';
+import ListItem from './ListItem/ListItem';
+import styles from './SideBar.module.scss';
 
-const SideBar = ({ playlists }: { playlists: PlaylistsType }) => (
+const SideBar = ({ playlists }: { playlists: PlaylistsType }): JSX.Element => (
   <div className={styles.SideBar}>
-    <Link style={{ textDecoration: "none", color: "white" }} to="/">
+    <Link style={{ textDecoration: 'none', color: 'white' }} to="/">
       <div className={styles.Logo}>
         <Logo />
       </div>

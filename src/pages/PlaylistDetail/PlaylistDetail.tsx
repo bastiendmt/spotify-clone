@@ -1,16 +1,17 @@
-import { FastAverageColor } from "fast-average-color";
-import { useEffect, useRef, useState } from "react";
-import { useParams } from "react-router-dom";
-import { GetPlaylistDetail } from "../../API";
-import { Time } from "../../assets/Time";
-import { useAppDispatch, useAppSelector } from "../../store/hooks";
-import { loadSong } from "../../store/reducers/playing.reducer";
-import { PlaylistType } from "../../types/playlist.interface";
-import { Track } from "../../types/track.interface";
-import styles from "./PlaylistDetail.module.scss";
-import { SongItem } from "./SongItem/SongItem";
+import { FastAverageColor } from 'fast-average-color';
+import { useEffect, useRef, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import { GetPlaylistDetail } from '../../API';
+import { Time } from '../../assets';
+import { useAppDispatch, useAppSelector } from '../../store/hooks';
+import { loadSong } from '../../store/reducers/playing.reducer';
+import { PlaylistType } from '../../types/playlist.interface';
+import { Track } from '../../types/track.interface';
+import millisToMinutesAndSeconds from '../../utils/msToMinutes';
+import styles from './PlaylistDetail.module.scss';
+import SongItem from './SongItem/SongItem';
 
-const PlaylistDetail = () => {
+const PlaylistDetail = (): JSX.Element => {
   const { id } = useParams<{ id: string }>();
   const [playlist, setPlaylist] = useState<PlaylistType | null>();
   const coverRef = useRef<HTMLImageElement | null>(null);
@@ -18,20 +19,35 @@ const PlaylistDetail = () => {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    if (id) loadPlaylistDetails(id);
+    const loadPlaylistDetails = async (): Promise<PlaylistType | undefined> => {
+      if (id != null) {
+        return GetPlaylistDetail(id);
+      }
+      return undefined;
+    };
+    loadPlaylistDetails()
+      .then((playlistData) => setPlaylist(playlistData))
+      .catch(() => {
+        // TODO render component "could not load playlist, go back"
+        console.log('error');
+      });
   }, [id]);
 
   useEffect(() => {
-    if (coverRef.current) {
-      coverRef.current.crossOrigin = "Anonymous";
-      const fac = new FastAverageColor();
-      fac
+    if (coverRef.current != null) {
+      coverRef.current.crossOrigin = 'Anonymous';
+      new FastAverageColor()
         .getColorAsync(coverRef.current)
         .then((color) => {
-          document.getElementById("Background")!.style.backgroundColor =
-            color.rgb;
-          document.getElementById("PlaylistBackgorund")!.style.backgroundColor =
-            color.rgb;
+          const background = document.getElementById('Background');
+          const playlistBackground =
+            document.getElementById('PlaylistBackgorund');
+          if (background != null) {
+            background.style.backgroundColor = color.rgb;
+          }
+          if (playlistBackground != null) {
+            playlistBackground.style.backgroundColor = color.rgb;
+          }
         })
         .catch((err) => {
           console.log(err);
@@ -39,24 +55,30 @@ const PlaylistDetail = () => {
     }
   }, [playlist]);
 
-  const loadPlaylistDetails = async (playlistID: string) => {
-    const playlistData = await GetPlaylistDetail(playlistID);
-    setPlaylist(playlistData);
-  };
-
-  const songClicked = (song: Track) => {
-    if (song.track.preview_url) {
+  const songClicked = (song: Track): void => {
+    if (song.track.preview_url !== '') {
       dispatch(loadSong(song));
     }
   };
 
+  const getPlaylistDuration = (): string => {
+    let totalMS = 0;
+    if (playlist != null) {
+      const { items } = playlist.tracks;
+      items.forEach(({ track }) => (totalMS += track.duration_ms));
+      return `about ${millisToMinutesAndSeconds(totalMS)}`;
+    }
+    return 'could not load duration';
+  };
+
   return (
     <>
-      {playlist && (
+      {playlist == null && <div />}
+      {playlist != null && (
         <div className={styles.PlaylistDetail}>
           <div className={styles.Cover}>
-            <div className={styles.Background} id="Background"></div>
-            <div className={styles.Gradient}></div>
+            <div className={styles.Background} id="Background" />
+            <div className={styles.Gradient} />
             <div className={styles.Img}>
               <img
                 src={playlist.images[0].url}
@@ -75,7 +97,7 @@ const PlaylistDetail = () => {
                   {playlist.owner.display_name}
                 </span>
                 <span className={styles.Text_Light}>
-                  {playlist.tracks.items.length} songs, about 4 hr 20 min
+                  {playlist.tracks.items.length} songs, {getPlaylistDuration()}
                 </span>
               </div>
             </div>
@@ -100,7 +122,7 @@ const PlaylistDetail = () => {
                 key={item.track.id}
                 song={item}
                 index={index}
-                current={item.track.id === currentSong?.track.id ? true : false}
+                current={item.track.id === currentSong?.track.id}
                 songClicked={() => songClicked(item)}
               />
             ))}
