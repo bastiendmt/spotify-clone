@@ -16,12 +16,14 @@ export const fetchPlaylistById = createAsyncThunk(
 
 interface PlaylistDetailState {
   playlist: null | PlaylistType;
-  loading: 'idle' | 'pending' | 'succeeded' | 'failed';
+  loading: boolean;
+  error: string;
 }
 
 const initialState: PlaylistDetailState = {
   playlist: null,
-  loading: 'idle',
+  loading: true,
+  error: '',
 };
 
 const playlistDetailSlice = createSlice({
@@ -29,16 +31,19 @@ const playlistDetailSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: (builder) => {
+    builder.addCase(fetchPlaylistById.pending, (state) => {
+      state.loading = true;
+      state.error = '';
+    });
     builder.addCase(fetchPlaylistById.fulfilled, (state, action) => {
       state.playlist = action.payload;
-      state.loading = 'succeeded';
-    });
-    builder.addCase(fetchPlaylistById.pending, (state) => {
-      state.loading = 'pending';
+      state.loading = false;
+      state.error = '';
     });
     builder.addCase(fetchPlaylistById.rejected, (state, action) => {
       console.log(action);
-      state.loading = 'failed';
+      state.loading = false;
+      state.error = 'an error has occured';
     });
   },
 });

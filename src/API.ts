@@ -62,6 +62,5 @@ export const GetPlaylistDetail = async (
         Authorization: `Bearer ${auth}`,
       },
     })
-    .then((response) => response.data)
-    .catch((e) => console.log(e));
+    .then((response) => response.data);
 };

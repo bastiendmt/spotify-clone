@@ -10,13 +10,16 @@ import { fetchPlaylistById } from '../../store/reducers/playlistDetail.slice';
 import styles from './PlaylistDetail.module.scss';
 import SongItem from './SongItem/SongItem';
 import Loader from '../../components/Loader/Loader';
+import NotFound from '../../components/NotFound/NotFound';
 
 const PlaylistDetail = (): JSX.Element => {
   const { id } = useParams<{ id: string }>();
   const coverRef = useRef<HTMLImageElement | null>(null);
   const dispatch = useAppDispatch();
   const currentSong = useAppSelector((state) => state.playing.song);
-  const { loading, playlist } = useAppSelector((state) => state.playlistDetail);
+  const { loading, playlist, error } = useAppSelector(
+    (state) => state.playlistDetail,
+  );
 
   useEffect(() => {
     if (id != null) {
@@ -64,11 +67,10 @@ const PlaylistDetail = (): JSX.Element => {
 
   return (
     <>
-      {/* TODO style loading */}
-      {loading === 'pending' && <Loader />}
-      {loading !== 'pending' && (
+      {loading && <Loader />}
+      {!loading && (
         <>
-          {playlist == null && <div />}
+          {error !== '' && <NotFound />}
           {playlist != null && (
             <div className={styles.PlaylistDetail}>
               <div className={styles.Cover}>

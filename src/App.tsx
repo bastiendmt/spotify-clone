@@ -40,8 +40,6 @@ const App = (): JSX.Element => {
         setloading(false);
         console.log('error');
       });
-
-    console.log(playlists);
   }, []);
 
   const cleanCookies = (): void => cookies.remove('auth');
