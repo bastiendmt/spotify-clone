@@ -24,7 +24,7 @@
     "comma-dangle": "off",
     "@typescript-eslint/comma-dangle": "off",
 
-    "quotes": "error",
+    "quotes": [2, "single"],
 
     "semi": "off",
     "@typescript-eslint/semi": "off",
