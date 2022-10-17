@@ -16,10 +16,10 @@ const PlaylistDetail = (): JSX.Element => {
   const { id } = useParams<{ id: string }>();
   const coverRef = useRef<HTMLImageElement | null>(null);
   const dispatch = useAppDispatch();
-  const { song } = useAppSelector((state) => state.currentSong);
-  const { loading, playlist, error } = useAppSelector(
-    (state) => state.playlistDetail,
-  );
+  const {
+    currentSong: { song },
+    playlistDetail: { playlist, loading, error },
+  } = useAppSelector((state) => state);
 
   useEffect(() => {
     if (id != null) {
