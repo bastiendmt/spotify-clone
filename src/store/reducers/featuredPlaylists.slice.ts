@@ -1,4 +1,3 @@
-/* eslint-disable no-param-reassign */
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { GetFeaturedPlaylists } from '../../API';
 import { PlaylistsType } from '../../types/playlists.interface';
@@ -7,7 +6,7 @@ export const fetchFeaturedPlaylists = createAsyncThunk(
   'playlists/fetchFeatured',
   async (_, thunkAPI) => {
     try {
-      return GetFeaturedPlaylists();
+      return await GetFeaturedPlaylists();
     } catch (error) {
       return thunkAPI.rejectWithValue('something went wrong');
     }

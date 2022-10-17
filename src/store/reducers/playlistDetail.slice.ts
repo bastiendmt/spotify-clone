@@ -6,7 +6,7 @@ export const fetchPlaylistById = createAsyncThunk(
   'playlists/fetchById',
   async (playlistId: string, thunkAPI) => {
     try {
-      return GetPlaylistDetail(playlistId);
+      return await GetPlaylistDetail(playlistId);
     } catch (error) {
       return thunkAPI.rejectWithValue('something went wrong');
     }
