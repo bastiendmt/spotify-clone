@@ -13,7 +13,7 @@ import { fetchFeaturedPlaylists } from './store/reducers/featuredPlaylists.slice
 const App = (): JSX.Element => {
   const cookies = new Cookies();
   const dispatch = useAppDispatch();
-  const { playlists, loading, error } = useAppSelector(
+  const { playlists, message, loading, error } = useAppSelector(
     (state) => state.featuredPlaylists,
   );
 
@@ -41,7 +41,9 @@ const App = (): JSX.Element => {
                 <Routes>
                   <Route
                     path="/"
-                    element={<Playlists playlists={playlists} />}
+                    element={
+                      <Playlists playlists={playlists} message={message} />
+                    }
                   />
                   <Route path="/playlist/:id" element={<PlaylistDetail />} />
                 </Routes>

@@ -17,12 +17,14 @@ export interface PlaylistState {
   playlists: PlaylistsType | null;
   loading: boolean;
   error: string;
+  message: string;
 }
 
 const initialState: PlaylistState = {
   playlists: null,
   loading: true,
   error: '',
+  message: '',
 };
 
 const featuredPlaylistSlice = createSlice({
@@ -36,6 +38,7 @@ const featuredPlaylistSlice = createSlice({
     });
     builder.addCase(fetchFeaturedPlaylists.fulfilled, (state, action) => {
       state.playlists = action.payload.playlists;
+      state.message = action.payload.message;
       state.loading = false;
       state.error = '';
     });
