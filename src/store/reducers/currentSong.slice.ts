@@ -28,6 +28,7 @@ export const currentSongSlice = createSlice({
 
 export const { loadSong, playpause } = currentSongSlice.actions;
 
-export const song = (state: RootState): Track | null => state.currentSong.song;
+export const songSelector = (state: RootState): Track | null =>
+  state.currentSong.song;
 export const playingSelector = (state: RootState): boolean =>
   state.currentSong.playing;
