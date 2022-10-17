@@ -1,4 +1,3 @@
-/* eslint-disable no-param-reassign */
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { GetPlaylistDetail } from '../../API';
 import { PlaylistType } from '../../types/playlist.interface';
