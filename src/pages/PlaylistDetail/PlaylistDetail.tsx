@@ -3,7 +3,7 @@ import { useEffect, useRef } from 'react';
 import { useParams } from 'react-router-dom';
 import { Time } from '../../assets';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
-import { loadSong } from '../../store/reducers/playing.reducer';
+import { loadSong } from '../../store/reducers/currentSong.slice';
 import { Track } from '../../types/track.interface';
 import millisToMinutesAndSeconds from '../../utils/msToMinutes';
 import { fetchPlaylistById } from '../../store/reducers/playlistDetail.slice';
@@ -16,7 +16,7 @@ const PlaylistDetail = (): JSX.Element => {
   const { id } = useParams<{ id: string }>();
   const coverRef = useRef<HTMLImageElement | null>(null);
   const dispatch = useAppDispatch();
-  const currentSong = useAppSelector((state) => state.playing.song);
+  const { song } = useAppSelector((state) => state.currentSong);
   const { loading, playlist, error } = useAppSelector(
     (state) => state.playlistDetail,
   );
@@ -49,9 +49,9 @@ const PlaylistDetail = (): JSX.Element => {
     }
   }, [playlist]);
 
-  const songClicked = (song: Track): void => {
-    if (song.track.preview_url !== '') {
-      dispatch(loadSong(song));
+  const songClicked = (clickedSong: Track): void => {
+    if (clickedSong.track.preview_url !== '') {
+      dispatch(loadSong(clickedSong));
     }
   };
 
@@ -120,7 +120,7 @@ const PlaylistDetail = (): JSX.Element => {
                     key={item.track.id}
                     song={item}
                     index={index}
-                    current={item.track.id === currentSong?.track.id}
+                    current={item.track.id === song?.track.id}
                     songClicked={() => songClicked(item)}
                   />
                 ))}

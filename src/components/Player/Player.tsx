@@ -2,18 +2,18 @@
 /* eslint-disable jsx-a11y/control-has-associated-label */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import { useEffect, useRef, useState } from 'react';
-import { Like, Pause, Play, VolumeMuted, Volume } from '../../assets';
+import { Like, Pause, Play, Volume, VolumeMuted } from '../../assets';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
-import { playpause } from '../../store/reducers/playing.reducer';
+import { playpause } from '../../store/reducers/currentSong.slice';
 import millisToMinutesAndSeconds from '../../utils/msToMinutes';
 import useBar from '../../utils/useBar';
 import useStopwatch from '../../utils/useStopwatch';
 import styles from './Player.module.scss';
 
 const Player = (): JSX.Element => {
-  const { song, playing } = useAppSelector((state) => state.playing);
-  const audioEml = useRef<HTMLAudioElement | null>(null);
   const dispatch = useAppDispatch();
+  const { song, playing } = useAppSelector((state) => state.currentSong);
+  const audioEml = useRef<HTMLAudioElement | null>(null);
 
   const timeRef = useRef<HTMLDivElement | null>(null);
   const barCallBack = useBar;

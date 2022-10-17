@@ -2,18 +2,18 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { Track } from '../../types/track.interface';
 import { RootState } from '../store';
 
-export interface PlayingState {
+export interface CurrentSongState {
   song: Track | null;
   playing: boolean;
 }
 
-const initialState: PlayingState = {
+const initialState: CurrentSongState = {
   song: null,
   playing: true,
 };
 
-export const playingSlice = createSlice({
-  name: 'playing',
+export const currentSongSlice = createSlice({
+  name: 'currentSong',
   initialState,
   reducers: {
     loadSong: (state, action: PayloadAction<Track>) => {
@@ -26,7 +26,8 @@ export const playingSlice = createSlice({
   },
 });
 
-export const { loadSong, playpause } = playingSlice.actions;
+export const { loadSong, playpause } = currentSongSlice.actions;
 
-export const playing = (state: RootState): boolean => state.playing.playing;
-export const song = (state: RootState): Track | null => state.playing.song;
+export const song = (state: RootState): Track | null => state.currentSong.song;
+export const playingSelector = (state: RootState): boolean =>
+  state.currentSong.playing;
