@@ -11,7 +11,7 @@ on:
 
 jobs:
   eslint:
-    name: Run eslint scanning
+    name: Eslint
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -41,6 +41,7 @@ jobs:
           wait-for-processing: true
 
   prettier:
+    name: Prettier
     runs-on: ubuntu-latest
 
     steps:
@@ -117,3 +118,16 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout project workspace repository
+        uses: actions/checkout@v3
+        with:
+          ref: ${{ github.head_ref }}
+
+      - name: Build
+        run: yarn build
