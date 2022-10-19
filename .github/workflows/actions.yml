@@ -129,5 +129,8 @@ jobs:
         with:
           ref: ${{ github.head_ref }}
 
+      - name: Install dependencies
+        run: yarn
+
       - name: Build
         run: yarn build
