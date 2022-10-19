@@ -1,11 +1,13 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { playingSlice } from './reducers/playing.reducer';
-import { playlistsSlice } from './reducers/playlists.reducer';
+import currentSongSlice from './reducers/currentSong.slice';
+import featuredPlaylistSlice from './reducers/featuredPlaylists.slice';
+import playlistDetailSlice from './reducers/playlistDetail.slice';
 
 export const store = configureStore({
   reducer: {
-    playlists: playlistsSlice.reducer,
-    playing: playingSlice.reducer,
+    currentSong: currentSongSlice.reducer,
+    featuredPlaylists: featuredPlaylistSlice.reducer,
+    playlistDetail: playlistDetailSlice.reducer,
   },
 });
 
@@ -13,3 +15,5 @@ export const store = configureStore({
 export type RootState = ReturnType<typeof store.getState>;
 // Inferred type: {posts: PostsState, comments: CommentsState, users: UsersState}
 export type AppDispatch = typeof store.dispatch;
+
+export const rootState = store.getState();

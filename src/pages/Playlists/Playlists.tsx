@@ -5,11 +5,13 @@ import styles from './Playlists.module.scss';
 
 const Playlists = ({
   playlists,
+  message,
 }: {
   playlists: PlaylistsType;
+  message: string;
 }): JSX.Element => (
   <div className={styles.Playlists}>
-    <h1 className={styles.Title}>Playlists</h1>
+    <h1 className={styles.Title}>Playlists - {message}</h1>
     <div className={styles.Container}>
       {playlists.items.map((item: PlaylistType) => (
         <PlaylistItem key={item.id} playlist={item} />
