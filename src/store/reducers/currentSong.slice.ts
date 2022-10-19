@@ -12,7 +12,7 @@ const initialState: CurrentSongState = {
   playing: true,
 };
 
-export const currentSongSlice = createSlice({
+const currentSongSlice = createSlice({
   name: 'currentSong',
   initialState,
   reducers: {
@@ -27,6 +27,8 @@ export const currentSongSlice = createSlice({
 });
 
 export const { loadSong, playpause } = currentSongSlice.actions;
+
+export default currentSongSlice;
 
 export const songSelector = (state: RootState): Track | null =>
   state.currentSong.song;

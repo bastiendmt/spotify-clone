@@ -1,6 +1,7 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { GetPlaylistDetail } from '../../API';
 import { PlaylistType } from '../../types/playlist.interface';
+import { RootState } from '../store';
 
 export const fetchPlaylistById = createAsyncThunk(
   'playlists/fetchById',
@@ -48,3 +49,7 @@ const playlistDetailSlice = createSlice({
 });
 
 export default playlistDetailSlice;
+
+export const playlistDetailsSelector = (
+  state: RootState,
+): PlaylistType | null => state.playlistDetail.playlist;
