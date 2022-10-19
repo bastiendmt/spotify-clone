@@ -15,4 +15,3 @@ Featured playlists
 
 Playlist
 ![Playing](https://user-images.githubusercontent.com/32489032/194713262-4756dfbd-c5a3-42e4-9820-9767ce306594.png)
-
