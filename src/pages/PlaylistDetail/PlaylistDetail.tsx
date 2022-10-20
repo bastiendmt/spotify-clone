@@ -1,36 +1,30 @@
 import { FastAverageColor } from 'fast-average-color';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import { useParams } from 'react-router-dom';
-import { GetPlaylistDetail } from '../../API';
 import { Time } from '../../assets';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
-import { loadSong } from '../../store/reducers/playing.reducer';
-import { PlaylistType } from '../../types/playlist.interface';
+import { loadSong } from '../../store/reducers/currentSong.slice';
 import { Track } from '../../types/track.interface';
 import millisToMinutesAndSeconds from '../../utils/msToMinutes';
+import { fetchPlaylistById } from '../../store/reducers/playlistDetail.slice';
 import styles from './PlaylistDetail.module.scss';
 import SongItem from './SongItem/SongItem';
+import Loader from '../../components/Loader/Loader';
+import NotFound from '../../components/NotFound/NotFound';
 
 const PlaylistDetail = (): JSX.Element => {
   const { id } = useParams<{ id: string }>();
-  const [playlist, setPlaylist] = useState<PlaylistType | null>();
   const coverRef = useRef<HTMLImageElement | null>(null);
-  const currentSong = useAppSelector((state) => state.playing.song);
   const dispatch = useAppDispatch();
+  const {
+    currentSong: { song },
+    playlistDetail: { playlist, loading, error },
+  } = useAppSelector((state) => state);
 
   useEffect(() => {
-    const loadPlaylistDetails = async (): Promise<PlaylistType | undefined> => {
-      if (id != null) {
-        return GetPlaylistDetail(id);
-      }
-      return undefined;
-    };
-    loadPlaylistDetails()
-      .then((playlistData) => setPlaylist(playlistData))
-      .catch(() => {
-        // TODO render component "could not load playlist, go back"
-        console.log('error');
-      });
+    if (id != null) {
+      void dispatch(fetchPlaylistById(id));
+    }
   }, [id]);
 
   useEffect(() => {
@@ -55,9 +49,9 @@ const PlaylistDetail = (): JSX.Element => {
     }
   }, [playlist]);
 
-  const songClicked = (song: Track): void => {
-    if (song.track.preview_url !== '') {
-      dispatch(loadSong(song));
+  const songClicked = (clickedSong: Track): void => {
+    if (clickedSong.track.preview_url !== '') {
+      dispatch(loadSong(clickedSong));
     }
   };
 
@@ -73,61 +67,67 @@ const PlaylistDetail = (): JSX.Element => {
 
   return (
     <>
-      {playlist == null && <div />}
-      {playlist != null && (
-        <div className={styles.PlaylistDetail}>
-          <div className={styles.Cover}>
-            <div className={styles.Background} id="Background" />
-            <div className={styles.Gradient} />
-            <div className={styles.Img}>
-              <img
-                src={playlist.images[0].url}
-                alt="playlist img"
-                ref={coverRef}
-              />
-            </div>
-            <div className={styles.Infos}>
-              <div className={styles.Playlist}>PLAYLIST</div>
-              <div className={styles.Title}>
-                <h1>{playlist.name}</h1>
-              </div>
-              <div className={styles.Categ}>{playlist.description}</div>
-              <div className={styles.Details}>
-                <span className={styles.Text_Bold}>
-                  {playlist.owner.display_name}
-                </span>
-                <span className={styles.Text_Light}>
-                  {playlist.tracks.items.length} songs, {getPlaylistDuration()}
-                </span>
-              </div>
-            </div>
-          </div>
-
-          <div className={styles.List_Background} id="PlaylistBackgorund" />
-          <div className={styles.List}>
-            <div className={styles.Heading_Sticky}>
-              <div className={styles.Heading}>
-                <div>#</div>
-                <div>Title</div>
-                <div>Album</div>
-                <div>Date added</div>
-                <div className={styles.Length}>
-                  <Time />
+      {loading && <Loader />}
+      {!loading && (
+        <>
+          {error !== '' && <NotFound />}
+          {playlist != null && (
+            <div className={styles.PlaylistDetail}>
+              <div className={styles.Cover}>
+                <div className={styles.Background} id="Background" />
+                <div className={styles.Gradient} />
+                <div className={styles.Img}>
+                  <img
+                    src={playlist.images[0].url}
+                    alt="playlist img"
+                    ref={coverRef}
+                  />
+                </div>
+                <div className={styles.Infos}>
+                  <div className={styles.Playlist}>PLAYLIST</div>
+                  <div className={styles.Title}>
+                    <h1>{playlist.name}</h1>
+                  </div>
+                  <div className={styles.Categ}>{playlist.description}</div>
+                  <div className={styles.Details}>
+                    <span className={styles.Text_Bold}>
+                      {playlist.owner.display_name}
+                    </span>
+                    <span className={styles.Text_Light}>
+                      {playlist.tracks.items.length} songs,{' '}
+                      {getPlaylistDuration()}
+                    </span>
+                  </div>
                 </div>
               </div>
-            </div>
 
-            {playlist.tracks.items.map((item: Track, index: number) => (
-              <SongItem
-                key={item.track.id}
-                song={item}
-                index={index}
-                current={item.track.id === currentSong?.track.id}
-                songClicked={() => songClicked(item)}
-              />
-            ))}
-          </div>
-        </div>
+              <div className={styles.List_Background} id="PlaylistBackgorund" />
+              <div className={styles.List}>
+                <div className={styles.Heading_Sticky}>
+                  <div className={styles.Heading}>
+                    <div>#</div>
+                    <div>Title</div>
+                    <div>Album</div>
+                    <div>Date added</div>
+                    <div className={styles.Length}>
+                      <Time />
+                    </div>
+                  </div>
+                </div>
+
+                {playlist.tracks.items.map((item: Track, index: number) => (
+                  <SongItem
+                    key={item.track.id}
+                    song={item}
+                    index={index}
+                    current={item.track.id === song?.track.id}
+                    songClicked={() => songClicked(item)}
+                  />
+                ))}
+              </div>
+            </div>
+          )}
+        </>
       )}
     </>
   );
