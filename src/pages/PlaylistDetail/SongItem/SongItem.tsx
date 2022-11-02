@@ -32,6 +32,7 @@ const SongItem = ({
         {index + 1}
       </span>
       <button type="button">
+        test
         <Play />
       </button>
     </div>
