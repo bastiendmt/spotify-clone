@@ -4,11 +4,11 @@ import PlaylistItem from './PlaylistItem/PlaylistItem';
 import styles from './Playlists.module.scss';
 
 const Playlists = ({
-  playlists,
   message,
+  playlists,
 }: {
-  playlists: PlaylistsType;
   message: string;
+  playlists: PlaylistsType;
 }): JSX.Element => (
   <div className={styles.Playlists}>
     <h1 className={styles.Title}>Playlists - {message}</h1>
