@@ -22,12 +22,12 @@ export interface PlaylistType {
   snapshot_id: string;
   tracks: {
     href: string;
-    total: number;
     items: Track[];
     limit: number;
     next: string;
     offset: number;
     previous: null;
+    total: number;
   };
   type: string;
   uri: string;
