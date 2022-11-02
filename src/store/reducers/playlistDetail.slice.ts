@@ -15,15 +15,15 @@ export const fetchPlaylistById = createAsyncThunk(
 );
 
 interface PlaylistDetailState {
-  playlist: null | PlaylistType;
-  loading: boolean;
   error: string;
+  loading: boolean;
+  playlist: null | PlaylistType;
 }
 
 const initialState: PlaylistDetailState = {
-  playlist: null,
-  loading: true,
   error: '',
+  loading: true,
+  playlist: null,
 };
 
 const playlistDetailSlice = createSlice({

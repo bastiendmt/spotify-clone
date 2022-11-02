@@ -3,13 +3,13 @@ import { Track } from '../../types/track.interface';
 import { RootState } from '../store';
 
 export interface CurrentSongState {
-  song: Track | null;
   playing: boolean;
+  song: Track | null;
 }
 
 const initialState: CurrentSongState = {
-  song: null,
   playing: true,
+  song: null,
 };
 
 const currentSongSlice = createSlice({

@@ -5,10 +5,10 @@ import millisToMinutesAndSeconds from '../../../utils/msToMinutes';
 import styles from './SongItem.module.scss';
 
 interface SongItemPros {
-  song: Track;
-  index: number;
-  songClicked: () => void;
   current: boolean;
+  index: number;
+  song: Track;
+  songClicked: () => void;
 }
 
 const SongItem = ({
