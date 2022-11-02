@@ -15,17 +15,17 @@ export const fetchFeaturedPlaylists = createAsyncThunk(
 );
 
 export interface PlaylistState {
-  playlists: PlaylistsType | null;
-  loading: boolean;
   error: string;
+  loading: boolean;
   message: string;
+  playlists: PlaylistsType | null;
 }
 
 const initialState: PlaylistState = {
-  playlists: null,
-  loading: true,
   error: '',
+  loading: true,
   message: '',
+  playlists: null,
 };
 
 const featuredPlaylistSlice = createSlice({
