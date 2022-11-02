@@ -54,7 +54,12 @@
 
     "@typescript-eslint/triple-slash-reference": 0,
     // For slices
-    "no-param-reassign": "off"
+    "no-param-reassign": "off",
+
+    "@typescript-eslint/member-ordering": [
+      "error",
+      { "default": { "memberTypes": "never", "order": "alphabetically" } }
+    ]
   },
   "settings": {
     "react": {
