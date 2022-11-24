@@ -59,7 +59,9 @@
     "@typescript-eslint/member-ordering": [
       "error",
       { "default": { "memberTypes": "never", "order": "alphabetically" } }
-    ]
+    ],
+
+    "@typescript-eslint/prefer-optional-chain": "error"
   },
   "settings": {
     "react": {
