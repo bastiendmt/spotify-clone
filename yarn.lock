@@ -2211,14 +2211,14 @@
   dependencies:
     "@typescript-eslint/utils" "5.40.0"
 
-"@typescript-eslint/parser@^5.0.0", "@typescript-eslint/parser@^5.45.0", "@typescript-eslint/parser@^5.5.0":
-  version "5.45.0"
-  resolved "https://registry.yarnpkg.com/@typescript-eslint/parser/-/parser-5.45.0.tgz#b18a5f6b3cf1c2b3e399e9d2df4be40d6b0ddd0e"
-  integrity sha512-brvs/WSM4fKUmF5Ot/gEve6qYiCMjm6w4HkHPfS6ZNmxTS0m0iNN4yOChImaCkqc1hRwFGqUyanMXuGal6oyyQ==
+"@typescript-eslint/parser@^5.0.0", "@typescript-eslint/parser@^5.46.0", "@typescript-eslint/parser@^5.5.0":
+  version "5.46.0"
+  resolved "https://registry.yarnpkg.com/@typescript-eslint/parser/-/parser-5.46.0.tgz#002d8e67122947922a62547acfed3347cbf2c0b6"
+  integrity sha512-joNO6zMGUZg+C73vwrKXCd8usnsmOYmgW/w5ZW0pG0RGvqeznjtGDk61EqqTpNrFLUYBW2RSBFrxdAZMqA4OZA==
   dependencies:
-    "@typescript-eslint/scope-manager" "5.45.0"
-    "@typescript-eslint/types" "5.45.0"
-    "@typescript-eslint/typescript-estree" "5.45.0"
+    "@typescript-eslint/scope-manager" "5.46.0"
+    "@typescript-eslint/types" "5.46.0"
+    "@typescript-eslint/typescript-estree" "5.46.0"
     debug "^4.3.4"
 
 "@typescript-eslint/scope-manager@5.40.0":
@@ -2241,6 +2241,14 @@
   version "5.46.0"
   resolved "https://registry.yarnpkg.com/@typescript-eslint/scope-manager/-/scope-manager-5.46.0.tgz#60790b14d0c687dd633b22b8121374764f76ce0d"
   integrity sha512-7wWBq9d/GbPiIM6SqPK9tfynNxVbfpihoY5cSFMer19OYUA3l4powA2uv0AV2eAZV6KoAh6lkzxv4PoxOLh1oA==
+  dependencies:
+    "@typescript-eslint/types" "5.46.0"
+    "@typescript-eslint/visitor-keys" "5.46.0"
+
+"@typescript-eslint/type-utils@5.45.0":
+  version "5.45.0"
+  resolved "https://registry.yarnpkg.com/@typescript-eslint/type-utils/-/type-utils-5.45.0.tgz#aefbc954c40878fcebeabfb77d20d84a3da3a8b2"
+  integrity sha512-DY7BXVFSIGRGFZ574hTEyLPRiQIvI/9oGcN8t1A7f6zIs6ftbrU0nhyV26ZW//6f85avkwrLag424n+fkuoJ1Q==
   dependencies:
     "@typescript-eslint/types" "5.46.0"
     "@typescript-eslint/visitor-keys" "5.46.0"
