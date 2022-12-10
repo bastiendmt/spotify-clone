@@ -5,7 +5,7 @@ import { Time } from '../../assets';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import { loadSong } from '../../store/reducers/currentSong.slice';
 import { Track } from '../../types/track.interface';
-import millisToMinutesAndSeconds from '../../utils/msToMinutes';
+import msToMinutesAndSeconds from '../../utils/msToMinutes';
 import { fetchPlaylistById } from '../../store/reducers/playlistDetail.slice';
 import styles from './PlaylistDetail.module.scss';
 import SongItem from './SongItem/SongItem';
@@ -60,7 +60,7 @@ const PlaylistDetail = (): JSX.Element => {
     if (playlist != null) {
       const { items } = playlist.tracks;
       items.forEach(({ track }) => (totalMS += track.duration_ms));
-      return `about ${millisToMinutesAndSeconds(totalMS)}`;
+      return `about ${msToMinutesAndSeconds(totalMS)}`;
     }
     return 'could not load duration';
   };

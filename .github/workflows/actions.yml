@@ -1,4 +1,4 @@
-name: Action cheks
+name: Action checks
 on:
   push:
     branches:

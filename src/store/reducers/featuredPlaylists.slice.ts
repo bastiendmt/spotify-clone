@@ -47,7 +47,7 @@ const featuredPlaylistSlice = createSlice({
     builder.addCase(fetchFeaturedPlaylists.rejected, (state, action) => {
       console.log(action);
       state.loading = false;
-      state.error = 'an error has occured';
+      state.error = 'an error has occurred';
     });
   },
 });

@@ -44,7 +44,7 @@ const playlistDetailSlice = createSlice({
     builder.addCase(fetchPlaylistById.rejected, (state, action) => {
       console.log(action);
       state.loading = false;
-      state.error = 'an error has occured';
+      state.error = 'an error has occurred';
     });
   },
 });

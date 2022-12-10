@@ -20,13 +20,13 @@ const currentSongSlice = createSlice({
       state.playing = true;
       state.song = action.payload;
     },
-    playpause: (state) => {
+    playPause: (state) => {
       state.playing = !state.playing;
     },
   },
 });
 
-export const { loadSong, playpause } = currentSongSlice.actions;
+export const { loadSong, playPause } = currentSongSlice.actions;
 
 export default currentSongSlice;
 
