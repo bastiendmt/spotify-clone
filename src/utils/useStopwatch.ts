@@ -12,7 +12,7 @@ const useStopwatch = (): [
   const [time, setTime] = useState(0);
   const [running, setRunning] = useState(false);
   useEffect(() => {
-    let interval: any;
+    let interval: NodeJS.Timeout | undefined;
     if (running) {
       interval = setInterval(() => {
         setTime((prevTime) => prevTime + 10);

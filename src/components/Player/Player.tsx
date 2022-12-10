@@ -1,6 +1,3 @@
-/* eslint-disable jsx-a11y/media-has-caption */
-/* eslint-disable jsx-a11y/control-has-associated-label */
-/* eslint-disable jsx-a11y/click-events-have-key-events */
 import { useEffect, useRef, useState } from 'react';
 import { Like, Pause, Play, Volume, VolumeMuted } from '../../assets';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
