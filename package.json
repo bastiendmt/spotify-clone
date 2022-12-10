@@ -17,8 +17,9 @@
     "react-redux": "^8.0.5",
     "react-router-dom": "^6.4.5",
     "react-scripts": "^5.0.1",
-    "sass": "^1.56.2",
-    "typescript": "^4.9.4",
+    "rome": "^11.0.0",
+    "sass": "^1.56.1",
+    "typescript": "^4.9.3",
     "universal-cookie": "^4.0.4"
   },
   "scripts": {
@@ -26,13 +27,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "lint": "yarn run eslint src/"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
+    "lint": "yarn rome check src/",
+    "format": "yarn rome format src/ --write"
   },
   "browserslist": {
     "production": [
@@ -53,21 +49,7 @@
     "@types/react-dom": "^18.0.9",
     "@types/react-redux": "^7.1.24",
     "@types/react-router-dom": "^5.3.3",
-    "@typescript-eslint/eslint-plugin": "^5.46.0",
-    "@typescript-eslint/parser": "^5.44.0",
-    "@typescript-eslint/parser": "^5.46.0",
-    "eslint": "^8.29.0",
-    "eslint-config-airbnb": "19.0.4",
-    "eslint-config-prettier": "^8.5.0",
-    "eslint-config-standard-with-typescript": "^23.0.0",
-    "eslint-plugin-import": "^2.25.3",
-    "eslint-plugin-jsx-a11y": "^6.5.1",
-    "eslint-plugin-n": "^15.6.0",
-    "eslint-plugin-prettier": "^4.2.1",
-    "eslint-plugin-promise": "^6.1.1",
-    "eslint-plugin-react": "^7.31.11",
-    "eslint-plugin-react-hooks": "^4.3.0",
-    "prettier": "^2.8.1"
+    "prettier": "^2.8.0"
   },
   "main": "index.js",
   "repository": "https://github.com/bastiendmt/spotify-like-web.git",

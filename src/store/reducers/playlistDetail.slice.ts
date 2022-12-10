@@ -9,6 +9,7 @@ export const fetchPlaylistById = createAsyncThunk(
     try {
       return await GetPlaylistDetail(playlistId);
     } catch (error) {
+      console.error(error);
       return thunkAPI.rejectWithValue('something went wrong');
     }
   },
