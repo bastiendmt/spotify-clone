@@ -92,6 +92,7 @@ const Player = (): JSX.Element => {
                 <div
                   className={styles.Wrapper}
                   onClick={(event) => barCallBack(event, timeRef, setProgress)}
+                  onKeyDown={() => dispatch(playpause())}
                   role="button"
                   tabIndex={0}
                   ref={timeRef}
@@ -117,6 +118,7 @@ const Player = (): JSX.Element => {
               <div
                 className={styles.Wrapper}
                 onClick={(event) => barCallBack(event, volumeRef, setVolume)}
+                onKeyDown={() => setMute(!mute)}
                 ref={volumeRef}
                 role="button"
                 tabIndex={0}
