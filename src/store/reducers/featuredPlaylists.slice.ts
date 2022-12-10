@@ -9,6 +9,7 @@ export const fetchFeaturedPlaylists = createAsyncThunk(
     try {
       return await GetFeaturedPlaylists();
     } catch (error) {
+      console.error(error);
       return thunkAPI.rejectWithValue('something went wrong');
     }
   },
