@@ -2,15 +2,15 @@ import { FastAverageColor } from 'fast-average-color';
 import { useEffect, useRef } from 'react';
 import { useParams } from 'react-router-dom';
 import { Time } from '../../assets';
-import { useAppDispatch, useAppSelector } from '../../store/hooks';
-import { loadSong } from '../../store/reducers/currentSong.slice';
-import { Track } from '../../types/track.interface';
-import millisToMinutesAndSeconds from '../../utils/msToMinutes';
-import { fetchPlaylistById } from '../../store/reducers/playlistDetail.slice';
-import styles from './PlaylistDetail.module.scss';
-import SongItem from './SongItem/SongItem';
 import Loader from '../../components/Loader/Loader';
 import NotFound from '../../components/NotFound/NotFound';
+import { useAppDispatch, useAppSelector } from '../../store/hooks';
+import { loadSong } from '../../store/reducers/currentSong.slice';
+import { fetchPlaylistById } from '../../store/reducers/playlistDetail.slice';
+import { Track } from '../../types/track.interface';
+import msToMinutesAndSeconds from '../../utils/msToMinutes';
+import styles from './PlaylistDetail.module.scss';
+import SongItem from './SongItem/SongItem';
 
 const PlaylistDetail = (): JSX.Element => {
   const { id } = useParams<{ id: string }>();
@@ -35,7 +35,7 @@ const PlaylistDetail = (): JSX.Element => {
         .then((color) => {
           const background = document.getElementById('Background');
           const playlistBackground =
-            document.getElementById('PlaylistBackgorund');
+            document.getElementById('PlaylistBackground');
           if (background != null) {
             background.style.backgroundColor = color.rgb;
           }
@@ -60,7 +60,7 @@ const PlaylistDetail = (): JSX.Element => {
     if (playlist != null) {
       const { items } = playlist.tracks;
       items.forEach(({ track }) => (totalMS += track.duration_ms));
-      return `about ${millisToMinutesAndSeconds(totalMS)}`;
+      return `about ${msToMinutesAndSeconds(totalMS)}`;
     }
     return 'could not load duration';
   };
@@ -88,7 +88,7 @@ const PlaylistDetail = (): JSX.Element => {
                   <div className={styles.Title}>
                     <h1>{playlist.name}</h1>
                   </div>
-                  <div className={styles.Categ}>{playlist.description}</div>
+                  <div className={styles.Category}>{playlist.description}</div>
                   <div className={styles.Details}>
                     <span className={styles.Text_Bold}>
                       {playlist.owner.display_name}
@@ -101,7 +101,7 @@ const PlaylistDetail = (): JSX.Element => {
                 </div>
               </div>
 
-              <div className={styles.List_Background} id="PlaylistBackgorund" />
+              <div className={styles.List_Background} id="PlaylistBackground" />
               <div className={styles.List}>
                 <div className={styles.Heading_Sticky}>
                   <div className={styles.Heading}>

@@ -1,7 +1,7 @@
 import { Play } from '../../../assets';
 import { Track } from '../../../types/track.interface';
 import formatDate from '../../../utils/formatDate';
-import millisToMinutesAndSeconds from '../../../utils/msToMinutes';
+import msToMinutesAndSeconds from '../../../utils/msToMinutes';
 import styles from './SongItem.module.scss';
 
 interface SongItemPros {
@@ -49,7 +49,7 @@ const SongItem = ({
         <span
           className={[
             styles.Artist,
-            song.track.explicit ? styles.Artist_sub : styles.Artist_badg,
+            song.track.explicit ? styles.Artist_sub : styles.Artist_badge,
           ].join(', ')}
         >
           {song.track.artists[0].name}
@@ -59,7 +59,7 @@ const SongItem = ({
     <div>{song.track.album.name}</div>
     <div>{formatDate(song.added_at)}</div>
     <div className={styles.Length}>
-      {millisToMinutesAndSeconds(song.track.duration_ms)}
+      {msToMinutesAndSeconds(song.track.duration_ms)}
       <button type="button" className={styles.More}>
         ...
       </button>

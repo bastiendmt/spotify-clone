@@ -30,7 +30,7 @@ const App = (): JSX.Element => {
             <div className={styles.Error}>
               <p>{error}</p>
               <button type="button" onClick={() => cookies.remove('auth')}>
-                Clean coockies
+                Clean cookies
               </button>
             </div>
           )}

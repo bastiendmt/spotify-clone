@@ -1,8 +1,8 @@
 import { useEffect, useRef, useState } from 'react';
 import { Like, Pause, Play, Volume, VolumeMuted } from '../../assets';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
-import { playpause } from '../../store/reducers/currentSong.slice';
-import millisToMinutesAndSeconds from '../../utils/msToMinutes';
+import { playPause } from '../../store/reducers/currentSong.slice';
+import msToMinutesAndSeconds from '../../utils/msToMinutes';
 import useBar from '../../utils/useBar';
 import useStopwatch from '../../utils/useStopwatch';
 import styles from './Player.module.scss';
@@ -80,16 +80,16 @@ const Player = (): JSX.Element => {
             <div className={styles.Controls}>
               <audio ref={audioEml} src={song.track.preview_url} />
               <div>
-                <button type="button" onClick={() => dispatch(playpause())}>
+                <button type="button" onClick={() => dispatch(playPause())}>
                   {playing ? <Pause /> : <Play />}
                 </button>
               </div>
               <div className={styles.BarContainer}>
-                <div>{millisToMinutesAndSeconds(currentTime)}</div>
+                <div>{msToMinutesAndSeconds(currentTime)}</div>
                 <div
                   className={styles.Wrapper}
                   onClick={(event) => barCallBack(event, timeRef, setProgress)}
-                  onKeyDown={() => dispatch(playpause())}
+                  onKeyDown={() => dispatch(playPause())}
                   role="button"
                   tabIndex={0}
                   ref={timeRef}
