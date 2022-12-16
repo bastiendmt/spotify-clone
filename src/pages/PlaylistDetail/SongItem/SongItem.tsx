@@ -49,7 +49,7 @@ const SongItem = ({
         <span
           className={[
             styles.Artist,
-            song.track.explicit ? styles.Artist_sub : styles.Artist_badg,
+            song.track.explicit ? styles.Artist_sub : styles.Artist_badge,
           ].join(', ')}
         >
           {song.track.artists[0].name}
