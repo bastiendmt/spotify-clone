@@ -4473,10 +4473,10 @@ express@^4.17.3:
     utils-merge "1.0.1"
     vary "~1.1.2"
 
-fast-average-color@^9.1.1:
-  version "9.1.1"
-  resolved "https://registry.yarnpkg.com/fast-average-color/-/fast-average-color-9.1.1.tgz#7b2cb70a904b848e7d347b3e3612fbd84a535ca2"
-  integrity sha512-PJizLBcGb/jqUzrH66385te4+GcOK7wcUiCDvBUszdpzc/pvV1kwifvvsFygV3mS+7qwnWmK9/BrZniaOOC9ag==
+fast-average-color@^9.2.0:
+  version "9.2.0"
+  resolved "https://registry.yarnpkg.com/fast-average-color/-/fast-average-color-9.2.0.tgz#a564ac004822385dc021d49e6bb332b9d097f522"
+  integrity sha512-gtPiapivL1Zcio0RSPZTMie7fcCFAQIS5XueieGHD1A54FsfsgVJG/9YXeBLvFWubTZHdCQmcz1C82jOM7f5Nw==
   dependencies:
     "@types/offscreencanvas" "^2019.7.0"
 
