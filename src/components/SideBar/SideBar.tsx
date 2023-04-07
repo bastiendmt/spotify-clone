@@ -5,7 +5,7 @@ import { PlaylistsType } from '../../types/playlists.interface';
 import ListItem from './ListItem/ListItem';
 import styles from './SideBar.module.scss';
 
-const SideBar = ({ playlists }: { playlists: PlaylistsType }): JSX.Element => (
+const SideBar = ({ playlists }: { playlists: PlaylistsType }) => (
   <div className={styles.SideBar}>
     <Link style={{ textDecoration: 'none', color: 'white' }} to="/">
       <div className={styles.Logo}>

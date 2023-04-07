@@ -11,12 +11,7 @@ interface SongItemPros {
   songClicked: () => void;
 }
 
-const SongItem = ({
-  song,
-  index,
-  songClicked,
-  current,
-}: SongItemPros): JSX.Element => (
+const SongItem = ({ song, index, songClicked, current }: SongItemPros) => (
   <div
     className={[
       styles.Item,

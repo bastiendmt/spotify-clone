@@ -10,7 +10,7 @@ import Playlists from './pages/Playlists/Playlists';
 import { useAppDispatch, useAppSelector } from './store/hooks';
 import { fetchFeaturedPlaylists } from './store/reducers/featuredPlaylists.slice';
 
-const App = (): JSX.Element => {
+const App = () => {
   const cookies = new Cookies();
   const dispatch = useAppDispatch();
   const { playlists, message, loading, error } = useAppSelector(

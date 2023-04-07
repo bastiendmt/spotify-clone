@@ -1,4 +1,4 @@
-const Volume = (): JSX.Element => (
+const Volume = () => (
   <svg
     role="presentation"
     height="16"
