@@ -66,8 +66,8 @@
   .NameContainer {
     display: grid;
     grid-template:
-      "title title"
-      "badges subtitle" / auto 1fr;
+      'title title'
+      'badges subtitle' / auto 1fr;
     column-gap: 8px;
     align-items: center;
     height: 40px;

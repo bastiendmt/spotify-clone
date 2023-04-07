@@ -4,8 +4,8 @@
   grid-template-rows: 1fr auto;
   grid-template-columns: auto 1fr;
   grid-template-areas:
-    "side-bar main-view"
-    "playing-bar playing-bar";
+    'side-bar main-view'
+    'playing-bar playing-bar';
 }
 
 .Error {
