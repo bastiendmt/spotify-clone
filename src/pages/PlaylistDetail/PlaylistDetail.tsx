@@ -12,7 +12,7 @@ import msToMinutesAndSeconds from '../../utils/msToMinutes';
 import styles from './PlaylistDetail.module.scss';
 import SongItem from './SongItem/SongItem';
 
-const PlaylistDetail = (): JSX.Element => {
+const PlaylistDetail = () => {
   const { id } = useParams<{ id: string }>();
   const coverRef = useRef<HTMLImageElement | null>(null);
   const dispatch = useAppDispatch();
@@ -59,7 +59,9 @@ const PlaylistDetail = (): JSX.Element => {
     let totalMS = 0;
     if (playlist != null) {
       const { items } = playlist.tracks;
-      items.forEach(({ track }) => (totalMS += track.duration_ms));
+      items.forEach(({ track }) => {
+        totalMS += track.duration_ms;
+      });
       return `about ${msToMinutesAndSeconds(totalMS)}`;
     }
     return 'could not load duration';

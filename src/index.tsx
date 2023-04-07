@@ -6,6 +6,7 @@ import './index.module.scss';
 import { store } from './store/store';
 
 const container = document.getElementById('root');
+// rome-ignore lint/style/noNonNullAssertion: <explanation>
 const root = createRoot(container!);
 root.render(
   <React.StrictMode>

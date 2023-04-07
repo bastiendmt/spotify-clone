@@ -9,7 +9,7 @@ const Playlists = ({
 }: {
   message: string;
   playlists: PlaylistsType;
-}): JSX.Element => (
+}) => (
   <div className={styles.Playlists}>
     <h1 className={styles.Title}>Playlists - {message}</h1>
     <div className={styles.Container}>

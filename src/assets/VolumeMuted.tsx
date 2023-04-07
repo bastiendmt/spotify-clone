@@ -1,4 +1,4 @@
-const VolumeMuted = (): JSX.Element => (
+const VolumeMuted = () => (
   <svg
     role="presentation"
     height="16"

@@ -3,11 +3,7 @@ import { Play } from '../../../assets';
 import { PlaylistType } from '../../../types/playlist.interface';
 import styles from './PlaylistItem.module.scss';
 
-const PlaylistItem = ({
-  playlist,
-}: {
-  playlist: PlaylistType;
-}): JSX.Element => (
+const PlaylistItem = ({ playlist }: { playlist: PlaylistType }) => (
   <Link to={`/playlist/${playlist.id}`} className={styles.LinkPlaylist}>
     <div className={styles.Playlist}>
       <div className={styles.imgContainer}>

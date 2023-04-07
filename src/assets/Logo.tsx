@@ -1,4 +1,4 @@
-const Logo = (): JSX.Element => (
+const Logo = () => (
   <svg viewBox="0 0 1134 340" className="spotify-logo--text">
     <title>Spotify-clone</title>
     <path
