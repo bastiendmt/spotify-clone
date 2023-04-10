@@ -45,7 +45,7 @@
   "devDependencies": {
     "@types/jest": "^29.4.0",
     "@types/qs": "^6.9.6",
-    "@types/react": "^18.0.28",
+    "@types/react": "^18.0.34",
     "@types/react-dom": "^18.0.11",
     "@types/react-redux": "^7.1.25",
     "@types/react-router-dom": "^5.3.3",
