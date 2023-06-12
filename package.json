@@ -43,7 +43,7 @@
   },
   "devDependencies": {
     "@types/qs": "^6.9.6",
-    "@types/react": "^18.0.35",
+    "@types/react": "^18.2.11",
     "@types/react-dom": "^18.0.11",
     "@types/react-redux": "^7.1.25",
     "@types/react-router-dom": "^5.3.3",
