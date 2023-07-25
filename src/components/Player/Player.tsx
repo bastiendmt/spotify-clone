@@ -7,7 +7,7 @@ import useBar from '../../utils/useBar';
 import useStopwatch from '../../utils/useStopwatch';
 import styles from './Player.module.scss';
 
-const Player = (): JSX.Element => {
+const Player = () => {
   const dispatch = useAppDispatch();
   const { song, playing } = useAppSelector((state) => state.currentSong);
   const audioEml = useRef<HTMLAudioElement | null>(null);
@@ -78,7 +78,9 @@ const Player = (): JSX.Element => {
             </div>
 
             <div className={styles.Controls}>
-              <audio ref={audioEml} src={song.track.preview_url} />
+              <audio ref={audioEml} src={song.track.preview_url}>
+                <track default />
+              </audio>
               <div>
                 <button type="button" onClick={() => dispatch(playPause())}>
                   {playing ? <Pause /> : <Play />}
