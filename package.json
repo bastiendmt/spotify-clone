@@ -49,7 +49,6 @@
     "@types/react-router-dom": "^5.3.3",
     "prettier": "^3.0.0"
   },
-  "main": "index.js",
   "repository": "https://github.com/bastiendmt/spotify-like-web.git",
   "author": "Bastien DUMONT <bastienxs@gmail.com>",
   "license": "MIT"
