@@ -7,5 +7,16 @@
     "rome",
     "sonarcloud",
     "spotify"
-  ]
+  ],
+  "[typescript]": {
+    "editor.defaultFormatter": "rome.rome"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "rome.rome"
+  },
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "quickfix.rome": true,
+    "source.organizeImports.rome": true
+  }
 }
