@@ -25,25 +25,12 @@ jobs:
         run: yarn add rome
 
       - name: Run Rome lint
-        run: yarn rome check src/
+        run: yarn lint
         continue-on-error: false
 
-  prettier:
-    name: Prettier
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-        with:
-          # Make sure the actual branch is checked out when running on pull requests
-          ref: ${{ github.head_ref }}
-
-      - name: Prettify code
-        uses: creyD/prettier_action@master
-        with:
-          # This part is also where you can pass other options, for example:
-          prettier_options: --write **/*.{js,md,tsx,scss}
+      - name: Run Rome format
+        run: yarn format
+        continue-on-error: false
 
   analyze:
     name: Analyze
