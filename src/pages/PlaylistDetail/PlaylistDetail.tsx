@@ -76,12 +76,12 @@ const PlaylistDetail = () => {
           {playlist != null && (
             <div className={styles.PlaylistDetail}>
               <div className={styles.Cover}>
-                <div className={styles.Background} id="Background" />
+                <div className={styles.Background} id='Background' />
                 <div className={styles.Gradient} />
                 <div className={styles.Img}>
                   <img
                     src={playlist.images[0].url}
-                    alt="playlist img"
+                    alt='playlist img'
                     ref={coverRef}
                   />
                 </div>
@@ -103,7 +103,7 @@ const PlaylistDetail = () => {
                 </div>
               </div>
 
-              <div className={styles.List_Background} id="PlaylistBackground" />
+              <div className={styles.List_Background} id='PlaylistBackground' />
               <div className={styles.List}>
                 <div className={styles.Heading_Sticky}>
                   <div className={styles.Heading}>

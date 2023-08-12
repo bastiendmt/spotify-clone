@@ -29,7 +29,7 @@ const App = () => {
           {error !== '' && (
             <div className={styles.Error}>
               <p>{error}</p>
-              <button type="button" onClick={() => cookies.remove('auth')}>
+              <button type='button' onClick={() => cookies.remove('auth')}>
                 Clean cookies
               </button>
             </div>
@@ -40,12 +40,12 @@ const App = () => {
                 <SideBar playlists={playlists} />
                 <Routes>
                   <Route
-                    path="/"
+                    path='/'
                     element={
                       <Playlists playlists={playlists} message={message} />
                     }
                   />
-                  <Route path="/playlist/:id" element={<PlaylistDetail />} />
+                  <Route path='/playlist/:id' element={<PlaylistDetail />} />
                 </Routes>
                 <Player />
               </BrowserRouter>
