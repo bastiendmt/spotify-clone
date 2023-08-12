@@ -28,10 +28,6 @@ jobs:
         run: yarn lint
         continue-on-error: false
 
-      - name: Run Rome format
-        run: yarn format
-        continue-on-error: false
-
   analyze:
     name: Analyze
     runs-on: ubuntu-latest
