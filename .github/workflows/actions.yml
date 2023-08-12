@@ -24,9 +24,9 @@ jobs:
       - name: Install Rome
         run: yarn add rome
 
-      - name: Run Rome
+      - name: Run Rome lint
         run: yarn rome check src/
-        continue-on-error: true
+        continue-on-error: false
 
   prettier:
     name: Prettier
