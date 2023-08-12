@@ -12,13 +12,13 @@ const useStopwatch = (): [
   const [time, setTime] = useState(0);
   const [running, setRunning] = useState(false);
   useEffect(() => {
-    let interval: NodeJS.Timeout | undefined;
+    let interval: ReturnType<typeof setInterval> | undefined;
     if (running) {
       interval = setInterval(() => {
         setTime((prevTime) => prevTime + 10);
       }, 10);
     } else if (!running) {
-      clearInterval(interval);
+      interval && clearInterval(interval);
     }
     return () => clearInterval(interval);
   }, [running]);
