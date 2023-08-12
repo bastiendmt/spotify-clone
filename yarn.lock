@@ -2750,7 +2750,7 @@ rollup@^3.27.1:
 
 rome@^12.1.3:
   version "12.1.3"
-  resolved "https://registry.npmjs.org/rome/-/rome-12.1.3.tgz"
+  resolved "https://registry.yarnpkg.com/rome/-/rome-12.1.3.tgz#4d4d62cad16216843680bd3ca11a4c248134902a"
   integrity sha512-e+ff72hxDpe/t5/Us7YRBVw3PBET7SeczTQNn6tvrWdrCaAw3qOukQQ+tDCkyFtS4yGsnhjrJbm43ctNbz27Yg==
   optionalDependencies:
     "@rometools/cli-darwin-arm64" "12.1.3"
