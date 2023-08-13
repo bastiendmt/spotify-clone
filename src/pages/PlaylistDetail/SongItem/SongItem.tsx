@@ -17,7 +17,7 @@ const SongItem = ({ song, index, songClicked, current }: SongItemPros) => (
       styles.Item,
       song.track.preview_url !== '' ? styles.Enabled : styles.Disabled,
     ].join(' ')}
-    role="button"
+    role='button'
     tabIndex={0}
     onClick={songClicked}
     onKeyDown={songClicked}
@@ -26,13 +26,13 @@ const SongItem = ({ song, index, songClicked, current }: SongItemPros) => (
       <span style={current ? { color: '#1db954' } : { color: 'white' }}>
         {index + 1}
       </span>
-      <button type="button">
+      <button type='button'>
         <Play />
       </button>
     </div>
 
     <div className={styles.Title}>
-      <img src={song.track.album.images[0].url} alt="cover img" />
+      <img src={song.track.album.images[0].url} alt='cover img' />
       <div className={styles.NameContainer}>
         <div
           className={styles.Name}
@@ -55,7 +55,7 @@ const SongItem = ({ song, index, songClicked, current }: SongItemPros) => (
     <div>{formatDate(song.added_at)}</div>
     <div className={styles.Length}>
       {msToMinutesAndSeconds(song.track.duration_ms)}
-      <button type="button" className={styles.More}>
+      <button type='button' className={styles.More}>
         ...
       </button>
     </div>

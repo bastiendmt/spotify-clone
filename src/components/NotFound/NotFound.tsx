@@ -4,7 +4,7 @@ import styles from './NotFound.module.scss';
 const NotFound = () => (
   <div className={styles.NotFound}>
     <p>An error has occurred</p>
-    <Link to="/">
+    <Link to='/'>
       <span>Go back</span>
     </Link>
   </div>

@@ -7,7 +7,7 @@ import styles from './SideBar.module.scss';
 
 const SideBar = ({ playlists }: { playlists: PlaylistsType }) => (
   <div className={styles.SideBar}>
-    <Link style={{ textDecoration: 'none', color: 'white' }} to="/">
+    <Link style={{ textDecoration: 'none', color: 'white' }} to='/'>
       <div className={styles.Logo}>
         <Logo />
       </div>
