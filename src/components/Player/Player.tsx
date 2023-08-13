@@ -1,5 +1,9 @@
 import { useEffect, useRef, useState } from 'react';
-import { Like, Pause, Play, Volume, VolumeMuted } from '../../assets';
+import { ReactComponent as Like } from '../../assets/like.svg';
+import { ReactComponent as Pause } from '../../assets/pause.svg';
+import { ReactComponent as Play } from '../../assets/play.svg';
+import { ReactComponent as Volume } from '../../assets/volume.svg';
+import { ReactComponent as VolumeMuted } from '../../assets/volumeMuted.svg';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import { playPause } from '../../store/reducers/currentSong.slice';
 import msToMinutesAndSeconds from '../../utils/msToMinutes';

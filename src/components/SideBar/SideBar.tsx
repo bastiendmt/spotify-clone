@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import Logo from '../../assets/logo.svg';
+import { ReactComponent as Logo } from '../../assets/logo.svg';
 import { PlaylistType } from '../../types/playlist.interface';
 import { PlaylistsType } from '../../types/playlists.interface';
 import ListItem from './ListItem/ListItem';

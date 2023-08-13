@@ -1,7 +1,7 @@
 import { FastAverageColor } from 'fast-average-color';
 import { useEffect, useRef } from 'react';
 import { useParams } from 'react-router-dom';
-import { Time } from '../../assets';
+import { ReactComponent as Time } from '../../assets/time.svg';
 import Loader from '../../components/Loader/Loader';
 import NotFound from '../../components/NotFound/NotFound';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
