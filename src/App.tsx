@@ -8,13 +8,16 @@ import SideBar from './components/SideBar/SideBar';
 import PlaylistDetail from './pages/PlaylistDetail/PlaylistDetail';
 import Playlists from './pages/Playlists/Playlists';
 import { useAppDispatch, useAppSelector } from './store/hooks';
-import { fetchFeaturedPlaylists } from './store/reducers/featuredPlaylists.slice';
+import {
+  fetchFeaturedPlaylists,
+  selectFeaturedPlaylists,
+} from './store/reducers/featuredPlaylists.slice';
 
 const App = () => {
   const cookies = new Cookies();
   const dispatch = useAppDispatch();
   const { playlists, message, loading, error } = useAppSelector(
-    (state) => state.featuredPlaylists,
+    selectFeaturedPlaylists,
   );
 
   useEffect(() => {

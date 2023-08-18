@@ -6,7 +6,7 @@ import Loader from '../../components/Loader/Loader';
 import NotFound from '../../components/NotFound/NotFound';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import {
-  currentSongSelector,
+  selectCurrentSong,
   loadSong,
 } from '../../store/reducers/currentSong.slice';
 import {
@@ -23,7 +23,7 @@ const PlaylistDetail = () => {
   const coverRef = useRef<HTMLImageElement | null>(null);
   const dispatch = useAppDispatch();
   const { playlist, loading, error } = useAppSelector(playlistDetailsSelector);
-  const { song } = useAppSelector(currentSongSelector);
+  const { song } = useAppSelector(selectCurrentSong);
 
   useEffect(() => {
     if (id != null) {

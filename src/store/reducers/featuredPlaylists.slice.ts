@@ -54,5 +54,5 @@ const featuredPlaylistSlice = createSlice({
 
 export default featuredPlaylistSlice;
 
-export const featuredPlaylistsSelector = (state: RootState) =>
+export const selectFeaturedPlaylists = (state: RootState) =>
   state.featuredPlaylists;

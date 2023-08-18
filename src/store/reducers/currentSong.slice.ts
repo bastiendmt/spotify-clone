@@ -30,4 +30,4 @@ export const { loadSong, playPause } = currentSongSlice.actions;
 
 export default currentSongSlice;
 
-export const currentSongSelector = (state: RootState) => state.currentSong;
+export const selectCurrentSong = (state: RootState) => state.currentSong;
