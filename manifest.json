@@ -1,15 +1,20 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Spotify clone",
+  "name": "Spotify clone",
+  "description": "A Spotify clone that I made for fun.",
   "icons": [
     {
       "src": "spotify.ico",
-      "sizes": "64x64 32x32 24x24 16x16",
+      "sizes": "48x48",
       "type": "image/x-icon"
+    },
+    {
+      "src": "spotify-icon.svg",
+      "sizes": "150x150"
     }
   ],
-  "start_url": ".",
+  "start_url": "/",
   "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "theme_color": "#1db954",
+  "background_color": "#535353"
 }
