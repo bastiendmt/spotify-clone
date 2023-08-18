@@ -5,7 +5,10 @@ import { ReactComponent as Play } from '../../assets/play.svg';
 import { ReactComponent as Volume } from '../../assets/volume.svg';
 import { ReactComponent as VolumeMuted } from '../../assets/volumeMuted.svg';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
-import { playPause } from '../../store/reducers/currentSong.slice';
+import {
+  playPause,
+  selectCurrentSong,
+} from '../../store/reducers/currentSong.slice';
 import msToMinutesAndSeconds from '../../utils/msToMinutes';
 import useBar from '../../utils/useBar';
 import useStopwatch from '../../utils/useStopwatch';
@@ -13,7 +16,7 @@ import styles from './Player.module.scss';
 
 const Player = () => {
   const dispatch = useAppDispatch();
-  const { song, playing } = useAppSelector((state) => state.currentSong);
+  const { song, playing } = useAppSelector(selectCurrentSong);
   const audioEml = useRef<HTMLAudioElement | null>(null);
 
   const timeRef = useRef<HTMLDivElement | null>(null);

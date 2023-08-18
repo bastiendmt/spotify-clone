@@ -5,8 +5,14 @@ import { ReactComponent as Time } from '../../assets/time.svg';
 import Loader from '../../components/Loader/Loader';
 import NotFound from '../../components/NotFound/NotFound';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
-import { loadSong } from '../../store/reducers/currentSong.slice';
-import { fetchPlaylistById } from '../../store/reducers/playlistDetail.slice';
+import {
+  selectCurrentSong,
+  loadSong,
+} from '../../store/reducers/currentSong.slice';
+import {
+  fetchPlaylistById,
+  playlistDetailsSelector,
+} from '../../store/reducers/playlistDetail.slice';
 import { Track } from '../../types/track.interface';
 import msToMinutesAndSeconds from '../../utils/msToMinutes';
 import styles from './PlaylistDetail.module.scss';
@@ -16,10 +22,8 @@ const PlaylistDetail = () => {
   const { id } = useParams<{ id: string }>();
   const coverRef = useRef<HTMLImageElement | null>(null);
   const dispatch = useAppDispatch();
-  const {
-    currentSong: { song },
-    playlistDetail: { playlist, loading, error },
-  } = useAppSelector((state) => state);
+  const { playlist, loading, error } = useAppSelector(playlistDetailsSelector);
+  const { song } = useAppSelector(selectCurrentSong);
 
   useEffect(() => {
     if (id != null) {
