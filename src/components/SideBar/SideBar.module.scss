@@ -1,6 +1,6 @@
 .SideBar {
   grid-area: side-bar;
-  background-color: #000000;
+  background-color: var(--bg-black);
   color: white;
   width: 20vw;
   position: relative;
@@ -17,12 +17,12 @@
     line-height: 16px;
     letter-spacing: 0.1em;
     text-transform: uppercase;
-    color: #b3b3b3;
+    color: var(--fg-primary);
   }
 
   .Separator {
     margin: 8px 24px 8px 24px;
-    background-color: #282828;
+    background-color: var(--separator);
     border: none;
     height: 1px;
     min-height: 1px;

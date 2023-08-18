@@ -3,7 +3,7 @@
 }
 
 .Playlist {
-  background-color: #181818;
+  background-color: var(--bg-secondary);
   padding: 16px;
   border-radius: 4px;
   max-height: 300px;
@@ -40,7 +40,7 @@
     line-height: 24px;
     letter-spacing: normal;
     text-transform: none;
-    color: #fff;
+    color: var(--white);
   }
 
   .Artist {
@@ -62,8 +62,8 @@
     transform: translateY(10px);
 
     button {
-      color: #fff;
-      background-color: var(--green-color);
+      color: var(--white);
+      background-color: var(--green);
       border: 0;
       border-radius: 500px;
       height: 40px;
