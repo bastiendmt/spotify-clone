@@ -7,20 +7,19 @@ import styles from './SideBar.module.scss';
 
 const SideBar = ({ playlists }: { playlists: PlaylistsType }) => (
   <div className={styles.SideBar}>
-    <Link style={{ textDecoration: 'none', color: 'white' }} to='/'>
-      <div className={styles.Logo}>
-        <Logo />
-      </div>
+    <Link
+      style={{ textDecoration: 'none', color: 'white' }}
+      to='/'
+      aria-label='Homepage'
+      className={styles.Logo}
+    >
+      <Logo />
     </Link>
     <h1 className={styles.Title}>Playlists</h1>
     <hr className={styles.Separator} />
-    <div className={styles.ListContainer}>
-      <ul className={styles.List}>
-        {playlists.items?.map((item: PlaylistType) => (
-          <ListItem playlist={item} key={item.id} />
-        ))}
-      </ul>
-    </div>
+    {playlists.items?.map((item: PlaylistType) => (
+      <ListItem playlist={item} key={item.id} />
+    ))}
   </div>
 );
 

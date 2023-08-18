@@ -5,10 +5,9 @@
   width: 20vw;
   position: relative;
 
-  .Logo {
+  .Logo svg {
     padding: 24px 24px 0 24px;
     max-width: 130px;
-    flex: 1;
   }
 
   .Title {
@@ -27,15 +26,5 @@
     border: none;
     height: 1px;
     min-height: 1px;
-  }
-
-  .ListContainer {
-    height: auto;
-
-    .List {
-      list-style: none;
-      padding: 0;
-      max-width: 20vw;
-    }
   }
 }

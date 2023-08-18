@@ -4,9 +4,9 @@ import styles from './ListItem.module.scss';
 
 const ListItem = ({ playlist }: { playlist: PlaylistType }) => (
   <Link to={`/playlist/${playlist.id}`} className={styles.ListItem}>
-    <li className={styles.Item}>
+    <div className={styles.Item}>
       <span className={styles.Title}>{playlist.name}</span>
-    </li>
+    </div>
   </Link>
 );
 
