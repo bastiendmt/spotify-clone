@@ -8,6 +8,15 @@ Running demo [here](https://spoty-like.netlify.app/)
 
 See my mobile version on [rn-spotify-like](https://github.com/Bastiendmt/rn-spotify-like)
 
+## Tech stack
+
+- React
+- Redux RTK & async thunks
+- Scss
+- Vite
+
+Linting & formating by [Rome]([url](https://rome.tools/))
+
 ## Screenshots
 
 Featured playlists
