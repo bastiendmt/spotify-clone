@@ -3,12 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@babel/runtime": "^7.22.10",
     "@reduxjs/toolkit": "^1.9.5",
     "@testing-library/react": "^14.0.0",
     "@testing-library/user-event": "^14.4.3",
     "axios": "^1.4.0",
-    "babel-preset-react-app": "^10.0.1",
     "fast-average-color": "^9.3.0",
     "qs": "^6.11.2",
     "react": "^18.2.0",
