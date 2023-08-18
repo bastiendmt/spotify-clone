@@ -21,6 +21,7 @@
     "universal-cookie": "^4.0.4"
   },
   "scripts": {
+    "dev": "vite",
     "start": "vite",
     "build": "tsc && vite build",
     "serve": "vite preview",
