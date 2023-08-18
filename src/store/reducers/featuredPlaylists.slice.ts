@@ -15,7 +15,7 @@ export const fetchFeaturedPlaylists = createAsyncThunk(
   },
 );
 
-export interface PlaylistState {
+interface PlaylistState {
   error: string;
   loading: boolean;
   message: string;

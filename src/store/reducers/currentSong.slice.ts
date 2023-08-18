@@ -2,7 +2,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { Track } from '../../types/track.interface';
 import { RootState } from '../store';
 
-export interface CurrentSongState {
+interface CurrentSongState {
   playing: boolean;
   song: Track | null;
 }
