@@ -51,6 +51,5 @@ const playlistDetailSlice = createSlice({
 
 export default playlistDetailSlice;
 
-export const playlistDetailsSelector = (
-  state: RootState,
-): PlaylistType | null => state.playlistDetail.playlist;
+export const playlistDetailsSelector = (state: RootState) =>
+  state.playlistDetail;
