@@ -88,11 +88,9 @@ const Player = () => {
               <audio ref={audioEml} src={song.track.preview_url}>
                 <track kind='captions' />
               </audio>
-              <div>
-                <button type='button' onClick={() => dispatch(playPause())}>
-                  {playing ? <Pause /> : <Play />}
-                </button>
-              </div>
+              <button type='button' onClick={() => dispatch(playPause())}>
+                {playing ? <Pause /> : <Play />}
+              </button>
               <div className={styles.BarContainer}>
                 <div>{msToMinutesAndSeconds(currentTime)}</div>
                 <div
@@ -116,11 +114,9 @@ const Player = () => {
             </div>
 
             <div className={styles.Volume}>
-              <div>
-                <button type='button' onClick={() => setMute(!mute)}>
-                  {mute ? <VolumeMuted /> : <Volume />}
-                </button>
-              </div>
+              <button type='button' onClick={() => setMute(!mute)}>
+                {mute ? <VolumeMuted /> : <Volume />}
+              </button>
               <div
                 className={styles.Wrapper}
                 onClick={(event) => barCallBack(event, volumeRef, setVolume)}
