@@ -1,11 +1,6 @@
 .Playlists {
   grid-area: main-view;
   color: white;
-  display: flex;
-  flex-direction: column;
-  width: auto;
-  position: relative;
-  padding-left: 32px;
   overflow-y: hidden;
 
   .Title {
@@ -14,6 +9,7 @@
     line-height: 28px;
     letter-spacing: -0.04em;
     text-transform: none;
+    padding-left: 2rem;
   }
 
   .Container {
@@ -21,6 +17,6 @@
     gap: 24px;
     grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
     overflow-y: scroll;
-    padding-right: 32px;
+    padding: 0 2rem;
   }
 }

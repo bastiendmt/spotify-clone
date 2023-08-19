@@ -1,8 +1,6 @@
 .LinkPlaylist {
   text-decoration: none;
-}
 
-.Playlist {
   background-color: var(--bg-secondary);
   padding: 16px;
   border-radius: 4px;
@@ -34,25 +32,6 @@
     }
   }
 
-  .Name {
-    font-size: 16px;
-    font-weight: 700;
-    line-height: 24px;
-    letter-spacing: normal;
-    text-transform: none;
-    color: var(--white);
-  }
-
-  .Artist {
-    margin-top: 6px;
-    color: rgb(179, 179, 179);
-    font-size: 14px;
-    font-weight: 400;
-    line-height: 16px;
-    letter-spacing: normal;
-    text-transform: none;
-  }
-
   .PlayContainer {
     position: absolute;
     right: 8px;
@@ -71,5 +50,24 @@
 
       pointer-events: auto;
     }
+  }
+
+  .Name {
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 24px;
+    letter-spacing: normal;
+    text-transform: none;
+    color: var(--white);
+  }
+
+  .Artist {
+    margin-top: 6px;
+    color: rgb(179, 179, 179);
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 16px;
+    letter-spacing: normal;
+    text-transform: none;
   }
 }
