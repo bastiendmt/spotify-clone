@@ -82,18 +82,15 @@ const PlaylistDetail = () => {
               <div className={styles.Cover}>
                 <div className={styles.Background} id='Background' />
                 <div className={styles.Gradient} />
-                <div className={styles.Img}>
-                  <img
-                    src={playlist.images[0].url}
-                    alt='playlist img'
-                    ref={coverRef}
-                  />
-                </div>
+                <img
+                  src={playlist.images[0].url}
+                  alt='playlist img'
+                  ref={coverRef}
+                  className={styles.Img}
+                />
                 <div className={styles.Infos}>
-                  <div className={styles.Playlist}>PLAYLIST</div>
-                  <div className={styles.Title}>
-                    <h1>{playlist.name}</h1>
-                  </div>
+                  <div className={styles.Playlist}>Playlist</div>
+                  <h1 className={styles.Title}>{playlist.name}</h1>
                   <div className={styles.Category}>{playlist.description}</div>
                   <div className={styles.Details}>
                     <span className={styles.Text_Bold}>
@@ -109,15 +106,13 @@ const PlaylistDetail = () => {
 
               <div className={styles.List_Background} id='PlaylistBackground' />
               <div className={styles.List}>
-                <div className={styles.Heading_Sticky}>
-                  <div className={styles.Heading}>
-                    <div>#</div>
-                    <div>Title</div>
-                    <div>Album</div>
-                    <div>Date added</div>
-                    <div className={styles.Length}>
-                      <Time />
-                    </div>
+                <div className={styles.Heading}>
+                  <div>#</div>
+                  <div>Title</div>
+                  <div>Album</div>
+                  <div>Date added</div>
+                  <div className={styles.Length}>
+                    <Time />
                   </div>
                 </div>
 

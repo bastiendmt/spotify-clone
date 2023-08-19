@@ -11,9 +11,10 @@
   font-size: 14px;
   font-weight: 400;
   line-height: 16px;
-  color: #b3b3b3;
+  color: var(--text-secondary);
   border-radius: 4px;
   cursor: pointer;
+  transition: all 0.1s ease-in-out;
 
   &:hover {
     background-color: hsla(0, 0%, 100%, 0.1);
@@ -39,6 +40,7 @@
   display: inline-block;
 
   span {
+    color: var(--white);
     display: inline-block;
     position: absolute;
   }
@@ -48,7 +50,7 @@
     background: transparent;
     border: 0;
     padding: 0;
-    color: #fff;
+    color: var(--white);
     display: none;
   }
 }
@@ -56,11 +58,11 @@
 .Title {
   display: flex;
   align-items: center;
+  gap: 1rem;
 
   img {
     height: 40px;
     object-fit: cover;
-    margin-right: 16px;
   }
 
   .NameContainer {
@@ -93,7 +95,7 @@
       align-items: center;
       justify-content: center;
       background-color: hsla(0, 0%, 100%, 0.6);
-      color: #121212;
+      color: var(--text-dark);
       border-radius: 2px;
       text-transform: uppercase;
       font-size: 9px !important;

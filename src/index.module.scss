@@ -14,8 +14,30 @@ code {
 }
 
 :root {
-  --color-secondary: #b3b3b3;
-  --bg-color: #535353;
-  --fg-color: #b3b3b3;
-  --green-color: #1db954;
+  --bg-primary: #535353;
+  --bg-secondary: #181818;
+  --bg-black: #000;
+  --text-primary: #b3b3b3;
+  --text-secondary: #b3b3b3;
+  --text-dark: #121212;
+  --green: #1db954;
+  --white: #fff;
+  --separator: #282828;
+}
+
+:global(.playing) {
+  color: var(--green);
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(90, 90, 90);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
 }

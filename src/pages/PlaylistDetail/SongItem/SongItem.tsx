@@ -23,9 +23,7 @@ const SongItem = ({ song, index, songClicked, current }: SongItemPros) => (
     onKeyDown={songClicked}
   >
     <div className={styles.Index}>
-      <span style={current ? { color: '#1db954' } : { color: 'white' }}>
-        {index + 1}
-      </span>
+      <span className={current ? 'playing' : ''}>{index + 1}</span>
       <button type='button'>
         <Play />
       </button>
@@ -34,11 +32,8 @@ const SongItem = ({ song, index, songClicked, current }: SongItemPros) => (
     <div className={styles.Title}>
       <img src={song.track.album.images[0].url} alt='cover img' />
       <div className={styles.NameContainer}>
-        <div
-          className={styles.Name}
-          style={current ? { color: '#1db954' } : { color: 'white' }}
-        >
-          <span>{song.track.name}</span>
+        <div className={styles.Name}>
+          <span className={current ? 'playing' : ''}>{song.track.name}</span>
         </div>
         {song.track.explicit && <span className={styles.Explicit}>e</span>}
         <span

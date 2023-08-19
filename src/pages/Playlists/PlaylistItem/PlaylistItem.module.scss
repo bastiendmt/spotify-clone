@@ -1,9 +1,5 @@
 .LinkPlaylist {
-  text-decoration: none;
-}
-
-.Playlist {
-  background-color: #181818;
+  background-color: var(--bg-secondary);
   padding: 16px;
   border-radius: 4px;
   max-height: 300px;
@@ -34,13 +30,33 @@
     }
   }
 
+  .PlayContainer {
+    position: absolute;
+    right: 8px;
+    bottom: 8px;
+    opacity: 0;
+    transition: all 0.3s ease-in-out;
+    transform: translateY(10px);
+
+    button {
+      color: var(--white);
+      background-color: var(--green);
+      border: 0;
+      border-radius: 500px;
+      height: 40px;
+      width: 40px;
+
+      pointer-events: auto;
+    }
+  }
+
   .Name {
     font-size: 16px;
     font-weight: 700;
     line-height: 24px;
     letter-spacing: normal;
     text-transform: none;
-    color: #fff;
+    color: var(--white);
   }
 
   .Artist {
@@ -51,25 +67,5 @@
     line-height: 16px;
     letter-spacing: normal;
     text-transform: none;
-  }
-
-  .PlayContainer {
-    position: absolute;
-    right: 8px;
-    bottom: 8px;
-    opacity: 0;
-    transition: all 0.3s ease-in-out;
-    transform: translateY(10px);
-
-    button {
-      color: #fff;
-      background-color: var(--green-color);
-      border: 0;
-      border-radius: 500px;
-      height: 40px;
-      width: 40px;
-
-      pointer-events: auto;
-    }
   }
 }
