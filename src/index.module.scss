@@ -24,3 +24,7 @@ code {
   --white: #fff;
   --separator: #282828;
 }
+
+:global(.playing) {
+  color: var(--green);
+}

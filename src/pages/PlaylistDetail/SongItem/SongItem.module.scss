@@ -14,6 +14,7 @@
   color: var(--text-secondary);
   border-radius: 4px;
   cursor: pointer;
+  transition: all 0.1s ease-in-out;
 
   &:hover {
     background-color: hsla(0, 0%, 100%, 0.1);
@@ -39,6 +40,7 @@
   display: inline-block;
 
   span {
+    color: var(--white);
     display: inline-block;
     position: absolute;
   }
@@ -56,11 +58,11 @@
 .Title {
   display: flex;
   align-items: center;
+  gap: 1rem;
 
   img {
     height: 40px;
     object-fit: cover;
-    margin-right: 16px;
   }
 
   .NameContainer {
