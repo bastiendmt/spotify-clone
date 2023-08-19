@@ -1,7 +1,7 @@
 .Playlists {
   grid-area: main-view;
   color: white;
-  overflow-y: hidden;
+  overflow-y: scroll;
 
   .Title {
     font-size: 24px;
