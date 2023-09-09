@@ -15,7 +15,7 @@ See my mobile version on [rn-spotify-like](https://github.com/Bastiendmt/rn-spot
 - Scss
 - Vite
 
-Linting & formating by [Rome]([url](https://rome.tools/))
+Linting & formatting by [Biome](<[url](https://biomejs.dev/)>)
 
 ## Screenshots
 

@@ -71,7 +71,7 @@ const Player = () => {
           <footer>
             <div className={styles.Song}>
               <div className={styles.Img}>
-                <img src={song.track.album.images[0].url} alt='song' />
+                <img src={song.track.album.images[0].url} alt="song" />
               </div>
               <div className={styles.Infos}>
                 <div className={styles.Name}>{song.track.name}</div>
@@ -86,9 +86,9 @@ const Player = () => {
 
             <div className={styles.Controls}>
               <audio ref={audioEml} src={song.track.preview_url}>
-                <track kind='captions' />
+                <track kind="captions" />
               </audio>
-              <button type='button' onClick={() => dispatch(playPause())}>
+              <button type="button" onClick={() => dispatch(playPause())}>
                 {playing ? <Pause /> : <Play />}
               </button>
               <div className={styles.BarContainer}>
@@ -97,7 +97,7 @@ const Player = () => {
                   className={styles.Wrapper}
                   onClick={(event) => barCallBack(event, timeRef, setProgress)}
                   onKeyDown={() => dispatch(playPause())}
-                  role='button'
+                  role="button"
                   tabIndex={0}
                   ref={timeRef}
                 >
@@ -107,14 +107,14 @@ const Player = () => {
                       style={{ transform: `translateX(-${100 - progress}%)` }}
                     />
                   </div>
-                  <button type='button' style={{ left: `${progress}%` }} />
+                  <button type="button" style={{ left: `${progress}%` }} />
                 </div>
                 <div>0:30</div>
               </div>
             </div>
 
             <div className={styles.Volume}>
-              <button type='button' onClick={() => setMute(!mute)}>
+              <button type="button" onClick={() => setMute(!mute)}>
                 {mute ? <VolumeMuted /> : <Volume />}
               </button>
               <div
@@ -122,7 +122,7 @@ const Player = () => {
                 onClick={(event) => barCallBack(event, volumeRef, setVolume)}
                 onKeyDown={() => setMute(!mute)}
                 ref={volumeRef}
-                role='button'
+                role="button"
                 tabIndex={0}
               >
                 <div className={styles.Bar}>
@@ -134,7 +134,7 @@ const Player = () => {
                   />
                 </div>
                 <button
-                  type='button'
+                  type="button"
                   style={{ left: `${mute ? '0' : volume}%` }}
                 />
               </div>

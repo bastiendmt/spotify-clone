@@ -10,8 +10,8 @@ on:
     branches: [main]
 
 jobs:
-  rome:
-    name: Rome
+  biome:
+    name: Biome
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -21,10 +21,10 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Install Rome
-        run: yarn add rome
+      - name: Install Biome
+        run: yarn add @biomejs/biome
 
-      - name: Run Rome lint
+      - name: Run Biome lint
         run: yarn lint
         continue-on-error: false
 
