@@ -85,7 +85,7 @@ const Player = () => {
             </div>
 
             <div className={styles.Controls}>
-              <audio ref={audioEml} src={song.track.preview_url}>
+              <audio ref={audioEml} src={song.track.preview_url ?? ''}>
                 <track kind='captions' />
               </audio>
               <button type='button' onClick={() => dispatch(playPause())}>

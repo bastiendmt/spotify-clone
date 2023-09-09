@@ -1,9 +1,9 @@
 import { Link } from 'react-router-dom';
 import { ReactComponent as Play } from '../../../assets/play.svg';
-import { PlaylistType } from '../../../types/playlist.interface';
+import { PlaylistTrackDetails } from '../../../types/playlists.interface';
 import styles from './PlaylistItem.module.scss';
 
-const PlaylistItem = ({ playlist }: { playlist: PlaylistType }) => (
+const PlaylistItem = ({ playlist }: { playlist: PlaylistTrackDetails }) => (
   <Link to={`/playlist/${playlist.id}`} className={styles.LinkPlaylist}>
     <div className={styles.imgContainer}>
       <img src={playlist.images[0].url} alt='Tokyo' />

@@ -5,6 +5,10 @@ export interface PlaylistType {
   collaborative: boolean;
   description: string;
   external_urls: { spotify: string };
+  followers: {
+    href: null | string;
+    total: number;
+  };
   href: string;
   id: string;
   images: Image[];
@@ -17,14 +21,14 @@ export interface PlaylistType {
     type: string;
     uri: string;
   };
-  primary_color: null;
-  public: null;
+  primary_color: string;
+  public: boolean;
   snapshot_id: string;
   tracks: {
     href: string;
     items: Track[];
     limit: number;
-    next: string;
+    next: null | string;
     offset: number;
     previous: null;
     total: number;
