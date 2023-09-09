@@ -10,8 +10,8 @@ const SideBar = ({ playlists }: { playlists: PlaylistsType }) => (
   <div className={styles.SideBar}>
     <Link
       style={{ textDecoration: 'none', color: 'white' }}
-      to='/'
-      aria-label='Homepage'
+      to="/"
+      aria-label="Homepage"
       className={styles.Logo}
     >
       <Logo />

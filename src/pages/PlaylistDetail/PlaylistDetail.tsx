@@ -6,8 +6,8 @@ import Loader from '../../components/Loader/Loader';
 import NotFound from '../../components/NotFound/NotFound';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import {
-  selectCurrentSong,
   loadSong,
+  selectCurrentSong,
 } from '../../store/reducers/currentSong.slice';
 import {
   fetchPlaylistById,
@@ -80,11 +80,11 @@ const PlaylistDetail = () => {
           {playlist != null && (
             <div className={styles.PlaylistDetail}>
               <div className={styles.Cover}>
-                <div className={styles.Background} id='Background' />
+                <div className={styles.Background} id="Background" />
                 <div className={styles.Gradient} />
                 <img
                   src={playlist.images[0].url}
-                  alt='playlist img'
+                  alt="playlist img"
                   ref={coverRef}
                   className={styles.Img}
                 />
@@ -104,7 +104,7 @@ const PlaylistDetail = () => {
                 </div>
               </div>
 
-              <div className={styles.List_Background} id='PlaylistBackground' />
+              <div className={styles.List_Background} id="PlaylistBackground" />
               <div className={styles.List}>
                 <div className={styles.Heading}>
                   <div>#</div>

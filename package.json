@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@biomejs/biome": "^1.1.2",
     "@reduxjs/toolkit": "^1.9.5",
     "@testing-library/react": "^14.0.0",
     "@testing-library/user-event": "^14.4.3",
@@ -13,7 +14,6 @@
     "react-dom": "^18.2.0",
     "react-redux": "^8.1.2",
     "react-router-dom": "^6.15.0",
-    "rome": "^12.1.3",
     "sass": "^1.66.0",
     "typescript": "^5.1.6",
     "universal-cookie": "^5.0.0"
@@ -23,8 +23,8 @@
     "start": "vite",
     "build": "tsc && vite build",
     "serve": "vite preview",
-    "lint": "yarn rome check src/",
-    "format": "yarn rome format src/ --write",
+    "lint": "yarn biome check src/",
+    "format": "yarn biome format src/ --write",
     "test": "vitest run --coverage"
   },
   "browserslist": {
@@ -41,7 +41,7 @@
   },
   "devDependencies": {
     "@types/qs": "^6.9.6",
-    "@types/react": "^18.2.18",
+    "@types/react": "^18.2.21",
     "@types/react-dom": "^18.2.7",
     "@types/react-redux": "^7.1.25",
     "@types/react-router-dom": "^5.3.3",
