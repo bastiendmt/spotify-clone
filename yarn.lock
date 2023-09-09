@@ -1823,10 +1823,10 @@ typescript@^5.1.6:
   resolved "https://registry.npmjs.org/typescript/-/typescript-5.1.6.tgz"
   integrity sha512-zaWCozRZ6DLEWAWFrVDz1H6FVXzUSfTy5FUMWsQlU8Ym5JP9eO4xkTIROFCQvhQf61z6O/G6ugw3SgAnvvm+HA==
 
-universal-cookie@^5.0.0:
-  version "5.0.0"
-  resolved "https://registry.yarnpkg.com/universal-cookie/-/universal-cookie-5.0.0.tgz#e20b5a5aabb595cf3eae49dbbcd9a311d9be0e87"
-  integrity sha512-S0i5B1AEoXchHVrSS2fkQDE0LsTGhBaCntXCrq762Eqvi9WXEqij47DHN2FVwbi/prBGwf/p0UMOYlOOngZi0Q==
+universal-cookie@^6.1.1:
+  version "6.1.1"
+  resolved "https://registry.yarnpkg.com/universal-cookie/-/universal-cookie-6.1.1.tgz#2d619e21804c93b39ff0c77fe47dafd7a492346d"
+  integrity sha512-33S9x3CpdUnnjwTNs2Fgc41WGve2tdLtvaK2kPSbZRc5pGpz2vQFbRWMxlATsxNNe/Cy8SzmnmbuBM85jpZPtA==
   dependencies:
     "@types/cookie" "^0.5.1"
     cookie "^0.5.0"
