@@ -5,10 +5,7 @@ import { ReactComponent as Time } from '../../assets/time.svg';
 import Loader from '../../components/Loader/Loader';
 import NotFound from '../../components/NotFound/NotFound';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
-import {
-  loadSong,
-  selectCurrentSong,
-} from '../../store/reducers/currentSong.slice';
+// import { loadSong } from '../../store/reducers/currentSong.slice';
 import {
   fetchPlaylistById,
   playlistDetailsSelector,
@@ -23,7 +20,7 @@ const PlaylistDetail = () => {
   const coverRef = useRef<HTMLImageElement | null>(null);
   const dispatch = useAppDispatch();
   const { playlist, loading, error } = useAppSelector(playlistDetailsSelector);
-  const { song } = useAppSelector(selectCurrentSong);
+  const { song } = useAppSelector((state) => state.currentSong);
 
   useEffect(() => {
     if (id != null) {
@@ -55,7 +52,7 @@ const PlaylistDetail = () => {
 
   const songClicked = (clickedSong: Track): void => {
     if (clickedSong.track.preview_url !== '') {
-      dispatch(loadSong(clickedSong));
+      // dispatch(loadSong(clickedSong));
     }
   };
 

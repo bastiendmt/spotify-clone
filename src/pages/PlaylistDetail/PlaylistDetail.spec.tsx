@@ -1,28 +1,38 @@
+import { configureStore } from '@reduxjs/toolkit';
 import { render, screen } from '@testing-library/react';
-import Playlists from './Playlists';
-import { test, describe, expect, beforeEach, vi } from 'vitest';
-import { mockPlaylistDetails, mockPlaylists } from '../../../tests/mockData';
-import { BrowserRouter } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import { describe, expect, test } from 'vitest';
+import { mockPlaylistDetails } from '../../../tests/mockData';
+import currentSongSlice from '../../store/reducers/currentSong.slice';
+import featuredPlaylistSlice from '../../store/reducers/featuredPlaylists.slice';
+import playlistDetailSlice from '../../store/reducers/playlistDetail.slice';
 import PlaylistDetail from './PlaylistDetail';
-import * as hooks from '../../store/hooks';
 
-const mockSelector = vi.fn();
-
-vi.mock('../../store/hooks.ts', () => ({
-  useAppSelector: mockSelector,
-}));
-
-describe('Playlist details', () => {
-  beforeEach(() => {
-    mockSelector.mockReturnValue({
+const store = configureStore({
+  reducer: {
+    currentSong: currentSongSlice.reducer,
+    featuredPlaylists: featuredPlaylistSlice.reducer,
+    playlistDetail: playlistDetailSlice.reducer,
+  },
+  preloadedState: {
+    playlistDetail: {
       playlist: mockPlaylistDetails,
       loading: false,
-      error: false,
-    });
-  });
-  test('should render playlist details', async () => {
-    render(<PlaylistDetail />);
+      error: '',
+    },
+  },
+});
 
-    expect(await screen.getAllByRole('heading')).toBe('Hits du Moment');
+describe('Playlist details', () => {
+  test('should render playlist details', async () => {
+    render(
+      <Provider store={store}>
+        <PlaylistDetail />
+      </Provider>,
+    );
+
+    expect((await screen.findByRole('heading')).textContent).toBe(
+      'Hits du Moment',
+    );
   });
 });
