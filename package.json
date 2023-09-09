@@ -16,7 +16,7 @@
     "react-router-dom": "^6.15.0",
     "sass": "^1.66.1",
     "typescript": "^5.1.6",
-    "universal-cookie": "^5.0.0"
+    "universal-cookie": "^6.1.1"
   },
   "scripts": {
     "dev": "vite",
