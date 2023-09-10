@@ -35,6 +35,9 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
+      - name: Install vitest
+        run: yarn add vitest
+
       - name: Run tests
         run: yarn test
 
