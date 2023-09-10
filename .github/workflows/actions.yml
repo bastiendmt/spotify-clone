@@ -28,6 +28,16 @@ jobs:
         run: yarn lint
         continue-on-error: false
 
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Run tests
+        run: yarn test
+
   analyze:
     name: Analyze
     runs-on: ubuntu-latest
