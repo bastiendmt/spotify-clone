@@ -5,7 +5,8 @@ import { ReactComponent as Time } from '../../assets/time.svg';
 import Loader from '../../components/Loader/Loader';
 import NotFound from '../../components/NotFound/NotFound';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
-// import { loadSong } from '../../store/reducers/currentSong.slice';
+import { selectCurrentSong } from '../../store/reducers/currentSong.slice';
+import { loadSong } from '../../store/reducers/currentSong.slice';
 import {
   fetchPlaylistById,
   playlistDetailsSelector,
@@ -20,7 +21,7 @@ const PlaylistDetail = () => {
   const coverRef = useRef<HTMLImageElement | null>(null);
   const dispatch = useAppDispatch();
   const { playlist, loading, error } = useAppSelector(playlistDetailsSelector);
-  const { song } = useAppSelector((state) => state.currentSong);
+  const { song } = useAppSelector(selectCurrentSong);
 
   useEffect(() => {
     if (id != null) {
@@ -52,7 +53,7 @@ const PlaylistDetail = () => {
 
   const songClicked = (clickedSong: Track): void => {
     if (clickedSong.track.preview_url !== '') {
-      // dispatch(loadSong(clickedSong));
+      dispatch(loadSong(clickedSong));
     }
   };
 
@@ -77,7 +78,11 @@ const PlaylistDetail = () => {
           {playlist != null && (
             <div className={styles.PlaylistDetail}>
               <div className={styles.Cover}>
-                <div className={styles.Background} id="Background" />
+                <div
+                  className={styles.Background}
+                  id="Background"
+                  data-testid="Background"
+                />
                 <div className={styles.Gradient} />
                 <img
                   src={playlist.images[0].url}

@@ -1,29 +1,39 @@
-import { configureStore } from '@reduxjs/toolkit';
-import { render, screen } from '@testing-library/react';
+import { cleanup, render, screen } from '@testing-library/react';
 import { Provider } from 'react-redux';
-import { describe, expect, test } from 'vitest';
+import { afterEach, describe, expect, test } from 'vitest';
 import { mockPlaylistDetails } from '../../../tests/mockData';
-import currentSongSlice from '../../store/reducers/currentSong.slice';
-import featuredPlaylistSlice from '../../store/reducers/featuredPlaylists.slice';
-import playlistDetailSlice from '../../store/reducers/playlistDetail.slice';
+import { createMockStore } from '../../store/store';
 import PlaylistDetail from './PlaylistDetail';
 
-const store = configureStore({
-  reducer: {
-    currentSong: currentSongSlice.reducer,
-    featuredPlaylists: featuredPlaylistSlice.reducer,
-    playlistDetail: playlistDetailSlice.reducer,
+const store = createMockStore({
+  playlistDetail: {
+    playlist: mockPlaylistDetails,
+    loading: false,
+    error: '',
   },
-  preloadedState: {
-    playlistDetail: {
-      playlist: mockPlaylistDetails,
-      loading: false,
-      error: '',
-    },
+});
+
+const loadingStore = createMockStore({
+  playlistDetail: {
+    playlist: null,
+    loading: true,
+    error: '',
   },
 });
 
 describe('Playlist details', () => {
+  afterEach(cleanup);
+
+  test('should render loader', async () => {
+    render(
+      <Provider store={loadingStore}>
+        <PlaylistDetail />
+      </Provider>,
+    );
+
+    expect(screen.getByTestId('loader')).toBeTruthy();
+  });
+
   test('should render playlist details', async () => {
     render(
       <Provider store={store}>
@@ -35,4 +45,14 @@ describe('Playlist details', () => {
       'Hits du Moment',
     );
   });
+
+  // test('should have a background color', async () => {
+  //   render(
+  //     <Provider store={store}>
+  //       <PlaylistDetail />
+  //     </Provider>,
+  //   );
+
+  //   expect(screen.getByTestId('Background').style.backgroundColor).toBeTruthy();
+  // });
 });
