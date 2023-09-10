@@ -1,14 +1,14 @@
 import { render, screen } from '@testing-library/react';
-import Playlists from './Playlists';
-import { test, describe, expect } from 'vitest';
-import { mockPlaylists } from '../../../tests/mockData';
 import { BrowserRouter } from 'react-router-dom';
+import { describe, expect, test } from 'vitest';
+import { mockPlaylists } from '../../../tests/mockData';
+import Playlists from './Playlists';
 
 describe('', () => {
   test('should render playlists', async () => {
     render(
       <BrowserRouter>
-        <Playlists playlists={mockPlaylists} message='mock message' />
+        <Playlists playlists={mockPlaylists} message="mock message" />
       </BrowserRouter>,
     );
 
