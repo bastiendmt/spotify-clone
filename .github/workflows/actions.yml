@@ -11,7 +11,7 @@ on:
 
 jobs:
   lint:
-    name: Lint
+    name: Format
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -24,8 +24,8 @@ jobs:
       - name: Install Biome
         run: yarn add @biomejs/biome
 
-      - name: Run lint
-        run: yarn lint
+      - name: Run format
+        run: yarn format
         continue-on-error: false
 
   test:
