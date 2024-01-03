@@ -30,6 +30,7 @@ const Player = () => {
   const [mute, setMute] = useState(false);
 
   // If the songs changes, plays it
+  // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
   useEffect(() => {
     audioEml.current?.play().catch(() => {
       console.log('Unable to play');
