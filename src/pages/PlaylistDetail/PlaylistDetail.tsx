@@ -29,7 +29,7 @@ const PlaylistDetail = () => {
     if (id != null) {
       void dispatch(fetchPlaylistById(id));
     }
-  }, [id]);
+  }, [id, dispatch]);
 
   useEffect(() => {
     if (coverRef.current != null) {
@@ -51,7 +51,7 @@ const PlaylistDetail = () => {
           console.log(err);
         });
     }
-  }, [playlist]);
+  }, []);
 
   const songClicked = (clickedSong: Track): void => {
     if (clickedSong.track.preview_url !== '') {
@@ -63,9 +63,9 @@ const PlaylistDetail = () => {
     let totalMS = 0;
     if (playlist != null) {
       const { items } = playlist.tracks;
-      items.forEach(({ track }) => {
-        totalMS += track.duration_ms;
-      });
+      for (const item of items) {
+        totalMS += item.track.duration_ms;
+      }
       return `about ${msToMinutesAndSeconds(totalMS)}`;
     }
     return 'could not load duration';
