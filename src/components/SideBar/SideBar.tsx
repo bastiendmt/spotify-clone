@@ -18,11 +18,11 @@ const SideBar = ({ playlists }: { playlists: PlaylistsType }) => (
     </Link>
     <h1 className={styles.Title}>Playlists</h1>
     <hr className={styles.Separator} />
-    <div className={styles.List}>
+    <nav className={styles.List}>
       {playlists.items?.map((item) => (
         <ListItem playlist={item} key={item.id} />
       ))}
-    </div>
+    </nav>
   </div>
 );
 

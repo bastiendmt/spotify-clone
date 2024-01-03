@@ -2,19 +2,17 @@ import { render, screen } from '@testing-library/react';
 import { BrowserRouter } from 'react-router-dom';
 import { describe, expect, test } from 'vitest';
 import { mockPlaylists } from '../../../tests/mockData';
-import Playlists from './Playlists';
+import SideBar from './SideBar';
 
-describe('Playlists', () => {
+describe('SideBar', () => {
   test('should render playlists', async () => {
     render(
       <BrowserRouter>
-        <Playlists playlists={mockPlaylists} message="mock message" />
+        <SideBar playlists={mockPlaylists} />
       </BrowserRouter>,
     );
 
-    expect((await screen.findByRole('heading')).textContent).toBe(
-      'Playlists - mock message',
-    );
-    expect(screen.getByText('Hits du Moment')).toBeTruthy();
+    expect((await screen.findByRole('heading')).textContent).toBe('Playlists');
+    expect(await screen.findByRole('link')).toBeTruthy();
   });
 });
