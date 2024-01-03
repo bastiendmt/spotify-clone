@@ -48,11 +48,11 @@ export interface Track {
     is_local: boolean;
     name: string;
     popularity: number;
-    preview_url: string;
+    preview_url: null | string;
     track: boolean;
     track_number: number;
     type: string;
     uri: string;
   };
-  video_thumbnail: { url?: string };
+  video_thumbnail: { url?: null | string };
 }

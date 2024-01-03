@@ -11,6 +11,16 @@ export const store = configureStore({
   },
 });
 
+export const createMockStore = (preloadedState: Partial<RootState>) =>
+  configureStore({
+    reducer: {
+      currentSong: currentSongSlice.reducer,
+      featuredPlaylists: featuredPlaylistSlice.reducer,
+      playlistDetail: playlistDetailSlice.reducer,
+    },
+    preloadedState,
+  });
+
 // Infer the `RootState` and `AppDispatch` types from the store itself
 export type RootState = ReturnType<typeof store.getState>;
 // Inferred type: {posts: PostsState, comments: CommentsState, users: UsersState}

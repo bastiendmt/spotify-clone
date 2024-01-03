@@ -1,5 +1,5 @@
 export interface Image {
-  height: number;
+  height: number | null;
+  width: number | null;
   url: string;
-  width: number;
 }
