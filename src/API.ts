@@ -1,8 +1,8 @@
 import axios from 'axios';
 import qs from 'qs';
 import Cookies from 'universal-cookie';
-import { PlaylistType } from './types/playlist.interface';
-import { FeaturedPlaylistsResponse } from './types/playlists.interface';
+import type { PlaylistType } from './types/playlist.interface';
+import type { FeaturedPlaylistsResponse } from './types/playlists.interface';
 
 const BASE_URL = 'https://api.spotify.com/v1';
 const cookies = new Cookies();

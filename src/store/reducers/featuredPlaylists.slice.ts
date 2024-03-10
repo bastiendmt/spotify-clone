@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { GetFeaturedPlaylists } from '../../API';
-import { PlaylistsType } from '../../types/playlists.interface';
-import { RootState } from '../store';
+import type { PlaylistsType } from '../../types/playlists.interface';
+import type { RootState } from '../store';
 
 export const fetchFeaturedPlaylists = createAsyncThunk(
   'playlists/fetchFeatured',

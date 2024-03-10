@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@biomejs/biome": "^1.4.1",
+    "@biomejs/biome": "^1.6.0",
     "@reduxjs/toolkit": "^1.9.5",
     "@testing-library/react": "^14.0.0",
     "@testing-library/user-event": "^14.4.3",
@@ -24,7 +24,9 @@
     "build": "tsc && vite build",
     "serve": "vite preview",
     "lint": "yarn biome check src/",
-    "format": "yarn biome format src/ --write"
+    "lint:fix": "yarn biome check src/ --apply",
+    "format": "yarn biome format src/ --write",
+    "ci": "yarn biome ci src/"
   },
   "browserslist": {
     "production": [
