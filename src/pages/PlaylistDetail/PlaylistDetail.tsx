@@ -13,7 +13,7 @@ import {
   fetchPlaylistById,
   playlistDetailsSelector,
 } from '../../store/reducers/playlistDetail.slice';
-import { Track } from '../../types/track.interface';
+import type { Track } from '../../types/track.interface';
 import msToMinutesAndSeconds from '../../utils/msToMinutes';
 import styles from './PlaylistDetail.module.scss';
 import SongItem from './SongItem/SongItem';
