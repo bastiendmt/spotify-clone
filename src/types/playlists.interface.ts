@@ -1,4 +1,4 @@
-import { PlaylistType } from './playlist.interface';
+import type { PlaylistType } from './playlist.interface';
 
 export interface PlaylistsType {
   href: string;
