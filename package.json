@@ -25,7 +25,8 @@
     "serve": "vite preview",
     "lint": "yarn biome check src/",
     "lin:fix": "yarn biome check src/ --apply",
-    "format": "yarn biome format src/ --write"
+    "format": "yarn biome format src/ --write",
+    "ci": "yarn biome ci src/"
   },
   "browserslist": {
     "production": [
