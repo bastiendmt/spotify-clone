@@ -24,7 +24,7 @@
     "build": "tsc && vite build",
     "serve": "vite preview",
     "lint": "yarn biome check src/",
-    "lin:fix": "yarn biome check src/ --apply",
+    "lint:fix": "yarn biome check src/ --apply",
     "format": "yarn biome format src/ --write",
     "ci": "yarn biome ci src/"
   },
