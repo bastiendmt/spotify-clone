@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { ReactComponent as Logo } from '../../assets/logo.svg';
-import { PlaylistType } from '../../types/playlist.interface';
-import { PlaylistsType } from '../../types/playlists.interface';
+import type { PlaylistType } from '../../types/playlist.interface';
+import type { PlaylistsType } from '../../types/playlists.interface';
 import styles from './SideBar.module.scss';
 
 const SideBar = ({ playlists }: { playlists: PlaylistsType }) => (

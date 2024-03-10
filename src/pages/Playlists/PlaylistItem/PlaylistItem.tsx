@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { ReactComponent as Play } from '../../../assets/play.svg';
-import { PlaylistType } from '../../../types/playlist.interface';
+import type { PlaylistType } from '../../../types/playlist.interface';
 import styles from './PlaylistItem.module.scss';
 
 const PlaylistItem = ({ playlist }: { playlist: PlaylistType }) => (
