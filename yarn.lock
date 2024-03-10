@@ -215,7 +215,7 @@
     "@babel/helper-validator-identifier" "^7.22.5"
     to-fast-properties "^2.0.0"
 
-"@biomejs/biome@^1.5.0":
+"@biomejs/biome@^1.6.0":
   version "1.6.0"
   resolved "https://registry.yarnpkg.com/@biomejs/biome/-/biome-1.6.0.tgz#b0f3bcc93451a7de74288af30f62f80aa74b1283"
   integrity sha512-hvP8K1+CV8qc9eNdXtPwzScVxFSHB448CPKSqX6+8IW8G7bbhBVKGC80BowExJN5+vu+kzsj4xkWa780MAOlJw==
