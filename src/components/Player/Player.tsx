@@ -1,4 +1,4 @@
-import { type ElementRef, useEffect, useRef, useState } from 'react';
+import { ElementRef, useEffect, useRef, useState } from 'react';
 import { ReactComponent as Like } from '../../assets/like.svg';
 import { ReactComponent as Pause } from '../../assets/pause.svg';
 import { ReactComponent as Play } from '../../assets/play.svg';
