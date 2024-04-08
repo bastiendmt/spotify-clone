@@ -9,7 +9,7 @@
     "@testing-library/user-event": "^14.4.3",
     "axios": "^1.6.2",
     "fast-average-color": "^9.4.0",
-    "qs": "^6.11.2",
+    "qs": "^6.12.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-redux": "^8.1.2",
@@ -41,7 +41,7 @@
     ]
   },
   "devDependencies": {
-    "@types/qs": "^6.9.10",
+    "@types/qs": "^6.9.14",
     "@types/react": "^18.2.21",
     "@types/react-dom": "^18.2.7",
     "@types/react-redux": "^7.1.26",
