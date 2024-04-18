@@ -1,4 +1,4 @@
-import { ReactComponent as Play } from '../../../assets/play.svg';
+import Play from '../../../assets/play.svg?react';
 import type { Track } from '../../../types/track.interface';
 import formatDate from '../../../utils/formatDate';
 import msToMinutesAndSeconds from '../../../utils/msToMinutes';

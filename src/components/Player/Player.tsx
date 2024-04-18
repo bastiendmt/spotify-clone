@@ -1,9 +1,9 @@
 import { type ElementRef, useEffect, useRef, useState } from 'react';
-import { ReactComponent as Like } from '../../assets/like.svg';
-import { ReactComponent as Pause } from '../../assets/pause.svg';
-import { ReactComponent as Play } from '../../assets/play.svg';
-import { ReactComponent as Volume } from '../../assets/volume.svg';
-import { ReactComponent as VolumeMuted } from '../../assets/volumeMuted.svg';
+import Like from '../../assets/like.svg?react';
+import Pause from '../../assets/pause.svg?react';
+import Play from '../../assets/play.svg?react';
+import Volume from '../../assets/volume.svg?react';
+import VolumeMuted from '../../assets/volumeMuted.svg?react';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import {
   playPause,
