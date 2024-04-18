@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { ReactComponent as Logo } from '../../assets/logo.svg';
+import Logo from '../../assets/logo.svg?react';
 import type { PlaylistType } from '../../types/playlist.interface';
 import type { PlaylistsType } from '../../types/playlists.interface';
 import styles from './SideBar.module.scss';

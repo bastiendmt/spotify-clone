@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { ReactComponent as Play } from '../../../assets/play.svg';
+import Play from '../../../assets/play.svg?react';
 import type { PlaylistType } from '../../../types/playlist.interface';
 import styles from './PlaylistItem.module.scss';
 
