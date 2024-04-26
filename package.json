@@ -5,7 +5,7 @@
   "dependencies": {
     "@biomejs/biome": "^1.7.0",
     "@reduxjs/toolkit": "^1.9.5",
-    "@testing-library/react": "^14.0.0",
+    "@testing-library/react": "^15.0.5",
     "@testing-library/user-event": "^14.4.3",
     "axios": "^1.6.8",
     "fast-average-color": "^9.4.0",
