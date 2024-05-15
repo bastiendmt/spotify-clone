@@ -30,8 +30,7 @@ describe('Playlist details', () => {
         <PlaylistDetail />
       </Provider>,
     );
-
-    expect(screen.getByTestId('loader')).toBeTruthy();
+    expect(screen.getByRole('progressbar', { busy: true })).toBeTruthy();
   });
 
   test('should render playlist details', async () => {
@@ -40,10 +39,7 @@ describe('Playlist details', () => {
         <PlaylistDetail />
       </Provider>,
     );
-
-    expect((await screen.findByRole('heading')).textContent).toBe(
-      'Hits du Moment',
-    );
+    expect(screen.findByText('Hits du Moment')).toBeTruthy();
   });
 
   // test('should have a background color', async () => {

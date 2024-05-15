@@ -7,14 +7,14 @@ interface CurrentSongState {
   song: Track | null;
 }
 
-const initialState: CurrentSongState = {
-  playing: true,
+export const initialCurrentSongState: CurrentSongState = {
+  playing: false,
   song: null,
 };
 
 const currentSongSlice = createSlice({
   name: 'currentSong',
-  initialState,
+  initialState: initialCurrentSongState,
   reducers: {
     loadSong: (state, action: PayloadAction<Track>) => {
       state.playing = true;

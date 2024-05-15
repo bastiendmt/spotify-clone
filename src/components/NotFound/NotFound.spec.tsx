@@ -1,18 +1,16 @@
 import { render, screen } from '@testing-library/react';
 import { BrowserRouter } from 'react-router-dom';
 import { describe, expect, test } from 'vitest';
-import { mockPlaylists } from '../../../tests/mockData';
-import SideBar from './SideBar';
+import NotFound from './NotFound';
 
-describe('SideBar', () => {
-  test('should render playlists', async () => {
+describe('NotFound', () => {
+  test('should render NotFound', async () => {
     render(
       <BrowserRouter>
-        <SideBar playlists={mockPlaylists} />
+        <NotFound />
       </BrowserRouter>,
     );
 
-    expect((await screen.findByRole('heading')).textContent).toBe('Playlists');
     expect((await screen.findAllByRole('link')).length).toBeTruthy();
   });
 });

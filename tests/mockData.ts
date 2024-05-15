@@ -1,5 +1,103 @@
 import { PlaylistType } from '../src/types/playlist.interface';
 import { PlaylistsType } from '../src/types/playlists.interface';
+import { Track } from '../src/types/track.interface';
+
+export const mockTrack: Track = {
+  added_at: '2023-08-31T11:01:00Z',
+  added_by: {
+    external_urls: {
+      spotify: 'https://open.spotify.com/user/',
+    },
+    href: 'https://api.spotify.com/v1/users/',
+    id: '',
+    type: 'user',
+    uri: 'spotify:user:',
+  },
+  is_local: false,
+  primary_color: null,
+  track: {
+    album: {
+      album_type: 'album',
+      artists: [
+        {
+          external_urls: {
+            spotify: 'https://open.spotify.com/artist/53XhwfbYqKCa1cC15pYq2q',
+          },
+          href: 'https://api.spotify.com/v1/artists/53XhwfbYqKCa1cC15pYq2q',
+          id: '53XhwfbYqKCa1cC15pYq2q',
+          name: 'Imagine Dragons',
+          type: 'artist',
+          uri: 'spotify:artist:53XhwfbYqKCa1cC15pYq2q',
+        },
+      ],
+      available_markets: ['AR', 'AU'],
+      external_urls: {
+        spotify: 'https://open.spotify.com/album/6yiXkzHvC0OTmhfDQOEWtS',
+      },
+      href: 'https://api.spotify.com/v1/albums/6yiXkzHvC0OTmhfDQOEWtS',
+      id: '6yiXkzHvC0OTmhfDQOEWtS',
+      images: [
+        {
+          height: 640,
+          url: 'https://i.scdn.co/image/ab67616d0000b273fc915b69600dce2991a61f13',
+          width: 640,
+        },
+        {
+          height: 300,
+          url: 'https://i.scdn.co/image/ab67616d00001e02fc915b69600dce2991a61f13',
+          width: 300,
+        },
+        {
+          height: 64,
+          url: 'https://i.scdn.co/image/ab67616d00004851fc915b69600dce2991a61f13',
+          width: 64,
+        },
+      ],
+      name: 'Mercury - Acts 1 & 2',
+      release_date: '2022-07-01',
+      release_date_precision: 'day',
+      total_tracks: 32,
+      type: 'album',
+      uri: 'spotify:album:6yiXkzHvC0OTmhfDQOEWtS',
+    },
+    artists: [
+      {
+        external_urls: {
+          spotify: 'https://open.spotify.com/artist/53XhwfbYqKCa1cC15pYq2q',
+        },
+        href: 'https://api.spotify.com/v1/artists/53XhwfbYqKCa1cC15pYq2q',
+        id: '53XhwfbYqKCa1cC15pYq2q',
+        name: 'Imagine Dragons',
+        type: 'artist',
+        uri: 'spotify:artist:53XhwfbYqKCa1cC15pYq2q',
+      },
+    ],
+    available_markets: ['AR', 'AU'],
+    disc_number: 2,
+    duration_ms: 225431,
+    episode: false,
+    explicit: false,
+    external_ids: {
+      isrc: 'USUM72205470',
+    },
+    external_urls: {
+      spotify: 'https://open.spotify.com/track/0YbFEoJi7Esa7lhIrEpBjl',
+    },
+    href: 'https://api.spotify.com/v1/tracks/0YbFEoJi7Esa7lhIrEpBjl',
+    id: '0YbFEoJi7Esa7lhIrEpBjl',
+    is_local: false,
+    name: 'Waves',
+    popularity: 77,
+    preview_url: null,
+    track: true,
+    track_number: 9,
+    type: 'track',
+    uri: 'spotify:track:0YbFEoJi7Esa7lhIrEpBjl',
+  },
+  video_thumbnail: {
+    url: null,
+  },
+};
 
 export const mockPlaylists: PlaylistsType = {
   href: 'https://api.spotify.com/v1/browse/featured-playlists?country=FR&timestamp=2023-09-03T16%3A51%3A53&offset=0&limit=20',
