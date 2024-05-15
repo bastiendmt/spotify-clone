@@ -1,4 +1,3 @@
-import type { PlaylistType } from '../../types/playlist.interface';
 import type { PlaylistsType } from '../../types/playlists.interface';
 import PlaylistItem from './PlaylistItem/PlaylistItem';
 import styles from './Playlists.module.scss';
