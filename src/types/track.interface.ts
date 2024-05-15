@@ -1,4 +1,4 @@
-import { Image } from './image.interface';
+import type { Image } from './image.interface';
 
 interface Artist {
   external_urls: { spotify: string };

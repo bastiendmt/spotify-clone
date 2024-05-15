@@ -22,7 +22,7 @@ const App = () => {
 
   useEffect(() => {
     void dispatch(fetchFeaturedPlaylists());
-  }, []);
+  }, [dispatch]);
 
   return (
     <>

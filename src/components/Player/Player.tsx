@@ -1,9 +1,9 @@
-import { useEffect, useRef, useState } from 'react';
-import { ReactComponent as Like } from '../../assets/like.svg';
-import { ReactComponent as Pause } from '../../assets/pause.svg';
-import { ReactComponent as Play } from '../../assets/play.svg';
-import { ReactComponent as Volume } from '../../assets/volume.svg';
-import { ReactComponent as VolumeMuted } from '../../assets/volumeMuted.svg';
+import { type ElementRef, useEffect, useRef, useState } from 'react';
+import Like from '../../assets/like.svg?react';
+import Pause from '../../assets/pause.svg?react';
+import Play from '../../assets/play.svg?react';
+import Volume from '../../assets/volume.svg?react';
+import VolumeMuted from '../../assets/volumeMuted.svg?react';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import {
   playPause,
@@ -17,19 +17,20 @@ import styles from './Player.module.scss';
 const Player = () => {
   const dispatch = useAppDispatch();
   const { song, playing } = useAppSelector(selectCurrentSong);
-  const audioEml = useRef<HTMLAudioElement | null>(null);
+  const audioEml = useRef<ElementRef<'audio'>>(null);
 
-  const timeRef = useRef<HTMLDivElement | null>(null);
+  const timeRef = useRef<ElementRef<'div'>>(null);
   const barCallBack = useBar;
 
   const [progress, setProgress] = useState(0);
   const [currentTime, resetTime, toggleStopwatch] = useStopwatch();
 
   const [volume, setVolume] = useState(70);
-  const volumeRef = useRef<HTMLDivElement | null>(null);
+  const volumeRef = useRef<ElementRef<'div'>>(null);
   const [mute, setMute] = useState(false);
 
   // If the songs changes, plays it
+  // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
   useEffect(() => {
     audioEml.current?.play().catch(() => {
       console.log('Unable to play');

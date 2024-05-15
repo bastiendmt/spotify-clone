@@ -1,7 +1,7 @@
 import { FastAverageColor } from 'fast-average-color';
 import { useEffect, useRef } from 'react';
 import { useParams } from 'react-router-dom';
-import { ReactComponent as Time } from '../../assets/time.svg';
+import Time from '../../assets/time.svg?react';
 import Loader from '../../components/Loader/Loader';
 import NotFound from '../../components/NotFound/NotFound';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
@@ -11,7 +11,7 @@ import {
   fetchPlaylistById,
   playlistDetailsSelector,
 } from '../../store/reducers/playlistDetail.slice';
-import { Track } from '../../types/track.interface';
+import type { Track } from '../../types/track.interface';
 import msToMinutesAndSeconds from '../../utils/msToMinutes';
 import styles from './PlaylistDetail.module.scss';
 import SongItem from './SongItem/SongItem';
@@ -27,7 +27,7 @@ const PlaylistDetail = () => {
     if (id != null) {
       void dispatch(fetchPlaylistById(id));
     }
-  }, [id]);
+  }, [id, dispatch]);
 
   useEffect(() => {
     if (coverRef.current != null) {
@@ -49,7 +49,7 @@ const PlaylistDetail = () => {
           console.log(err);
         });
     }
-  }, [playlist]);
+  }, []);
 
   const songClicked = (clickedSong: Track): void => {
     if (clickedSong.track.preview_url !== '') {
@@ -61,9 +61,9 @@ const PlaylistDetail = () => {
     let totalMS = 0;
     if (playlist != null) {
       const { items } = playlist.tracks;
-      items.forEach(({ track }) => {
-        totalMS += track.duration_ms;
-      });
+      for (const item of items) {
+        totalMS += item.track.duration_ms;
+      }
       return `about ${msToMinutesAndSeconds(totalMS)}`;
     }
     return 'could not load duration';

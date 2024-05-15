@@ -1,6 +1,6 @@
-import { PayloadAction, createSlice } from '@reduxjs/toolkit';
-import { Track } from '../../types/track.interface';
-import { RootState } from '../store';
+import { type PayloadAction, createSlice } from '@reduxjs/toolkit';
+import type { Track } from '../../types/track.interface';
+import type { RootState } from '../store';
 
 interface CurrentSongState {
   playing: boolean;
