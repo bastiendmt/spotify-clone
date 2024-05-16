@@ -32,18 +32,22 @@ const Player = () => {
   // If the songs changes, plays it
   // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
   useEffect(() => {
-    audioEml.current?.play().catch(() => {
-      console.log('Unable to play');
-    });
+    try {
+      audioEml.current?.play();
+    } catch (error) {
+      console.error('Unable to play', error);
+    }
     resetTime();
   }, [song]);
 
   // Handles play / pause
   useEffect(() => {
     if (playing) {
-      audioEml.current?.play().catch(() => {
-        console.log('Unable to play');
-      });
+      try {
+        audioEml.current?.play();
+      } catch (error) {
+        console.error('Unable to play', error);
+      }
       toggleStopwatch(true);
     } else {
       audioEml.current?.pause();
@@ -86,7 +90,11 @@ const Player = () => {
             </div>
 
             <div className={styles.Controls}>
-              <audio ref={audioEml} src={song.track.preview_url ?? ''}>
+              <audio
+                ref={audioEml}
+                src={song.track.preview_url ?? ''}
+                data-testid="audioEml"
+              >
                 <track kind="captions" />
               </audio>
               <button type="button" onClick={() => dispatch(playPause())}>
