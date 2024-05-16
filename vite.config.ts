@@ -23,4 +23,10 @@ export default defineConfig({
       '/authorization/': '...',
     },
   },
+  test: {
+    environment: 'jsdom',
+    coverage: {
+      all: true,
+    },
+  },
 });
