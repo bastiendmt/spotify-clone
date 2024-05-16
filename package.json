@@ -5,7 +5,7 @@
   "dependencies": {
     "@biomejs/biome": "^1.7.0",
     "@reduxjs/toolkit": "^1.9.5",
-    "@testing-library/react": "^14.0.0",
+    "@testing-library/react": "^15.0.7",
     "@testing-library/user-event": "^14.4.3",
     "axios": "^1.6.8",
     "fast-average-color": "^9.4.0",
@@ -16,7 +16,7 @@
     "react-router-dom": "^6.15.0",
     "sass": "^1.74.1",
     "typescript": "^5.4.2",
-    "universal-cookie": "^6.1.1"
+    "universal-cookie": "^7.1.4"
   },
   "scripts": {
     "dev": "vite",
@@ -49,7 +49,7 @@
     "@types/react-router-dom": "^5.3.3",
     "@vitejs/plugin-react": "^4.2.1",
     "@vitest/coverage-v8": "^1.6.0",
-    "jsdom": "^22.1.0",
+    "jsdom": "^24.0.0",
     "vite": "^5.2.9",
     "vite-plugin-checker": "^0.6.4",
     "vite-plugin-svgr": "^4.2.0",
