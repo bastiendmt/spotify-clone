@@ -21,7 +21,7 @@ interface PlaylistDetailState {
   playlist: null | PlaylistType;
 }
 
-const initialState: PlaylistDetailState = {
+export const initialPlaylistDetailsState: PlaylistDetailState = {
   error: '',
   loading: true,
   playlist: null,
@@ -29,7 +29,7 @@ const initialState: PlaylistDetailState = {
 
 const playlistDetailSlice = createSlice({
   name: 'playlistDetail',
-  initialState,
+  initialState: initialPlaylistDetailsState,
   reducers: {},
   extraReducers: (builder) => {
     builder.addCase(fetchPlaylistById.pending, (state) => {

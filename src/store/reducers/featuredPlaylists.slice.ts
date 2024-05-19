@@ -22,7 +22,7 @@ interface PlaylistState {
   playlists: PlaylistsType | null;
 }
 
-const initialState: PlaylistState = {
+export const initialFeaturedPlaylistState: PlaylistState = {
   error: '',
   loading: true,
   message: '',
@@ -31,7 +31,7 @@ const initialState: PlaylistState = {
 
 const featuredPlaylistSlice = createSlice({
   name: 'featuredPlaylists',
-  initialState,
+  initialState: initialFeaturedPlaylistState,
   reducers: {},
   extraReducers: (builder) => {
     builder.addCase(fetchFeaturedPlaylists.pending, (state) => {

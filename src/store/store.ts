@@ -1,7 +1,13 @@
 import { configureStore } from '@reduxjs/toolkit';
-import currentSongSlice from './reducers/currentSong.slice';
-import featuredPlaylistSlice from './reducers/featuredPlaylists.slice';
-import playlistDetailSlice from './reducers/playlistDetail.slice';
+import currentSongSlice, {
+  initialCurrentSongState,
+} from './reducers/currentSong.slice';
+import featuredPlaylistSlice, {
+  initialFeaturedPlaylistState,
+} from './reducers/featuredPlaylists.slice';
+import playlistDetailSlice, {
+  initialPlaylistDetailsState,
+} from './reducers/playlistDetail.slice';
 
 export const store = configureStore({
   reducer: {
@@ -12,13 +18,19 @@ export const store = configureStore({
 });
 
 export const createMockStore = (preloadedState: Partial<RootState>) =>
-  configureStore({
+  configureStore<RootState>({
     reducer: {
       currentSong: currentSongSlice.reducer,
       featuredPlaylists: featuredPlaylistSlice.reducer,
       playlistDetail: playlistDetailSlice.reducer,
     },
-    preloadedState,
+    preloadedState: {
+      currentSong: preloadedState.currentSong || initialCurrentSongState,
+      featuredPlaylists:
+        preloadedState.featuredPlaylists || initialFeaturedPlaylistState,
+      playlistDetail:
+        preloadedState.playlistDetail || initialPlaylistDetailsState,
+    },
   });
 
 // Infer the `RootState` and `AppDispatch` types from the store itself
