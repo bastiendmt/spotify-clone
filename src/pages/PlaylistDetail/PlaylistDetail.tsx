@@ -52,7 +52,7 @@ const PlaylistDetail = () => {
   }, []);
 
   const songClicked = (clickedSong: Track): void => {
-    if (clickedSong.track.preview_url !== '') {
+    if (clickedSong.track?.preview_url !== '') {
       dispatch(loadSong(clickedSong));
     }
   };
@@ -62,7 +62,7 @@ const PlaylistDetail = () => {
     if (playlist != null) {
       const { items } = playlist.tracks;
       for (const item of items) {
-        totalMS += item.track.duration_ms;
+        totalMS += item.track?.duration_ms ?? 0;
       }
       return `about ${msToMinutesAndSeconds(totalMS)}`;
     }
@@ -118,15 +118,18 @@ const PlaylistDetail = () => {
                   </div>
                 </div>
 
-                {playlist.tracks.items.map((item: Track, index: number) => (
-                  <SongItem
-                    key={item.track.id}
-                    song={item}
-                    index={index}
-                    current={item.track.id === song?.track.id}
-                    songClicked={() => songClicked(item)}
-                  />
-                ))}
+                {playlist.tracks.items.map(
+                  (item, index) =>
+                    item.track && (
+                      <SongItem
+                        key={item.track.id}
+                        song={item}
+                        index={index}
+                        current={item.track.id === song?.track?.id}
+                        songClicked={() => songClicked(item)}
+                      />
+                    ),
+                )}
               </div>
             </div>
           )}

@@ -1,8 +1,10 @@
 .SideBar {
-  grid-area: side-bar;
+  grid-row: 1 / 2;
+  grid-column: 1 / 2;
   background-color: var(--bg-black);
-  min-width: 20vw;
   padding: 1rem 1rem 1rem 2rem;
+  overflow-y: scroll;
+  overflow-x: hidden;
 
   .Logo svg {
     max-width: 130px;

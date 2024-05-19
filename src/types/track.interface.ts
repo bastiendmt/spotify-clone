@@ -19,7 +19,7 @@ export interface Track {
   };
   is_local: boolean;
   primary_color: null;
-  track: {
+  track?: {
     album: {
       album_type: string;
       artists: Artist[];

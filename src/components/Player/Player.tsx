@@ -57,7 +57,8 @@ const Player = () => {
 
   // Adjust progress bar when playing
   useEffect(() => {
-    setProgress((currentTime * 100) / 30000);
+    const newProgress = Math.min((currentTime * 100) / 30000, 100);
+    setProgress(newProgress);
   }, [currentTime]);
 
   useEffect(() => {
@@ -70,86 +71,82 @@ const Player = () => {
 
   return (
     <>
-      {song == null && null}
-      {song != null && (
-        <div className={styles.Player}>
-          <footer>
-            <div className={styles.Song}>
-              <div className={styles.Img}>
-                <img src={song.track.album.images[0].url} alt="song" />
-              </div>
-              <div className={styles.Infos}>
-                <div className={styles.Name}>{song.track.name}</div>
-                <div className={styles.Artist}>
-                  {song.track.artists[0].name}
-                </div>
-              </div>
-              <div className={styles.Like}>
-                <Like />
-              </div>
+      {song?.track == null && null}
+      {song?.track != null && (
+        <footer className={styles.Player}>
+          <div className={styles.Song}>
+            <div className={styles.Img}>
+              <img src={song.track.album.images[0].url} alt="song" />
             </div>
-
-            <div className={styles.Controls}>
-              <audio
-                ref={audioEml}
-                src={song.track.preview_url ?? ''}
-                data-testid="audioEml"
-              >
-                <track kind="captions" />
-              </audio>
-              <button type="button" onClick={() => dispatch(playPause())}>
-                {playing ? <Pause /> : <Play />}
-              </button>
-              <div className={styles.BarContainer}>
-                <div>{msToMinutesAndSeconds(currentTime)}</div>
-                <div
-                  className={styles.Wrapper}
-                  onClick={(event) => barCallBack(event, timeRef, setProgress)}
-                  onKeyDown={() => dispatch(playPause())}
-                  role="button"
-                  tabIndex={0}
-                  ref={timeRef}
-                >
-                  <div className={styles.Bar}>
-                    <div
-                      className={styles.Progress}
-                      style={{ transform: `translateX(-${100 - progress}%)` }}
-                    />
-                  </div>
-                  <button type="button" style={{ left: `${progress}%` }} />
-                </div>
-                <div>0:30</div>
-              </div>
+            <div className={styles.Infos}>
+              <div className={styles.Name}>{song.track.name}</div>
+              <div className={styles.Artist}>{song.track.artists[0].name}</div>
             </div>
+            <div className={styles.Like}>
+              <Like />
+            </div>
+          </div>
 
-            <div className={styles.Volume}>
-              <button type="button" onClick={() => setMute(!mute)}>
-                {mute ? <VolumeMuted /> : <Volume />}
-              </button>
+          <div className={styles.Controls}>
+            <audio
+              ref={audioEml}
+              src={song.track.preview_url ?? ''}
+              data-testid="audioEml"
+            >
+              <track kind="captions" />
+            </audio>
+            <button type="button" onClick={() => dispatch(playPause())}>
+              {playing ? <Pause /> : <Play />}
+            </button>
+            <div className={styles.BarContainer}>
+              <div>{msToMinutesAndSeconds(currentTime)}</div>
               <div
                 className={styles.Wrapper}
-                onClick={(event) => barCallBack(event, volumeRef, setVolume)}
-                onKeyDown={() => setMute(!mute)}
-                ref={volumeRef}
+                onClick={(event) => barCallBack(event, timeRef, setProgress)}
+                onKeyDown={() => dispatch(playPause())}
                 role="button"
                 tabIndex={0}
+                ref={timeRef}
               >
                 <div className={styles.Bar}>
                   <div
                     className={styles.Progress}
-                    style={{
-                      transform: `translateX(-${mute ? '100' : 100 - volume}%)`,
-                    }}
+                    style={{ transform: `translateX(-${100 - progress}%)` }}
                   />
                 </div>
-                <button
-                  type="button"
-                  style={{ left: `${mute ? '0' : volume}%` }}
+                <button type="button" style={{ left: `${progress}%` }} />
+              </div>
+              <div>0:30</div>
+            </div>
+          </div>
+
+          <div className={styles.Volume}>
+            <button type="button" onClick={() => setMute(!mute)}>
+              {mute ? <VolumeMuted /> : <Volume />}
+            </button>
+            <div
+              className={styles.Wrapper}
+              onClick={(event) => barCallBack(event, volumeRef, setVolume)}
+              onKeyDown={() => setMute(!mute)}
+              ref={volumeRef}
+              role="button"
+              tabIndex={0}
+            >
+              <div className={styles.Bar}>
+                <div
+                  className={styles.Progress}
+                  style={{
+                    transform: `translateX(-${mute ? '100' : 100 - volume}%)`,
+                  }}
                 />
               </div>
+              <button
+                type="button"
+                style={{ left: `${mute ? '0' : volume}%` }}
+              />
             </div>
-          </footer>
-        </div>
+          </div>
+        </footer>
       )}
     </>
   );

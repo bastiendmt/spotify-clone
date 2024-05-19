@@ -1,8 +1,8 @@
 .PlaylistDetail {
-  flex: 1;
   overflow-y: scroll;
-  position: relative;
   scroll-behavior: smooth;
+  grid-row: 1 / 2;
+  grid-column: 2 / 3;
 }
 
 .Cover {
@@ -81,7 +81,7 @@
 .List_Background {
   background-color: rgb(80, 56, 160);
   height: 232px;
-  width: 100%;
+  // width: 100%;
   position: absolute;
   z-index: -1;
   background-image: linear-gradient(rgba(0, 0, 0, 0.6), var(--text-dark));
