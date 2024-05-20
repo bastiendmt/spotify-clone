@@ -18,7 +18,7 @@
     "@reduxjs/toolkit": "^2.2.5",
     "@testing-library/react": "^15.0.7",
     "@testing-library/user-event": "^14.4.3",
-    "axios": "^1.6.8",
+    "axios": "^1.7.1",
     "fast-average-color": "^9.4.0",
     "qs": "^6.11.2",
     "react": "^18.2.0",
