@@ -22,7 +22,7 @@
       span {
         display: none;
       }
-      button {
+      .IndexPlay {
         display: inline-block;
         cursor: inherit;
       }
@@ -45,7 +45,7 @@
     position: absolute;
   }
 
-  button {
+  .IndexPlay {
     position: absolute;
     background: transparent;
     border: 0;
@@ -122,16 +122,16 @@
   display: flex;
   justify-self: end;
 
-  .More {
-    background: transparent;
-    border: 0;
-    color: hsla(0, 0%, 100%, 0.6);
-    padding: 0;
-    display: inline-block;
-    text-align: center;
-    align-items: flex-start;
-    opacity: 0;
-  }
+  // .More {
+  //   background: transparent;
+  //   border: 0;
+  //   color: hsla(0, 0%, 100%, 0.6);
+  //   padding: 0;
+  //   display: inline-block;
+  //   text-align: center;
+  //   align-items: flex-start;
+  //   opacity: 0;
+  // }
 }
 
 .Disabled {
