@@ -8,6 +8,7 @@ const Loader = () => (
     aria-valuenow={0}
     aria-valuemin={0}
     aria-valuemax={100}
+    tabIndex={0}
   />
 );
 

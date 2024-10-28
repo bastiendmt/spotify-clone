@@ -29,7 +29,7 @@
     "formatter": {
       "quoteStyle": "single",
       "quoteProperties": "asNeeded",
-      "trailingComma": "all"
+      "trailingCommas": "all"
     }
   }
 }
