@@ -9,19 +9,18 @@ import PlaylistDetail from './pages/PlaylistDetail/PlaylistDetail';
 import Playlists from './pages/Playlists/Playlists';
 import { useAppDispatch, useAppSelector } from './store/hooks';
 import {
-  fetchFeaturedPlaylists,
-  selectFeaturedPlaylists,
-} from './store/reducers/featuredPlaylists.slice';
+  fetchUserPlaylists,
+  selectUserPlaylists,
+} from './store/reducers/userPlaylists.slice';
 
 const App = () => {
   const cookies = new Cookies();
   const dispatch = useAppDispatch();
-  const { playlists, message, loading, error } = useAppSelector(
-    selectFeaturedPlaylists,
-  );
+  const user = 'smedjan';
+  const { playlists, loading, error } = useAppSelector(selectUserPlaylists);
 
   useEffect(() => {
-    void dispatch(fetchFeaturedPlaylists());
+    void dispatch(fetchUserPlaylists(user));
   }, [dispatch]);
 
   return (
@@ -45,7 +44,10 @@ const App = () => {
                   <Route
                     path="/"
                     element={
-                      <Playlists playlists={playlists} message={message} />
+                      <Playlists
+                        playlists={playlists}
+                        message={`${user}'s playlists`}
+                      />
                     }
                   />
                   <Route path="/playlist/:id" element={<PlaylistDetail />} />

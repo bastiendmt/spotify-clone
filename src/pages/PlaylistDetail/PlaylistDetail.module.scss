@@ -48,13 +48,13 @@
 
     .Title {
       padding: 0.08em 0px;
-      font-size: 96px;
+      font-size: clamp(2rem, 6vw, 8rem);
       font-weight: 700;
       margin: 0;
     }
 
     .Text_Light::before {
-      content: '•';
+      content: "•";
       margin: 0px 4px;
     }
 

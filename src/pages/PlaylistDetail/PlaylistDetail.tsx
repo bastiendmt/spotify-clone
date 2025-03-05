@@ -122,7 +122,7 @@ const PlaylistDetail = () => {
                   (item, index) =>
                     item.track && (
                       <SongItem
-                        key={item.track.id}
+                        key={item.track.id + index.toString()}
                         song={item}
                         index={index}
                         current={item.track.id === song?.track?.id}

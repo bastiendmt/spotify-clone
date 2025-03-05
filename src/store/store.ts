@@ -2,17 +2,17 @@ import { configureStore } from '@reduxjs/toolkit';
 import currentSongSlice, {
   initialCurrentSongState,
 } from './reducers/currentSong.slice';
-import featuredPlaylistSlice, {
-  initialFeaturedPlaylistState,
-} from './reducers/featuredPlaylists.slice';
 import playlistDetailSlice, {
   initialPlaylistDetailsState,
 } from './reducers/playlistDetail.slice';
+import userPlaylistSlice, {
+  initialUserPlaylistState,
+} from './reducers/userPlaylists.slice';
 
 export const store = configureStore({
   reducer: {
     currentSong: currentSongSlice.reducer,
-    featuredPlaylists: featuredPlaylistSlice.reducer,
+    userPlaylists: userPlaylistSlice.reducer,
     playlistDetail: playlistDetailSlice.reducer,
   },
 });
@@ -21,13 +21,12 @@ export const createMockStore = (preloadedState: Partial<RootState>) =>
   configureStore<RootState>({
     reducer: {
       currentSong: currentSongSlice.reducer,
-      featuredPlaylists: featuredPlaylistSlice.reducer,
+      userPlaylists: userPlaylistSlice.reducer,
       playlistDetail: playlistDetailSlice.reducer,
     },
     preloadedState: {
       currentSong: preloadedState.currentSong || initialCurrentSongState,
-      featuredPlaylists:
-        preloadedState.featuredPlaylists || initialFeaturedPlaylistState,
+      userPlaylists: preloadedState.userPlaylists || initialUserPlaylistState,
       playlistDetail:
         preloadedState.playlistDetail || initialPlaylistDetailsState,
     },

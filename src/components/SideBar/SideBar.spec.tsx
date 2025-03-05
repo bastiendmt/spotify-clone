@@ -8,7 +8,7 @@ describe('SideBar', () => {
   test('should render playlists', async () => {
     render(
       <BrowserRouter>
-        <SideBar playlists={mockPlaylists} />
+        <SideBar playlists={mockPlaylists.items} />
       </BrowserRouter>,
     );
 

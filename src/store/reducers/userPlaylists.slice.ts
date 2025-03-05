@@ -28,7 +28,7 @@ export const initialUserPlaylistState: PlaylistState = {
 };
 
 const userPlaylistSlice = createSlice({
-  name: 'featuredPlaylists',
+  name: 'userPlaylists',
   initialState: initialUserPlaylistState,
   reducers: {},
   extraReducers: (builder) => {

@@ -16,7 +16,7 @@ const SongItem = ({ song, index, songClicked, current }: SongItemPros) =>
     <div
       className={[
         styles.Item,
-        song.track.preview_url !== '' ? styles.Enabled : styles.Disabled,
+        song.track.preview_url !== null ? styles.Enabled : styles.Disabled,
       ].join(' ')}
       // biome-ignore lint/a11y/useSemanticElements: clickable div is fine
       role="button"
@@ -34,7 +34,9 @@ const SongItem = ({ song, index, songClicked, current }: SongItemPros) =>
       </div>
 
       <div className={styles.Title}>
-        <img src={song.track.album.images[0].url} alt="cover img" />
+        {song.track.album.images?.[0]?.url && (
+          <img src={song.track.album.images[0].url} alt="cover img" />
+        )}
         <div className={styles.NameContainer}>
           <div className={styles.Name}>
             <span className={current ? 'playing' : ''}>{song.track.name}</span>
@@ -56,8 +58,8 @@ const SongItem = ({ song, index, songClicked, current }: SongItemPros) =>
         {msToMinutesAndSeconds(song.track.duration_ms)}
         {/* should be in another column */}
         {/* <button type="button" className={styles.More} tabIndex={-1}>
-          ...
-        </button> */}
+                ...
+              </button> */}
       </div>
     </div>
   );

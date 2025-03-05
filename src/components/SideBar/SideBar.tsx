@@ -1,12 +1,9 @@
 import { Link } from 'react-router-dom';
 import Logo from '../../assets/logo.svg?react';
-import type {
-  PlaylistTrackDetails,
-  PlaylistsType,
-} from '../../types/playlists.interface';
+import type { PlaylistTrackDetails } from '../../types/playlists.interface';
 import styles from './SideBar.module.scss';
 
-const SideBar = ({ playlists }: { playlists: PlaylistsType }) => (
+const SideBar = ({ playlists }: { playlists: PlaylistTrackDetails[] }) => (
   <div className={styles.SideBar}>
     <Link
       style={{ textDecoration: 'none', color: 'white' }}
@@ -19,7 +16,7 @@ const SideBar = ({ playlists }: { playlists: PlaylistsType }) => (
     <h1 className={styles.Title}>Playlists</h1>
     <hr className={styles.Separator} />
     <nav className={styles.List}>
-      {playlists.items?.map((item) => (
+      {playlists.map((item) => (
         <ListItem playlist={item} key={item.id} />
       ))}
     </nav>
