@@ -20,7 +20,7 @@ const App = () => {
   const { playlists, loading, error } = useAppSelector(selectUserPlaylists);
 
   useEffect(() => {
-    void dispatch(fetchUserPlaylists(user));
+    dispatch(fetchUserPlaylists(user));
   }, [dispatch]);
 
   return (
