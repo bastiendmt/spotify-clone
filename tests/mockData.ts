@@ -1,6 +1,6 @@
-import { PlaylistType } from '../src/types/playlist.interface';
-import { PlaylistsType } from '../src/types/playlists.interface';
-import { Track } from '../src/types/track.interface';
+import type { PlaylistType } from '../src/types/playlist.interface';
+import type { UserPlaylistsType } from '../src/types/playlists.interface';
+import type { Track } from '../src/types/track.interface';
 
 export const mockTrack: Track = {
   added_at: '2023-08-31T11:01:00Z',
@@ -99,7 +99,7 @@ export const mockTrack: Track = {
   },
 };
 
-export const mockPlaylists: PlaylistsType = {
+export const mockPlaylists: UserPlaylistsType = {
   href: 'https://api.spotify.com/v1/browse/featured-playlists?country=FR&timestamp=2023-09-03T16%3A51%3A53&offset=0&limit=20',
   limit: 20,
   next: null,

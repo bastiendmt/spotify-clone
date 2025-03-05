@@ -6,7 +6,7 @@ import styles from './PlaylistItem.module.scss';
 const PlaylistItem = ({ playlist }: { playlist: PlaylistTrackDetails }) => (
   <Link to={`/playlist/${playlist.id}`} className={styles.LinkPlaylist}>
     <div className={styles.imgContainer}>
-      <img src={playlist.images[0].url} alt="Tokyo" />
+      {playlist.images?.[0].url && <img src={playlist.images[0].url} alt="" />}
       <div className={styles.PlayContainer}>
         <button type="button" className={styles.PlayButton} title="Play">
           <Play />

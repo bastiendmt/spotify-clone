@@ -6,6 +6,8 @@
 
 https://developer.spotify.com/blog/2024-11-27-changes-to-the-web-api
 
+Therefore, many songs don't have preview_url, so they are not playable.
+
 A web app that recreates spotify app.
 
 Running demo [here](https://spoty-like.netlify.app/)

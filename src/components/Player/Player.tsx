@@ -76,7 +76,9 @@ const Player = () => {
         <footer className={styles.Player}>
           <div className={styles.Song}>
             <div className={styles.Img}>
-              <img src={song.track.album.images[0].url} alt="song" />
+              {song.track.album.images?.[0]?.url && (
+                <img src={song.track.album.images[0].url} alt="song" />
+              )}
             </div>
             <div className={styles.Infos}>
               <div className={styles.Name}>{song.track.name}</div>

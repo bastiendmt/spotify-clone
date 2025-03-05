@@ -27,7 +27,7 @@ export interface Track {
       external_urls: { spotify: string };
       href: string;
       id: string;
-      images: Image[];
+      images?: Image[];
       name: string;
       release_date: string;
       release_date_precision: string;

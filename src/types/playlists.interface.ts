@@ -6,7 +6,7 @@ export interface PlaylistTrackDetails {
   external_urls: { spotify: string };
   href: string;
   id: string;
-  images: Image[];
+  images?: Image[];
   name: string;
   owner: {
     display_name: string;
@@ -27,7 +27,7 @@ export interface PlaylistTrackDetails {
   uri: string;
 }
 
-export interface PlaylistsType {
+export interface UserPlaylistsType {
   href: string;
   items: PlaylistTrackDetails[];
   limit: number;
@@ -35,9 +35,4 @@ export interface PlaylistsType {
   offset: number;
   previous: null;
   total: number;
-}
-
-export interface FeaturedPlaylistsResponse {
-  message: string;
-  playlists: PlaylistsType;
 }

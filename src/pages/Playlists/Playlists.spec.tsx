@@ -6,15 +6,14 @@ import Playlists from './Playlists';
 
 describe('Playlists', () => {
   test('should render playlists', async () => {
+    const message = 'mock message';
     render(
       <BrowserRouter>
-        <Playlists playlists={mockPlaylists} message="mock message" />
+        <Playlists playlists={mockPlaylists.items} message={message} />
       </BrowserRouter>,
     );
 
-    expect((await screen.findByRole('heading')).textContent).toBe(
-      'Playlists - mock message',
-    );
+    expect((await screen.findByRole('heading')).textContent).toBe(message);
     expect(screen.getByText('Hits du Moment')).toBeTruthy();
   });
 });

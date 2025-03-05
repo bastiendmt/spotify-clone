@@ -2,7 +2,7 @@ import axios from 'axios';
 import qs from 'qs';
 import Cookies from 'universal-cookie';
 import type { PlaylistType } from './types/playlist.interface';
-import type { FeaturedPlaylistsResponse } from './types/playlists.interface';
+import type { UserPlaylistsType } from './types/playlists.interface';
 
 const BASE_URL = 'https://api.spotify.com/v1';
 const cookies = new Cookies();
@@ -29,6 +29,9 @@ const getAuthorizationToken = async (): Promise<void> => {
     });
 };
 
+/**
+ * Read bearer token from cookies
+ */
 const getAuth = async (): Promise<string> => {
   let auth: string = cookies.get('auth');
   if (auth === undefined) {
@@ -39,17 +42,21 @@ const getAuth = async (): Promise<string> => {
   return auth;
 };
 
-export const GetFeaturedPlaylists =
-  async (): Promise<FeaturedPlaylistsResponse> => {
-    const auth = await getAuth();
-    return axios
-      .get(`${BASE_URL}/browse/featured-playlists`, {
-        headers: {
-          Authorization: `Bearer ${auth}`,
-        },
-      })
-      .then((response) => response.data);
-  };
+export const GetUserPlaylists = async (
+  user: string,
+): Promise<UserPlaylistsType> => {
+  const auth = await getAuth();
+  return axios
+    .get(`${BASE_URL}/users/${user}/playlists`, {
+      headers: {
+        Authorization: `Bearer ${auth}`,
+      },
+    })
+    .then((response) => {
+      console.log(response.data);
+      return response.data;
+    });
+};
 
 export const GetPlaylistDetail = async (
   playlistID: string,

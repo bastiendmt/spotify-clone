@@ -1,4 +1,4 @@
-import type { PlaylistsType } from '../../types/playlists.interface';
+import type { PlaylistTrackDetails } from '../../types/playlists.interface';
 import PlaylistItem from './PlaylistItem/PlaylistItem';
 import styles from './Playlists.module.scss';
 
@@ -7,12 +7,12 @@ const Playlists = ({
   playlists,
 }: {
   message: string;
-  playlists: PlaylistsType;
+  playlists: PlaylistTrackDetails[];
 }) => (
   <div className={styles.Playlists}>
-    <h1 className={styles.Title}>Playlists - {message}</h1>
+    <h1 className={styles.Title}>{message}</h1>
     <div className={styles.Container}>
-      {playlists.items.map((item) => (
+      {playlists.map((item) => (
         <PlaylistItem key={item.id} playlist={item} />
       ))}
     </div>
