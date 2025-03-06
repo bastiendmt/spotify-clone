@@ -6,12 +6,10 @@ import Loader from '../../components/Loader/Loader';
 import NotFound from '../../components/NotFound/NotFound';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import { selectCurrentSong } from '../../store/reducers/currentSong.slice';
-import { loadSong } from '../../store/reducers/currentSong.slice';
 import {
   fetchPlaylistById,
   playlistDetailsSelector,
 } from '../../store/reducers/playlistDetail.slice';
-import type { Track } from '../../types/track.interface';
 import msToMinutesAndSeconds from '../../utils/msToMinutes';
 import styles from './PlaylistDetail.module.scss';
 import SongItem from './SongItem/SongItem';
@@ -50,12 +48,6 @@ const PlaylistDetail = () => {
         });
     }
   }, []);
-
-  const songClicked = (clickedSong: Track): void => {
-    if (clickedSong.track?.preview_url !== '') {
-      dispatch(loadSong(clickedSong));
-    }
-  };
 
   const getPlaylistDuration = (): string => {
     let totalMS = 0;
@@ -126,7 +118,6 @@ const PlaylistDetail = () => {
                         song={item}
                         index={index}
                         current={item.track.id === song?.track?.id}
-                        songClicked={() => songClicked(item)}
                       />
                     ),
                 )}

@@ -52,10 +52,7 @@ export const GetUserPlaylists = async (
         Authorization: `Bearer ${auth}`,
       },
     })
-    .then((response) => {
-      console.log(response.data);
-      return response.data;
-    });
+    .then((response) => response.data);
 };
 
 export const GetPlaylistDetail = async (
