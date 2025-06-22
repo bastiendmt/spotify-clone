@@ -4,12 +4,11 @@ import { useParams } from 'react-router-dom';
 import Time from '../../assets/time.svg?react';
 import Loader from '../../components/Loader/Loader';
 import NotFound from '../../components/NotFound/NotFound';
-import { useAppDispatch, useAppSelector } from '../../store/hooks';
-import { selectCurrentSong } from '../../store/reducers/currentSong.slice';
 import {
-  fetchPlaylistById,
-  playlistDetailsSelector,
-} from '../../store/reducers/playlistDetail.slice';
+  useAppStore,
+  useCurrentSong,
+  usePlaylistDetail,
+} from '../../store/zustand-store';
 import msToMinutesAndSeconds from '../../utils/msToMinutes';
 import styles from './PlaylistDetail.module.scss';
 import SongItem from './SongItem/SongItem';
@@ -17,15 +16,15 @@ import SongItem from './SongItem/SongItem';
 const PlaylistDetail = () => {
   const { id } = useParams<{ id: string }>();
   const coverRef = useRef<HTMLImageElement | null>(null);
-  const dispatch = useAppDispatch();
-  const { playlist, loading, error } = useAppSelector(playlistDetailsSelector);
-  const { song } = useAppSelector(selectCurrentSong);
+  const fetchPlaylistById = useAppStore((state) => state.fetchPlaylistById);
+  const { playlist, loading, error } = usePlaylistDetail();
+  const { song } = useCurrentSong();
 
   useEffect(() => {
     if (id != null) {
-      void dispatch(fetchPlaylistById(id));
+      void fetchPlaylistById(id);
     }
-  }, [id, dispatch]);
+  }, [id, fetchPlaylistById]);
 
   useEffect(() => {
     if (coverRef.current != null) {

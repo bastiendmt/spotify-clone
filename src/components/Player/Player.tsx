@@ -4,19 +4,15 @@ import Pause from '../../assets/pause.svg?react';
 import Play from '../../assets/play.svg?react';
 import Volume from '../../assets/volume.svg?react';
 import VolumeMuted from '../../assets/volumeMuted.svg?react';
-import { useAppDispatch, useAppSelector } from '../../store/hooks';
-import {
-  playPause,
-  selectCurrentSong,
-} from '../../store/reducers/currentSong.slice';
+import { useAppStore, useCurrentSong } from '../../store/zustand-store';
 import msToMinutesAndSeconds from '../../utils/msToMinutes';
 import useBar from '../../utils/useBar';
 import useStopwatch from '../../utils/useStopwatch';
 import styles from './Player.module.scss';
 
 const Player = () => {
-  const dispatch = useAppDispatch();
-  const { song, playing } = useAppSelector(selectCurrentSong);
+  const playPause = useAppStore((state) => state.playPause);
+  const { song, playing } = useCurrentSong();
   const audioEml = useRef<ElementRef<'audio'>>(null);
 
   const timeRef = useRef<ElementRef<'div'>>(null);
@@ -97,7 +93,7 @@ const Player = () => {
             >
               <track kind="captions" />
             </audio>
-            <button type="button" onClick={() => dispatch(playPause())}>
+            <button type="button" onClick={() => playPause()}>
               {playing ? <Pause /> : <Play />}
             </button>
             <div className={styles.BarContainer}>
@@ -105,7 +101,7 @@ const Player = () => {
               <div
                 className={styles.Wrapper}
                 onClick={(event) => barCallBack(event, timeRef, setProgress)}
-                onKeyDown={() => dispatch(playPause())}
+                onKeyDown={() => playPause()}
                 // biome-ignore lint/a11y/useSemanticElements: clickable div is fine
                 role="button"
                 tabIndex={0}

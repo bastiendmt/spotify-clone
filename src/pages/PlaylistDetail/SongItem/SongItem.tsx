@@ -1,6 +1,5 @@
 import Play from '../../../assets/play.svg?react';
-import { useAppDispatch } from '../../../store/hooks';
-import { loadSong } from '../../../store/reducers/currentSong.slice';
+import { useAppStore } from '../../../store/zustand-store';
 import type { Track } from '../../../types/track.interface';
 import formatDate from '../../../utils/formatDate';
 import msToMinutesAndSeconds from '../../../utils/msToMinutes';
@@ -13,12 +12,12 @@ interface SongItemPros {
 }
 
 const SongItem = ({ song, index, current }: SongItemPros) => {
-  const dispatch = useAppDispatch();
+  const loadSong = useAppStore((state) => state.loadSong);
   const previewAvailable = song.track?.preview_url !== null;
 
   const handleSongClick = (): void => {
     if (previewAvailable) {
-      dispatch(loadSong(song));
+      loadSong(song);
     }
   };
 
