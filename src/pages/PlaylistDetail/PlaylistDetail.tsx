@@ -4,7 +4,11 @@ import { useParams } from 'react-router-dom';
 import Time from '../../assets/time.svg?react';
 import Loader from '../../components/Loader/Loader';
 import NotFound from '../../components/NotFound/NotFound';
-import { useAppStore, useCurrentSong, usePlaylistDetail } from '../../store/zustand-store';
+import {
+  useAppStore,
+  useCurrentSong,
+  usePlaylistDetail,
+} from '../../store/zustand-store';
 import msToMinutesAndSeconds from '../../utils/msToMinutes';
 import styles from './PlaylistDetail.module.scss';
 import SongItem from './SongItem/SongItem';
