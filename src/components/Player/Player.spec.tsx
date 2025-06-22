@@ -1,34 +1,50 @@
 import { render, screen } from '@testing-library/react';
-import { Provider } from 'react-redux';
-import { describe, expect, test } from 'vitest';
+import { beforeEach, describe, expect, test, vi } from 'vitest';
 import { mockTrack } from '../../../tests/mockData';
-import { createMockStore } from '../../store/store';
+import { createTestStore, setupTestStoreMocks } from '../../store/test-utils';
+import * as zustandStore from '../../store/zustand-store';
 import Player from './Player';
 
-const playerStore = createMockStore({
-  currentSong: { song: null, playing: false },
-});
-
-const playerStoreWithSong = createMockStore({
-  currentSong: { song: mockTrack, playing: true },
-});
+vi.mock('../../store/zustand-store');
 
 describe('Player', () => {
-  test('should render nothing', async () => {
-    render(
-      <Provider store={playerStore}>
-        <Player />
-      </Provider>,
-    );
+  beforeEach(() => {
+    vi.clearAllMocks();
+  });
+
+  test('should render nothing when no song is loaded', async () => {
+    const testStore = createTestStore({
+      currentSong: {
+        song: null,
+        playing: false,
+      },
+    });
+    setupTestStoreMocks(testStore, zustandStore, vi);
+    render(<Player />);
     expect(screen.queryByTestId('audioEml')).toBeFalsy();
   });
 
-  test('should render audio element', async () => {
-    render(
-      <Provider store={playerStoreWithSong}>
-        <Player />
-      </Provider>,
-    );
+  test('should render audio element when song is loaded and playing', async () => {
+    const testStore = createTestStore({
+      currentSong: {
+        song: mockTrack,
+        playing: true,
+      },
+    });
+    setupTestStoreMocks(testStore, zustandStore, vi);
+    render(<Player />);
+    expect(screen.getByTestId('audioEml')).toBeTruthy();
+  });
+
+  test('should render audio element when song is loaded but not playing', async () => {
+    const testStore = createTestStore({
+      currentSong: {
+        song: mockTrack,
+        playing: false,
+      },
+    });
+    setupTestStoreMocks(testStore, zustandStore, vi);
+    render(<Player />);
     expect(screen.getByTestId('audioEml')).toBeTruthy();
   });
 });

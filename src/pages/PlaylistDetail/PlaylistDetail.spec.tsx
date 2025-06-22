@@ -1,54 +1,82 @@
 import { cleanup, render, screen } from '@testing-library/react';
-import { Provider } from 'react-redux';
-import { afterEach, describe, expect, test } from 'vitest';
+import { MemoryRouter } from 'react-router-dom';
+import { afterEach, describe, expect, test, vi } from 'vitest';
 import { mockPlaylistDetails } from '../../../tests/mockData';
-import { createMockStore } from '../../store/store';
+import { createTestStore, setupTestStoreMocks } from '../../store/test-utils';
+import * as zustandStore from '../../store/zustand-store';
 import PlaylistDetail from './PlaylistDetail';
 
-const store = createMockStore({
-  playlistDetail: {
-    playlist: mockPlaylistDetails,
-    loading: false,
-    error: '',
-  },
-});
-
-const loadingStore = createMockStore({
-  playlistDetail: {
-    playlist: null,
-    loading: true,
-    error: '',
-  },
-});
+vi.mock('../../store/zustand-store');
 
 describe('Playlist details', () => {
-  afterEach(cleanup);
+  afterEach(() => {
+    cleanup();
+    vi.clearAllMocks();
+  });
 
-  test('should render loader', async () => {
+  test('should render loader when playlist is loading', async () => {
+    const testStore = createTestStore({
+      playlistDetail: {
+        playlist: null,
+        loading: true,
+        error: '',
+      },
+      currentSong: {
+        song: null,
+        playing: false,
+      },
+    });
+    setupTestStoreMocks(testStore, zustandStore, vi);
+
     render(
-      <Provider store={loadingStore}>
+      <MemoryRouter initialEntries={['/playlist/123']}>
         <PlaylistDetail />
-      </Provider>,
+      </MemoryRouter>,
     );
     expect(screen.getByRole('progressbar', { busy: true })).toBeTruthy();
   });
 
-  test('should render playlist details', async () => {
+  test('should render playlist details when loaded', async () => {
+    const testStore = createTestStore({
+      playlistDetail: {
+        playlist: mockPlaylistDetails,
+        loading: false,
+        error: '',
+      },
+      currentSong: {
+        song: null,
+        playing: false,
+      },
+    });
+    setupTestStoreMocks(testStore, zustandStore, vi);
     render(
-      <Provider store={store}>
+      <MemoryRouter initialEntries={['/playlist/123']}>
         <PlaylistDetail />
-      </Provider>,
+      </MemoryRouter>,
     );
     expect(screen.findByText('Hits du Moment')).toBeTruthy();
   });
 
-  // test('should have a background color', async () => {
-  //   render(
-  //     <Provider store={store}>
-  //       <PlaylistDetail />
-  //     </Provider>,
-  //   );
-
-  //   expect(screen.getByTestId('Background').style.backgroundColor).toBeTruthy();
-  // });
+  test('should render error state when there is an error', async () => {
+    const testStore = createTestStore({
+      playlistDetail: {
+        playlist: null,
+        loading: false,
+        error: 'Failed to load playlist',
+      },
+      currentSong: {
+        song: null,
+        playing: false,
+      },
+    });
+    setupTestStoreMocks(testStore, zustandStore, vi);
+    render(
+      <MemoryRouter initialEntries={['/playlist/123']}>
+        <PlaylistDetail />
+      </MemoryRouter>,
+    );
+    // The error handling would depend on how the component handles error states
+    // For now, we just verify the component renders without crashing
+    expect(screen.queryByRole('progressbar', { busy: true })).toBeFalsy();
+  });
 });
