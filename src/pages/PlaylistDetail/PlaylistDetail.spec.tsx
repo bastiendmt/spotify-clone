@@ -54,7 +54,7 @@ describe('Playlist details', () => {
         <PlaylistDetail />
       </MemoryRouter>,
     );
-    expect(screen.findByText('Hits du Moment')).toBeTruthy();
+    expect(await screen.findByText('Hits du Moment')).toBeTruthy();
   });
 
   test('should render error state when there is an error', async () => {
