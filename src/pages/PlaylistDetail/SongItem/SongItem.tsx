@@ -28,7 +28,6 @@ const SongItem = ({ song, index, current }: SongItemPros) => {
           styles.Item,
           previewAvailable ? styles.Enabled : styles.Disabled,
         ].join(' ')}
-        // biome-ignore lint/a11y/useSemanticElements: clickable div is fine
         role="button"
         tabIndex={0}
         onClick={handleSongClick}

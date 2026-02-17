@@ -9,13 +9,13 @@
     "build": "tsc && vite build",
     "serve": "vite preview",
     "lint": "yarn biome check src/",
-    "lint:fix": "yarn biome check src/ --apply",
+    "lint:fix": "yarn biome check src/ --write",
     "format": "yarn biome format src/ --write",
     "ci": "yarn biome ci src/",
     "test": "vitest run --coverage"
   },
   "dependencies": {
-    "@biomejs/biome": "1.9.4",
+    "@biomejs/biome": "2.4.0",
     "@testing-library/react": "^16.3.0",
     "@testing-library/user-event": "^14.6.1",
     "axios": "^1.9.0",
