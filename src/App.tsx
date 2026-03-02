@@ -7,21 +7,17 @@ import Player from './components/Player/Player';
 import SideBar from './components/SideBar/SideBar';
 import PlaylistDetail from './pages/PlaylistDetail/PlaylistDetail';
 import Playlists from './pages/Playlists/Playlists';
-import { useAppDispatch, useAppSelector } from './store/hooks';
-import {
-  fetchUserPlaylists,
-  selectUserPlaylists,
-} from './store/reducers/userPlaylists.slice';
+import { useAppStore, useUserPlaylists } from './store/zustand-store';
 
 const App = () => {
   const cookies = new Cookies();
-  const dispatch = useAppDispatch();
+  const fetchUserPlaylists = useAppStore((state) => state.fetchUserPlaylists);
   const user = 'smedjan';
-  const { playlists, loading, error } = useAppSelector(selectUserPlaylists);
+  const { playlists, loading, error } = useUserPlaylists();
 
   useEffect(() => {
-    dispatch(fetchUserPlaylists(user));
-  }, [dispatch]);
+    fetchUserPlaylists(user);
+  }, [fetchUserPlaylists]);
 
   return (
     <>
