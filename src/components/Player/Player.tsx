@@ -128,7 +128,6 @@ const Player = () => {
               onClick={(event) => barCallBack(event, volumeRef, setVolume)}
               onKeyDown={() => setMute(!mute)}
               ref={volumeRef}
-              // biome-ignore lint/a11y/useSemanticElements: clickable div is fine
               role="button"
               tabIndex={0}
             >
