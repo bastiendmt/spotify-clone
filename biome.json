@@ -17,6 +17,9 @@
           "level": "warn",
           "options": { "syntax": "shorthand" }
         }
+      },
+      "a11y": {
+        "useSemanticElements": "off"
       }
     }
   },
